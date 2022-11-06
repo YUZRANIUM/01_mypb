@@ -1,0 +1,232 @@
+// INFO ****************************************************
+// FileName : 01_mypb.hsp
+// Version : 0.1.0
+// Date    : 2022/11/05
+// Author  : YUZURANIUM（ゆずらにうむ）
+// Twitter : https://twitter.com/YUZRANIUM
+// Git Hub : https://github.com/YUZURANIUM/PC_CareingDiary
+//**********************************************************
+/* Description
+user32やgdi32、hsp3utilなどは必要ありません。
+このモジュールだけでプログレスバーを設置できます。
+不具合報告や要望等はTwitterにお願いします。
+************************************************************/
+
+#ifndef __mypb__
+#define __mypb__
+
+#module "MyProgBar"
+
+
+	/*****  Style  *****/
+
+	#define PBS_SMOOTH           0x0001  // なめらかな表示
+	#define PBS_VERTICAL         0x0004  // 垂直プログレスバー
+	#define PBS_MARQUEE          0x0008  // マーキーアニメーション
+	#define PBS_SMOOTHREVERSE    0x0010  // 減少時もなめらかに
+
+	#define GWL_EXSTYLE     -20  // 拡張ウィンドウスタル
+	#define GWL_STYLE       -16  // ウィンドウスタル
+//==============================================================================
+
+	/*****  message  *****/
+
+	#define PBM_SETRANGE32       0x0406  // 最大･最小値の設定(32bit)
+	#define PBM_GETRANGE         0x0407  // 最大･最小値の取得
+
+	#define PBM_GETSTEP          0x040C  // 増分値の取得
+	#define PBM_SETSTEP          0x0404  // 増分値の設定
+	#define PBM_STEPIT           0x0405  // 増分値だけ進める
+
+	#define PBM_GETPOS           0x0408  // 現在位置の取得
+	#define PBM_SETPOS           0x0402  // 現在位置の設定
+	#define PBM_DELTAPOS         0x0403  // 現在位置の相対設定
+
+	#define PBM_GETBKCOLOR       0x040E  // 背景色の取得
+	#define PBM_SETBKCOLOR       0x0409  // 背景色の設置
+	#define PBM_GETBARCOLOR      0x040D  // バーの色取得
+	#define PBM_SETBARCOLOR      0x2001  // バーの色設定
+
+	#define PBM_GETSTATE         0x0411  // バーの状態取得
+	#define PBM_SETSTATE         0x0410  // バーの状態設定
+
+	#define PBM_SETMARQUEE       0x040A  // マーキーの操作
+//==============================================================================
+
+	/*****  Progress Bar status  *****/
+
+	#define PBST_NORMAL          0x0001  // 通常     (緑色)
+	#define PBST_ERROR           0x0002  // エラー   (赤色)
+	#define PBST_PAUSED          0x0003  // 一時停止 (黄色)
+//==============================================================================
+
+
+
+
+;---------------------------------------
+;オブジェクトの設置
+;---------------------------------------
+
+
+// プログレスバーの設置
+// p1,p2 : Xサイズ, Yサイズ
+// p3    : オブジェクトハンドルを受け取る変数
+// p4(0) : マーキースイッチ(0 = OFF, 1 = ON)
+#deffunc local mypb_ int p1, int p2, var p3, int p4
+
+	if      (p4 == 0) {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE}
+	else:if (p4 == 1) {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_MARQUEE}
+	else:             {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE}
+
+	winobj "msctls_progress32", "", , style, p1, p2
+	p3 = objinfo(stat, 2)
+	return p3
+
+
+// プログレスバーの設置
+// p1,p2 : Xサイズ, Yサイズ
+// p3    : オブジェクトハンドルを受け取る変数
+// p4(0) : マーキースイッチ(0 = OFF, 1 = ON)
+#define global mypb(%1,%2,%3,%4=0) mypb_@MyProgBar %1,%2,%3,%4
+
+
+
+
+;---------------------------------------
+;オブジェクトの設定
+;---------------------------------------
+
+
+// プログレスバーの設定
+// p1     : オブジェクトハンドル
+// p2(0)  : 最小値(int)
+// p3(10) : 最大値(int)
+// p4(1)  : 1ステップ当たりの変化量(+/-int)
+// p5(0)  : 現在位置(int)
+#deffunc local pbset_ var p1, int p2, int p3, int p4, int p5
+
+	sendmsg p1, PBM_SETRANGE32, p2, p3
+	sendmsg p1, PBM_SETSTEP, p4, 0
+	sendmsg p1, PBM_SETPOS, p5, 0
+
+	return
+
+
+// プログレスバーの設定
+// p1     : オブジェクトハンドル
+// p2(0)  : 最小値(int)
+// p3(10) : 最大値(int)
+// p4(1)  : 1ステップ当たりの変化量(+/-int)
+// p5(0)  : 現在位置(int)
+#define global pbset(%1,%2=0,%3=10,%4=1,%5=0) pbset_@MyProgBar %1,%2,%3,%4,%5
+
+
+
+
+
+
+;---------------------------------------
+;プログレスバーの実行
+;---------------------------------------
+
+
+// 設定した変化量だけ進める
+// p1 : オブジェクトハンドル
+#deffunc pbstep var p1
+	sendmsg p1, PBM_STEPIT, 0, 0
+	return
+
+
+
+
+;---------------------------------------
+;現在位置
+;---------------------------------------
+
+
+// プログレスバーの位置設定
+// p1    : オブジェクトハンドル
+// p2    : 新しく設定する位置(int)
+// p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)
+#deffunc local pbsetpos_ var p1, int p2, int p3
+
+	if      (p3 == 0) {sendmsg p1, PBM_SETPOS, p2, 0}
+	else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
+	else:             {sendmsg p1, PBM_SETPOS, p2, 0}
+
+	return
+
+
+// プログレスバーの位置設定
+// p1    : オブジェクトハンドル
+// p2    : 新しく設定する位置(int)
+// p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)
+#define global pbsetpos(%1,%2,%3=0) pbsetpos_@MyProgBar %1,%2,%3
+
+
+
+// プログレスバーの現在位置取得
+// p1 : オブジェクトハンドル
+// 戻り値 : stat
+#defcfunc pbgetp var p1
+	sendmsg p1, PBM_GETPOS, 0, 0
+	return stat
+
+
+
+
+;---------------------------------------
+;プログレスバーの状態
+;---------------------------------------
+
+
+// プログレスバーの状態設定
+// p1 : オブジェクトハンドル
+// p2 : バーの状態
+//  1 = PBST_NORMAL (緑色)
+//  2 = PBST_ERROR  (赤色)
+//  3 = PBST_PAUSED (黄色)
+#deffunc pbsetst var p1, int p2
+	sendmsg p1, PBM_SETSTATE, p2, 0
+	return
+
+
+
+// プログレスバーの状態取得
+// p1 : オブジェクトハンドル
+// 戻り値 : stat
+//        1 = PBST_NORMAL (緑色)
+//        2 = PBST_ERROR  (赤色)
+//        3 = PBST_PAUSED (黄色)
+#defcfunc pbgetst var p1
+	sendmsg p1, PBM_GETSTATE, 0, 0
+	return stat
+
+
+
+
+;---------------------------------------
+;マーキーの操作
+;---------------------------------------
+
+
+// マーキーの操作
+// p1     : オブジェクトハンドル
+// p2     : マーキー(0 = 停止, 1 = 再生)
+// p3(30) : アニメーション更新間隔(ms)
+#deffunc local pbmarq_ int p1, int p2, int p3
+	sendmsg p1, PBM_SETMARQUEE, p2, p3
+	return
+
+
+
+// マーキーの操作
+// p1     : オブジェクトハンドル
+// p2     : マーキー(0 = 停止, 1 = 再生)
+// p3(30) : アニメーション更新間隔(ms)
+#define global pbmarq(%1,%2,%3=30) pbmarq_@MyProgBar %1,%2,%3
+
+
+#global
+
+#endif
