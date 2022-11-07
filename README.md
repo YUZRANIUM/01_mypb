@@ -1,10 +1,12 @@
-# マイ・プログレスバー ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?style=plastic) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&style=plastic)
+# マイ・プログレスバー ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?style=flat-square) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&style=flat-square)
+
+プログレスバーを比較的簡単に設置できるモジュールです。
 
 ## 特徴（feature）
 
 * `user32.as` や `gdi32.as`、`hsp3util.as` 等を必要とせず、本モジュールのみでプログレスバーを設置可能。
 
-* 現在位置や状態等のプログレスバーに関する情報の取得は全て関数で行うため、式の中で利用可能。
+* 設置したプログレスバーに関する情報の取得は全て関数で行うため、式の中で利用可能。
 
 * 内部で、オブジェクトの設置には `winobj 命令`、それ以外の命令･関数は `sendmsg 命令` を使用。
 
@@ -12,11 +14,11 @@
 
 ## 機能（function）
 
-<details open>
+<details>
 
 <summary>追加される命令･関数</summary>
 
-~~~hsp
+~~~ hsp
 ;---------------------------------------
 ;オブジェクトの設置
 ;---------------------------------------
@@ -134,15 +136,14 @@
 
 ## 使用言語（Coding Language）
 
-![HSP3.7beta3](https://img.shields.io/badge/Hot%20Soup%20Processor-3.7beta3-orange.svg?style=flat-square&?link=https://hsp.tv/)
-[Hot Soup Processor (HSP3)](https://hsp.tv/)
+* [Hot Soup Processor(HSP3)](https://hsp.tv/)
 
 
 ## 開発環境（Development environment）
 
 * Windows11 Pro 22H2 x64
 * Visual Studio Code
-* Hot Soup Processor.37beta3
+* Hot Soup Processor 3.7beta3
 
 ## LICENSE
 
@@ -155,3 +156,7 @@
 
 作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。
 
+## 更新履歴
+
+### ver 0.1.0
+2022/11/07 初公開
