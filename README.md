@@ -134,7 +134,7 @@
 
 ## 使用言語（Coding Language）
 
-![HSP3.7beta3](https://img.shields.io/badge/Hot%20Soup%20Processor-3.7beta3-orange)
+![HSP3.7beta3](https://img.shields.io/badge/Hot%20Soup%20Processor-3.7beta3-orange.svg?style=flat-square&?link=https://hsp.tv/)
 [Hot Soup Processor (HSP3)](https://hsp.tv/)
 
 
