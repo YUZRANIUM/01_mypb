@@ -1,8 +1,12 @@
 # マイ・プログレスバー ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?style=flat-square) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&style=flat-square)
 
-プログレスバーを比較的簡単に設置できるモジュールです。
+プログレスバーを比較的簡単に設置できるモジュールです。不定期更新です。
 
-## 特徴（feature）
+不具合報告や要望等は [Twitter](https://twitter.com/YUZRANIUM) のDMか [HSPの掲示板](http://hsp.tv/play/pforum.php) 等で頂けると幸いです。
+
+<br>
+
+## 特徴（Feature）
 
 * `user32.as` や `gdi32.as`、`hsp3util.as` 等を必要とせず、本モジュールのみでプログレスバーを設置可能。
 
@@ -10,9 +14,60 @@
 
 * 内部で、オブジェクトの設置には `winobj 命令`、それ以外の命令･関数は `sendmsg 命令` を使用。
 
-## 使用方法（how to use）
+<br>
 
-## 機能（function）
+## 今後の予定
+* [ ] ヘルプファイルの作製
+* [ ] 背景色、バーの色設定命令の追加
+* [ ] 背景色、バーの色取得関数の追加
+* [ ] ループ内で現在位置を監視・取得し、その値に応じて配色を変更する命令（バー状態は実装済み）
+
+<br>
+
+## 導入方法（Introduction）
+
+~~~
+├── common
+│   └── 01_mypb.hsp
+├── doclib
+│   └── 01_mypb
+│       ├── 01_mypb.txt
+│       └── 01_mypbhelp.hs
+├── sample
+│   └── 01_mypb
+│       └── 01_mypbsample.hsp
+├── README.md
+├── README.html
+└── License.txt
+~~~
+
+<br>
+
+* common下の 00_mypb.hsp をユーザースクリプトのディレクトリか、HSP のインストールディレクトリ下の commonフォルダ内において、00_mypb.hspをインクルードしてください。
+
+~~~
+    例） hsp36/common/01_mypb.hsp
+~~~
+
+<br>
+
+* doclib下の 01_mypb フォルダは、HSPのインストールディレクトリ下にあるdoclibフォルダ内に、01_mypbフォルダごと置いて下さい。
+
+~~~
+    例） hsp36/doclib/01_mypb
+~~~
+
+<br>
+
+* sample下の 01_mypb フォルダは、HSPのインストールディレクトリ下にあるsampleフォルダ内に、01_mypbフォルダごと置いて下さい。
+
+~~~
+    例） hsp36/sample/01_mypb
+~~~
+
+<br>
+
+## 機能（Function）
 
 <details>
 
@@ -127,23 +182,28 @@
 
 </details>
 
+<br>
 
-## 必要環境
+## 必要環境（Environment）
 
 * Windows11
 * HSP3.6以上
 
+<br>
 
 ## 使用言語（Coding Language）
 
 * [Hot Soup Processor(HSP3)](https://hsp.tv/)
 
+<br>
 
 ## 開発環境（Development environment）
 
 * Windows11 Pro 22H2 x64
 * Visual Studio Code
 * Hot Soup Processor 3.7beta3
+
+<br>
 
 ## LICENSE
 
@@ -156,7 +216,9 @@
 
 作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。
 
-## 更新履歴
+<br>
+
+## 更新履歴（Change Log）
 
 ### ver 0.1.0
 2022/11/07 初公開
