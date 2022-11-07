@@ -1,0 +1,54 @@
+    #include "C:/gitproject/01_mypb/common/01_mypb.hsp"
+
+    a = 1
+    pos 70, 10 : objsize , , 20
+
+    mypb 300, 15, hProg1, 0
+        pbset hProg1, 0, 100, 1, 0
+
+    mypb 300, 15, hProg2, 0
+        pbset hProg2, 0, 100, -1, 100
+
+    mypb 300, 15, hProg3, 2
+        pbmarq hProg3, 1, 30
+        y = ginfo_cy
+
+    pos 50, 10
+    mypb 15, 300, hProg4, 1
+        pbset hProg4, 0, 100, -1, 100
+
+    pos 30, 10
+    mypb 15, 300, hProg5, 1
+        pbset hProg5, 0, 100, 1, 100
+
+    pos 70, y
+    mypb 300, 15, hProg6, 2
+
+    button gosub "statrt", *marqueesw
+        butid = stat
+        butstr = "start", "stop"
+
+*main
+    wait 8
+
+    pbstep hProg1
+        pbsetst2 hProg1
+
+    pbstep hProg2
+        pbsetst2 hProg2
+
+    pbstep hProg4
+        pbsetst2 hProg4
+
+    pbstep hProg5
+        pbsetst2 hProg5
+
+    goto *main
+
+
+*marqueesw
+    a = a * -1
+    if a == -1 : b = 1 : else : b = 0
+    pbmarq hProg6, b, 30
+    objprm butid, butstr(b)
+    return
