@@ -1,9 +1,11 @@
-# マイ・プログレスバー
+# マイ・プログレスバー ver 0.1.0
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?style=flat-square) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&style=flat-square)
 
 プログレスバーを比較的簡単に設置できるモジュールです。不定期更新です。
 
 不具合報告や要望等は [Twitter](https://twitter.com/YUZRANIUM) のDMか [HSPの掲示板](http://hsp.tv/play/pforum.php) 等で頂けると幸いです。
+
+__※ヘルプファイルまだできていません()__
 
 <br>
 
