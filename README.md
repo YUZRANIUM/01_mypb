@@ -134,7 +134,8 @@
 
 ## 使用言語（Coding Language）
 
-![HSP version](https://img.shields.io/badge/Hot%20Soup%20Processor-3.7beta3-orange&?link=https://hsp.tv/right)
+![HSP3.7beta3](https://img.shields.io/badge/Hot%20Soup%20Processor-3.7beta3-orange)
+[Hot Soup Processor (HSP3)](https://hsp.tv/)
 
 
 ## 開発環境（Development environment）
