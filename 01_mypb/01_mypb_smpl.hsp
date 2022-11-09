@@ -1,3 +1,15 @@
+// INFO ****************************************************
+// FileName : 01_mypb_smpl.hsp
+// Version  : 0.1.0
+// Date     : 2022/11/09
+// Author   : YUZURANIUM（ゆずらにうむ）
+// Twitter  : https://twitter.com/YUZRANIUM
+// GitHub   : https://github.com/YUZURANIUM/01_mypb
+//**********************************************************
+/* Description
+01_mypbモジュールを扱うためのサンプルです。
+************************************************************/
+
     #include "C:/gitproject/01_mypb/common/01_mypb.hsp"
 
     a = 1
