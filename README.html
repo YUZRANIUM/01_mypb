@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>&#x30de;&#x30a4;&#x30fb;&#x30d7;&#x30ed;&#x30b0;&#x30ec;&#x30b9;&#x30d0;&#x30fc;</title>
+        <title>&#x30de;&#x30a4;&#x30fb;&#x30d7;&#x30ed;&#x30b0;&#x30ec;&#x30b9;&#x30d0;&#x30fc; &excl;&lbrack;GitHub release &lpar;latest SemVer including pre-releases&rpar;&rbrack;&lpar;https&colon;&sol;&sol;img&period;shields&period;io&sol;github&sol;v&sol;release&sol;YUZURANIUM&sol;01&lowbar;mypb&quest;include&lowbar;prereleases&amp;style&equals;flat-square&rpar;</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -1328,10 +1328,10 @@ body,
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="dark"></span>
-                <h1 id="マイプログレスバー">マイ・プログレスバー</h1>
-<p><img src="https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?style=flat-square" alt="GitHub release (latest SemVer)"> <img src="https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&amp;style=flat-square" alt="GitHub release (latest SemVer including pre-releases)"></p>
+                <h1 id="マイプログレスバー-">マイ・プログレスバー <img src="https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&amp;style=flat-square" alt="GitHub release (latest SemVer including pre-releases)"></h1>
 <p>プログレスバーを比較的簡単に設置できるモジュールです。不定期更新です。</p>
 <p>不具合報告や要望等は <a href="https://twitter.com/YUZRANIUM">Twitter</a> のDMか <a href="http://hsp.tv/play/pforum.php">HSPの掲示板</a> 等で頂けると幸いです。</p>
+<p><strong>※ヘルプファイルまだできていません()</strong></p>
 <br>
 <h2 id="特徴feature">特徴（Feature）</h2>
 <ul>
@@ -1351,19 +1351,16 @@ body,
 <li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ヘルプファイルの作製</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 背景色、バーの色設定命令の追加</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 背景色、バーの色取得関数の追加</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ループ内で現在位置を監視・取得し、その値に応じて配色を変更する命令（バー状態は実装済み）</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ループ内で現在位置を監視・取得し、その値に応じて配色を変更する命令（バーの状態を変更することによる配色変更命令は実装済み）</li>
 </ul>
 <br>
 <h2 id="導入方法introduction">導入方法（Introduction）</h2>
 <pre><code>├── common
 │   └── 01_mypb.hsp
-├── doclib
-│   └── 01_mypb
-│       ├── 01_mypb.txt
-│       └── 01_mypbhelp.hs
-├── sample
-│   └── 01_mypb
-│       └── 01_mypbsample.hsp
+├── 01_mypb
+│   ├── 01_mypbhelp.hs
+│   ├── 01_mypb_smpl.hsp
+│   └── 01_mypb.txt
 ├── README.md
 ├── README.html
 └── License.txt
@@ -1376,19 +1373,13 @@ body,
 </code></pre>
 <br>
 <ul>
-<li>doclib下の 01_mypb フォルダは、HSPのインストールディレクトリ下にあるdoclibフォルダ内に、01_mypbフォルダごと置いて下さい。</li>
+<li>01_mypbフォルダをHSPのインストールディレクトリ下にある <strong>doclibフォルダ内に01_mypbフォルダごと</strong> 置いて下さい。サンプルファイルもそのままで構いません。</li>
 </ul>
 <pre><code>    例） hsp36/doclib/01_mypb
 </code></pre>
 <br>
-<ul>
-<li>sample下の 01_mypb フォルダは、HSPのインストールディレクトリ下にあるsampleフォルダ内に、01_mypbフォルダごと置いて下さい。</li>
-</ul>
-<pre><code>    例） hsp36/sample/01_mypb
-</code></pre>
-<br>
 <h2 id="機能function">機能（Function）</h2>
-<details>
+<details open>
 <summary>追加される命令･関数</summary>
 <pre><code class="language-hsp"><span class="hljs-comment">;---------------------------------------</span>
 <span class="hljs-comment">;オブジェクトの設置</span>
@@ -1462,7 +1453,7 @@ body,
     pbgetst objhwnd
 
 
-<span class="hljs-comment">// プログレスバーの現在位置監視（命令・マクロ）</span>
+<span class="hljs-comment">// プログレスバーの配色変更（命令・マクロ）</span>
 <span class="hljs-comment">// p1     : オブジェクトハンドル</span>
 <span class="hljs-comment">// p2(25) : 中間域の下限値(int)</span>
 <span class="hljs-comment">// p3(40) : 中間域の上限値(int)</span>
@@ -1499,7 +1490,7 @@ body,
 <br>
 <h2 id="必要環境environment">必要環境（Environment）</h2>
 <ul>
-<li>Windows11</li>
+<li>Windows10, 11</li>
 <li>HSP3.6以上</li>
 </ul>
 <br>
@@ -1511,8 +1502,8 @@ body,
 <h2 id="開発環境development-environment">開発環境（Development environment）</h2>
 <ul>
 <li>Windows11 Pro 22H2 x64</li>
-<li>Visual Studio Code</li>
 <li>Hot Soup Processor 3.7beta3</li>
+<li>Visual Studio Code ver 1.73.0</li>
 </ul>
 <br>
 <h2 id="license">LICENSE</h2>
@@ -1522,6 +1513,8 @@ body,
 <p>作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。</p>
 <br>
 <h2 id="更新履歴change-log">更新履歴（Change Log）</h2>
+<h3 id="ver-011">ver 0.1.1</h3>
+<p>2022/11/09 ディレクトリの変更</p>
 <h3 id="ver-010">ver 0.1.0</h3>
 <p>2022/11/07 初公開</p>
 </div>
