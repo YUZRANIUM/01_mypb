@@ -1,10 +1,10 @@
 // INFO ****************************************************
 // FileName : 01_mypb.hsp
-// Version : 0.1.0
-// Date    : 2022/11/05
+// Version : 0.1.1
+// Date    : 2022/11/10
 // Author  : YUZURANIUM（ゆずらにうむ）
 // Twitter : https://twitter.com/YUZRANIUM
-// Git Hub : https://github.com/YUZURANIUM/PC_CareingDiary
+// Git Hub : https://github.com/YUZURANIUM/01_mypb
 //**********************************************************
 /* Description
 user32やgdi32、hsp3utilなどは必要ありません。
@@ -14,55 +14,62 @@ user32やgdi32、hsp3utilなどは必要ありません。
 もしくはHSPの掲示板等で頂けると幸いです。
 ************************************************************/
 
+
+
 #ifndef __mypb__
 #define __mypb__
+
 
 #module "MyProgBar"
 
 
     /*****  Style  *****/
 
-    #define PBS_SMOOTH           0x0001  // なめらかな表示
-    #define PBS_VERTICAL         0x0004  // 垂直プログレスバー
-    #define PBS_MARQUEE          0x0008  // マーキーアニメーション
-    #define PBS_SMOOTHREVERSE    0x0010  // 減少時もなめらかに
+    #const PBS_SMOOTH           0x0001  // なめらかな表示
+    #const PBS_VERTICAL         0x0004  // 垂直プログレスバー
+    #const PBS_MARQUEE          0x0008  // マーキーアニメーション
+    #const PBS_SMOOTHREVERSE    0x0010  // 減少時もなめらかに
 
-    #define GWL_EXSTYLE     -20  // 拡張ウィンドウスタル
-    #define GWL_STYLE       -16  // ウィンドウスタル
+    #const GWL_EXSTYLE     -20  // 拡張ウィンドウスタル
+    #const GWL_STYLE       -16  // ウィンドウスタル
 //==============================================================================
 
     /*****  message  *****/
 
-    #define PBM_SETRANGE32       0x0406  // 最大･最小値の設定(32bit)
-    #define PBM_GETRANGE         0x0407  // 最大･最小値の取得
+    #const PBM_SETRANGE32       0x0406  // 最大･最小値の設定(32bit)
+    #const PBM_GETRANGE         0x0407  // 最大･最小値の取得
 
-    #define PBM_GETSTEP          0x040C  // 増分値の取得
-    #define PBM_SETSTEP          0x0404  // 増分値の設定
-    #define PBM_STEPIT           0x0405  // 増分値だけ進める
+    #const PBM_GETSTEP          0x040C  // 増分値の取得
+    #const PBM_SETSTEP          0x0404  // 増分値の設定
+    #const PBM_STEPIT           0x0405  // 増分値だけ進める
 
-    #define PBM_GETPOS           0x0408  // 現在位置の取得
-    #define PBM_SETPOS           0x0402  // 現在位置の設定
-    #define PBM_DELTAPOS         0x0403  // 現在位置の相対設定
+    #const PBM_GETPOS           0x0408  // 現在位置の取得
+    #const PBM_SETPOS           0x0402  // 現在位置の設定
+    #const PBM_DELTAPOS         0x0403  // 現在位置の相対設定
 
-    #define PBM_GETBKCOLOR       0x040E  // 背景色の取得
-    #define PBM_SETBKCOLOR       0x0409  // 背景色の設置
-    #define PBM_GETBARCOLOR      0x040D  // バーの色取得
-    #define PBM_SETBARCOLOR      0x2001  // バーの色設定
+    #const PBM_GETBKCOLOR       0x040E  // 背景色の取得
+    #const PBM_SETBKCOLOR       0x0409  // 背景色の設置
+    #const PBM_GETBARCOLOR      0x040D  // バーの色取得
+    #const PBM_SETBARCOLOR      0x2001  // バーの色設定
 
-    #define PBM_GETSTATE         0x0411  // バーの状態取得
-    #define PBM_SETSTATE         0x0410  // バーの状態設定
+    #const PBM_GETSTATE         0x0411  // バーの状態取得
+    #const PBM_SETSTATE         0x0410  // バーの状態設定
 
-    #define PBM_SETMARQUEE       0x040A  // マーキーの操作
+    #const PBM_SETMARQUEE       0x040A  // マーキーの操作
 //==============================================================================
 
     /*****  Progress Bar status  *****/
 
-    #define PBST_NORMAL          0x0001  // 通常     (緑色)
-    #define PBST_ERROR           0x0002  // エラー   (赤色)
-    #define PBST_PAUSED          0x0003  // 一時停止 (黄色)
+    #const PBST_NORMAL          0x0001  // 通常     (緑色)
+    #const PBST_ERROR           0x0002  // エラー   (赤色)
+    #const PBST_PAUSED          0x0003  // 一時停止 (黄色)
 //==============================================================================
 
 
+    #const my_style0 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE
+    #const my_style1 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL
+    #const my_style2 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_MARQUEE
+    #const my_style3 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL | PBS_MARQUEE
 
 
 ;---------------------------------------
@@ -76,11 +83,11 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p4(0) : スタイル(0 = 通常, 1 = 垂直, 2 = マーキー, 3 = 垂直マーキー)
 #deffunc local mypb_ int p1, int p2, var p3, int p4
 
-    if      (p4 == 0) {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE}
-    else:if (p4 == 1) {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL}
-    else:if (p4 == 2) {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_MARQUEE}
-    else:if (p4 == 3) {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL | PBS_MARQUEE}
-    else              {style = 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE}
+    if      (p4 == 0) {style = my_style0}
+    else:if (p4 == 1) {style = my_style1}
+    else:if (p4 == 2) {style = my_style2}
+    else:if (p4 == 3) {style = my_style3}
+    else              {style = my_style0}
 
     winobj "msctls_progress32", "", , style, p1, p2
     p3 = objinfo(stat, 2)
@@ -91,6 +98,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p1,p2 : Xサイズ, Yサイズ
 // p3    : オブジェクトハンドルを受け取る変数
 // p4(0) : スタイル(0 = 通常, 1 = 垂直, 2 = マーキー, 3 = 垂直マーキー)
+
 #define global mypb(%1,%2,%3,%4=0) mypb_@MyProgBar %1,%2,%3,%4
 
 
@@ -102,28 +110,28 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 
 // プログレスバーの設定
-// p1     : オブジェクトハンドル
-// p2(0)  : 最小値(int)
-// p3(10) : 最大値(int)
-// p4(1)  : 1ステップ当たりの変化量(+/-int)
-// p5(0)  : 現在位置(int)
+// p1      : オブジェクトハンドル
+// p2(0)   : 最小値(int)
+// p3(100) : 最大値(int)
+// p4(0)   : 開始位置(int)
+// p5(1)   : 1ステップ当たりの変化量(+/-int)
 #deffunc local pbset_ var p1, int p2, int p3, int p4, int p5
 
     sendmsg p1, PBM_SETRANGE32, p2, p3
-    sendmsg p1, PBM_SETSTEP, p4, 0
-    sendmsg p1, PBM_SETPOS, p5, 0
+    sendmsg p1, PBM_SETPOS, p4, 0
+    sendmsg p1, PBM_SETSTEP, p5, 0
 
     return
 
 
 // プログレスバーの設定
-// p1     : オブジェクトハンドル
-// p2(0)  : 最小値(int)
-// p3(10) : 最大値(int)
-// p4(1)  : 1ステップ当たりの変化量(+/-int)
-// p5(0)  : 現在位置(int)
-#define global pbset(%1,%2=0,%3=10,%4=1,%5=0) pbset_@MyProgBar %1,%2,%3,%4,%5
+// p1      : オブジェクトハンドル
+// p2(0)   : 最小値(int)
+// p3(100) : 最大値(int)
+// p4(0)   : 開始位置(int)
+// p5(1)   : 1ステップ当たりの変化量(+/-int)
 
+#define global pbset(%1,%2=0,%3=100,%4=0,%5=1) pbset_@MyProgBar %1,%2,%3,%4,%5
 
 
 
@@ -136,6 +144,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 // 設定した変化量だけ進める
 // p1 : オブジェクトハンドル
+
 #deffunc pbstep var p1
     sendmsg p1, PBM_STEPIT, 0, 0
     return
@@ -165,6 +174,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p1    : オブジェクトハンドル
 // p2    : 新しく設定する位置(int)
 // p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)
+
 #define global pbsetpos(%1,%2,%3=0) pbsetpos_@MyProgBar %1,%2,%3
 
 
@@ -172,6 +182,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // プログレスバーの現在位置取得
 // p1 : オブジェクトハンドル
 // 戻り値 : stat
+
 #defcfunc pbgetp var p1
     sendmsg p1, PBM_GETPOS, 0, 0
     return stat
@@ -190,6 +201,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //  1 = PBST_NORMAL (緑色)
 //  2 = PBST_ERROR  (赤色)
 //  3 = PBST_PAUSED (黄色)
+
 #deffunc pbsetst var p1, int p2
     sendmsg p1, PBM_SETSTATE, p2, 0
     return
@@ -202,6 +214,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //        1 = PBST_NORMAL (緑色)
 //        2 = PBST_ERROR  (赤色)
 //        3 = PBST_PAUSED (黄色)
+
 #defcfunc pbgetst var p1
     sendmsg p1, PBM_GETSTATE, 0, 0
     return stat
@@ -219,7 +232,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 #deffunc local pbsetst2_ var p1, int p2, int p3, int p4, int p5, int p6
     if      (pbgetp(p1) > p3) {pbsetst p1, p6}
     else:if (pbgetp(p1) < p2) {pbsetst p1, p4}
-    else                      {pbsetst p1, p5}
+    else                     {pbsetst p1, p5}
     return
 
 // プログレスバーの状態配色セット
@@ -229,6 +242,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p4(2)  : 下位域の状態 (PBST_ERROR  (赤色))
 // p5(3)  : 中間域の状態 (PBST_PAUSED (黄色))
 // p6(1)  : 上位域の状態 (PBST_NORMAL (緑色))
+
 #define global pbsetst2(%1,%2=25,%3=40,%4=2,%5=3,%6=1) pbsetst2_@MyProgBar %1,%2,%3,%4,%5,%6
 
 
@@ -252,9 +266,160 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p1     : オブジェクトハンドル
 // p2     : マーキー(0 = 停止, 1 = 再生)
 // p3(30) : アニメーション更新間隔(ms)
+
 #define global pbmarq(%1,%2,%3=30) pbmarq_@MyProgBar %1,%2,%3
 
 
 #global
 
 #endif
+
+
+
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//                             以下ヘルプファイル
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+/*
+%dll
+01_mypb
+%ver
+0.1.0
+%date
+2022/11/10
+%author
+YUZURANIUM(ゆずらにうむ)
+%url
+https://twitter.com/YUZRANIUM
+https://github.com/YUZURANIUM/01_mypb
+%note
+01_mypb.hspをインクルードすること
+%port
+Win
+%*/
+
+//##############################################################################
+
+/*
+%index
+mypb
+プログレスバーの設置
+%prm
+p1,p2,p3,p4
+p1,p2 : Xサイズ, Yサイズ
+p3    : オブジェクトハンドルを受け取る変数
+p4(0) : スタイル(0 = 通常, 1 = 垂直, 2 = マーキー, 3 = 垂直マーキー)
+%inst
+この命令はwinobj命令を使用してプログレスバーを設置するものです。設置位置はカレントポジションになります。
+p1, p2でプログレスバーのXサイズとYサイズを指定します。
+p3でオブジェクトハンドルを受け取る変数を指定します。変数はあらかじめ用意しておく必要があります。
+p4はプログレスバーのウィンドウスタイルを設定します。初期値では0となっていますので省略可能です。
+^
+以下、p4で指定できる値
+^
+    値 |   見た目
+----------------------------------------
+    0  | 水平のプログレスバー
+    1  | 垂直のプログレスバー
+    2  | マーキー・アニメーション
+    3  | マーキー・アニメーション + 垂直
+^
+マーキー・アニメーションでは不確定のアニメーションの操作ができるようになります。
+^
+この命令はオブジェクトを設置するだけですので、単体では動作しません。動作には別途設定命令を置く必要があります。
+^
+設定命令には、p4が0, 1の場合は pbset命令を、p4が2, 3の場合は pbmarq命令を使用します。
+^
+%sample
+#include "01_mypb.hsp"
+
+    mypb 300, 15, hProg1, 0
+    pbset hProg, 0, 100, 1, 0
+
+    mypb 300, 15, hProg2, 2
+    pbmarq hProg2, 1, 30
+
+*main
+    wait 8
+
+    pbstep hProg
+
+    goto *main
+
+%group
+オブジェクト制御命令
+%type
+ユーザー定義命令
+%href
+pbset
+pbmarq
+pbsetpos
+pbgetp
+pbsetst
+pbgetst
+pbsetst2
+pbstep
+%*/
+
+//##############################################################################
+
+
+/*
+%index
+pbset
+プログレスバーの設定
+%prm
+p1,p2,p3,p4,p5
+p1      : オブジェクトハンドル
+p2(0)   : 最小値 (int)
+p3(100) : 最大値 (int)
+p4(0)   : 開始位置 (int)
+p5(1)   : 1ステップ当たりの変化量 (+/-int)
+%inst
+この命令はmypb命令によって設置されたプログレスバーの設定を行うものです。
+^
+p1に以降のパラメータの内容を適用させたいプログレスバーのオブジェクトハンドルを指定して下さい。
+p2, p3に整数値を指定することでプログレスバーの範囲を決めます。p2が最小値、p3が最大値となります。
+p4にはバーの開始位置を整数値で指定します。
+p5にはプログレスバーが1回の動作で進む変化量を整数値で指定します。正負両方取ることができ、負の整数値を指定した場合は減少していきます。
+^
+
+%sample
+#include "01_mypb.hsp"
+
+    mypb 300, 15, hProg1, 0
+    pbset hProg1, 0, 200, 0, 1      ;  最小値          最大値
+                                    ;  0                 200
+                                    ;  [#############      ]
+                                    ;  ↑         -->
+                                    ;  開始位置0    変化量 +1
+    mypb 300, 15, hProg2, 0
+    pbset hProg2, 0, 100, 100, -1   ;  0                 100
+                                    ;  [#######            ]
+                                    ;        <--           ↑
+                                    ; 変化量 -1    開始位置100
+
+
+*main
+    wait 8
+
+    pbstep hProg1   ; 設定された変化量だけ進める
+    pbstep hProg2   ;
+
+    goto *main
+
+%group
+オブジェクト制御命令
+%type
+ユーザー定義命令
+%href
+mypb
+pbmarq
+pbsetpos
+pbgetp
+pbsetst
+pbgetst
+pbsetst2
+pbstep
+%*/
