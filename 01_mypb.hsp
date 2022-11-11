@@ -69,7 +69,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
     #const my_style0 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE
     #const my_style1 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL
     #const my_style2 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_MARQUEE
-    #const my_style3 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL | PBS_MARQUEE
 
 
 ;---------------------------------------
@@ -80,24 +79,23 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 // ƒvƒƒOƒŒƒXƒo[‚ÌÝ’u
 // p1,p2 : XƒTƒCƒY, YƒTƒCƒY
 // p3    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽó‚¯Žæ‚é•Ï”
-// p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[, 3 = ‚’¼ƒ}[ƒL[)
+// p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[)
 #deffunc local mypb_ int p1, int p2, var p3, int p4
 
     if      (p4 == 0) {style = my_style0}
     else:if (p4 == 1) {style = my_style1}
     else:if (p4 == 2) {style = my_style2}
-    else:if (p4 == 3) {style = my_style3}
     else              {style = my_style0}
 
     winobj "msctls_progress32", "", , style, p1, p2
     p3 = objinfo(stat, 2)
-    return p3
+    return stat
 
 
 // ƒvƒƒOƒŒƒXƒo[‚ÌÝ’u
 // p1,p2 : XƒTƒCƒY, YƒTƒCƒY
 // p3    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽó‚¯Žæ‚é•Ï”
-// p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[, 3 = ‚’¼ƒ}[ƒL[)
+// p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[)
 
 #define global mypb(%1,%2,%3,%4=0) mypb_@MyProgBar %1,%2,%3,%4
 
@@ -120,7 +118,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
     sendmsg p1, PBM_SETRANGE32, p2, p3
     sendmsg p1, PBM_SETPOS, p4, 0
     sendmsg p1, PBM_SETSTEP, p5, 0
-
     return
 
 
@@ -135,12 +132,9 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 
 
 
-
-
 ;---------------------------------------
 ;ƒvƒƒOƒŒƒXƒo[‚ÌŽÀs
 ;---------------------------------------
-
 
 // Ý’è‚µ‚½•Ï‰»—Ê‚¾‚¯i‚ß‚é
 // p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
@@ -148,7 +142,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 #deffunc pbstep var p1
     sendmsg p1, PBM_STEPIT, 0, 0
     return
-
 
 
 
@@ -166,7 +159,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
     if      (p3 == 0) {sendmsg p1, PBM_SETPOS, p2, 0}
     else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
     else:             {sendmsg p1, PBM_SETPOS, p2, 0}
-
     return
 
 
@@ -178,7 +170,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 #define global pbsetpos(%1,%2,%3=0) pbsetpos_@MyProgBar %1,%2,%3
 
 
-
 // ƒvƒƒOƒŒƒXƒo[‚ÌŒ»ÝˆÊ’uŽæ“¾
 // p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
 // –ß‚è’l : stat
@@ -186,7 +177,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 #defcfunc pbgetp var p1
     sendmsg p1, PBM_GETPOS, 0, 0
     return stat
-
 
 
 
@@ -207,7 +197,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
     return
 
 
-
 // ƒvƒƒOƒŒƒXƒo[‚Ìó‘ÔŽæ“¾
 // p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
 // –ß‚è’l : stat
@@ -220,8 +209,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
     return stat
 
 
-
-
 // ƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô”zFƒZƒbƒg
 // p1     : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
 // p2(25) : ’†ŠÔˆæ‚Ì‰ºŒÀ’l(int)
@@ -232,7 +219,7 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 #deffunc local pbsetst2_ var p1, int p2, int p3, int p4, int p5, int p6
     if      (pbgetp(p1) > p3) {pbsetst p1, p6}
     else:if (pbgetp(p1) < p2) {pbsetst p1, p4}
-    else                     {pbsetst p1, p5}
+    else                      {pbsetst p1, p5}
     return
 
 // ƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô”zFƒZƒbƒg
@@ -251,7 +238,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 ;ƒ}[ƒL[‚Ì‘€ì
 ;---------------------------------------
 
-
 // ƒ}[ƒL[‚Ì‘€ì
 // p1     : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
 // p2     : ƒ}[ƒL[(0 = ’âŽ~, 1 = Ä¶)
@@ -261,7 +247,6 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
     return
 
 
-
 // ƒ}[ƒL[‚Ì‘€ì
 // p1     : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
 // p2     : ƒ}[ƒL[(0 = ’âŽ~, 1 = Ä¶)
@@ -269,6 +254,58 @@ user32‚âgdi32Ahsp3util‚È‚Ç‚Í•K—v‚ ‚è‚Ü‚¹‚ñB
 
 #define global pbmarq(%1,%2,%3=30) pbmarq_@MyProgBar %1,%2,%3
 
+
+;---------------------------------------
+;ƒvƒƒOƒŒƒXƒo[‚Ìî•ñŽæ“¾
+;---------------------------------------
+
+//ƒvƒƒOƒŒƒXƒo[‚Ìî•ñŽæ“¾
+// p1    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+// p2(0) : Žæ“¾ƒ^ƒCƒv
+//    0  : Œ»ÝˆÊ’u (int)
+//    1  : Å¬’l (int)
+//    2  : Å‘å’l (int)
+//    3  : •Ï‰»—Ê (int)
+//    4  : ƒo[‚Ìó‘Ô (int)
+//    5  : ƒo[‚ÌF (COLORREF)
+//    6  : ”wŒiF   (COLORREF)
+#defcfunc local pbinfo_ var p1, int p2
+
+    logmes "1:p1 = " + p1 + "\n1:p2 = " + p2
+
+    if      (p2 == 0) {mesid = PBM_GETPOS}        // Œ»ÝˆÊ’u
+    else:if (p2 == 1) {mesid = PBM_GETRANGE}     // Å¬’l
+    else:if (p2 == 2) {mesid = PBM_GETRANGE}     // Å‘å’l
+    else:if (p2 == 3) {mesid = PBM_GETSTEP}       // •Ï‰»—Ê
+    else:if (p2 == 4) {mesid = PBM_GETSTATE}      // ó‘Ô
+    else:if (p2 == 5) {mesid = PBM_GETBARCOLOR}   // ƒo[‚ÌF
+    else:if (p2 == 6) {mesid = PBM_GETBKCOLOR}    // ”wŒiF
+    else              {mesid = PBM_GETPOS}
+
+    sendmsg p1, mesid, 0, 0
+
+
+    logmes "2:p1 = " + p1 + "\n2:p2 = " + p2
+    logmes "\nlparam = " + lparam
+    logmes "\niparam = " + iparam
+    logmes "\nwparam = " + wparam
+    logmes "\nstat = " + stat
+
+    return stat
+
+
+//ƒvƒƒOƒŒƒXƒo[‚Ìî•ñŽæ“¾
+// p1    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+// p2(0) : Žæ“¾ƒ^ƒCƒv
+//    0  : Œ»ÝˆÊ’u (int)
+//    1  : Å¬’l (int)
+//    2  : Å‘å’l (int)
+//    3  : •Ï‰»—Ê (int)
+//    4  : ƒo[‚Ìó‘Ô (int)
+//    5  : ƒo[‚ÌF (COLORREF)
+//    6  : ”wŒiF   (COLORREF)
+
+#define global ctype pbinfo(%1,%2=0) pbinfo_@MyProgBar %1,%2
 
 #global
 
@@ -309,7 +346,7 @@ mypb
 p1,p2,p3,p4
 p1,p2 : XƒTƒCƒY, YƒTƒCƒY
 p3    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽó‚¯Žæ‚é•Ï”
-p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[, 3 = ‚’¼ƒ}[ƒL[)
+p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[)
 %inst
 ‚±‚Ì–½—ß‚Íwinobj–½—ß‚ðŽg—p‚µ‚ÄƒvƒƒOƒŒƒXƒo[‚ðÝ’u‚·‚é‚à‚Ì‚Å‚·BÝ’uˆÊ’u‚ÍƒJƒŒƒ“ƒgƒ|ƒWƒVƒ‡ƒ“‚É‚È‚è‚Ü‚·B
 p1, p2‚ÅƒvƒƒOƒŒƒXƒo[‚ÌXƒTƒCƒY‚ÆYƒTƒCƒY‚ðŽw’è‚µ‚Ü‚·B
@@ -323,7 +360,6 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
     0  | …•½‚ÌƒvƒƒOƒŒƒXƒo[
     1  | ‚’¼‚ÌƒvƒƒOƒŒƒXƒo[
     2  | ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“
-    3  | ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“ + ‚’¼
 ^
 ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚Å‚Í•sŠm’è‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚Ì‘€ì‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·B
 ^
@@ -343,7 +379,7 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
 *main
     wait 8
 
-    pbstep hProg
+    pbstep hProg1
 
     goto *main
 
@@ -380,10 +416,13 @@ p5(1)   : 1ƒXƒeƒbƒv“–‚½‚è‚Ì•Ï‰»—Ê (+/-int)
 ‚±‚Ì–½—ß‚Ímypb–½—ß‚É‚æ‚Á‚ÄÝ’u‚³‚ê‚½ƒvƒƒOƒŒƒXƒo[‚ÌÝ’è‚ðs‚¤‚à‚Ì‚Å‚·B
 ^
 p1‚ÉˆÈ~‚Ìƒpƒ‰ƒ[ƒ^‚Ì“à—e‚ð“K—p‚³‚¹‚½‚¢ƒvƒƒOƒŒƒXƒo[‚ÌƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-p2, p3‚É®”’l‚ðŽw’è‚·‚é‚±‚Æ‚ÅƒvƒƒOƒŒƒXƒo[‚Ì”ÍˆÍ‚ðŒˆ‚ß‚Ü‚·Bp2‚ªÅ¬’lAp3‚ªÅ‘å’l‚Æ‚È‚è‚Ü‚·B
+p2, p3‚ÅŽw’è‚µ‚½’l‚Ì”ÍˆÍ‚ªƒvƒƒOƒŒƒXƒo[‚Ì”ÍˆÍ‚Æ‚È‚è‚Ü‚·Bp2‚ªÅ¬’lAp3‚ªÅ‘å’l‚Æ‚È‚è‚Ü‚·B
 p4‚É‚Íƒo[‚ÌŠJŽnˆÊ’u‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B
 p5‚É‚ÍƒvƒƒOƒŒƒXƒo[‚ª1‰ñ‚Ì“®ì‚Åi‚Þ•Ï‰»—Ê‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B³•‰—¼•ûŽæ‚é‚±‚Æ‚ª‚Å‚«A•‰‚Ì®”’l‚ðŽw’è‚µ‚½ê‡‚ÍŒ¸­‚µ‚Ä‚¢‚«‚Ü‚·B
 ^
+’ˆÓŽ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
+^
+pbset <ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹>, <min>, <Max>, <start>, <step>
 
 %sample
 #include "01_mypb.hsp"
@@ -391,12 +430,12 @@ p5‚É‚ÍƒvƒƒOƒŒƒXƒo[‚ª1‰ñ‚Ì“®ì‚Åi‚Þ•Ï‰»—Ê‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B³•‰—¼•ûŽæ‚é‚±‚
     mypb 300, 15, hProg1, 0
     pbset hProg1, 0, 200, 0, 1      ;  Å¬’l          Å‘å’l
                                     ;  0                 200
-                                    ;  [#############      ]
+                                    ;  [###############    ]
                                     ;  ª         -->
                                     ;  ŠJŽnˆÊ’u0    •Ï‰»—Ê +1
     mypb 300, 15, hProg2, 0
     pbset hProg2, 0, 100, 100, -1   ;  0                 100
-                                    ;  [#######            ]
+                                    ;  [#########          ]
                                     ;        <--           ª
                                     ; •Ï‰»—Ê -1    ŠJŽnˆÊ’u100
 
