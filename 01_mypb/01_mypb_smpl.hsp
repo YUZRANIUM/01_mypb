@@ -15,15 +15,15 @@
     a = 1
     pos 120, 10 : objsize , , 20
 
-    mes "hProg1(min:0,Max:100,start:0,)"
+    mes "hProg1(min:0,Max:100,start:0,step:+1)"
     mypb 300, 15, hProg1, 0
     pbset hProg1, 0, 100, 0, 1
 
-    mes "hProg2"
+    mes "hProg2(min:0,Max:100,start:100,step:-1)"
     mypb 300, 15, hProg2, 0
     pbset hProg2, 0, 100, 100, -1
 
-    mes "hProg3"
+    mes "hProg3(MARQUEE)"
     mypb 300, 15, hProg3, 2
     pbmarq hProg3, 1, 30
     y = ginfo_cy
