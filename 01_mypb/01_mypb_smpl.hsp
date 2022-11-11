@@ -1,7 +1,7 @@
 // INFO ****************************************************
 // FileName : 01_mypb_smpl.hsp
-// Version  : 0.1.0
-// Date     : 2022/11/09
+// Version  : 0.1.1
+// Date     : 2022/11/11
 // Author   : YUZURANIUM（ゆずらにうむ）
 // Twitter  : https://twitter.com/YUZRANIUM
 // GitHub   : https://github.com/YUZURANIUM/01_mypb
@@ -10,57 +10,75 @@
 01_mypbモジュールを扱うためのサンプルです。
 ************************************************************/
 
-    #include "C:/gitproject/01_mypb/common/01_mypb.hsp"
+    #include "C:/gitproject/01_mypb/01_mypb.hsp"
 
-    a = 1
-    pos 70, 10 : objsize , , 20
+    font "メイリオ", 16  :  objmode 2, 1  :  a = 1  :  dim hProg, 6 : c = ""
 
-    mypb 300, 15, hProg1, 0
-        pbset hProg1, 0, 100, 1, 0
+    pos 20, 10  :  objsize , , 20
 
-    mypb 300, 15, hProg2, 0
-        pbset hProg2, 0, 100, -1, 100
+    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
+    mypb 300, 15, hProg(0), 0
+    pbset hProg(0), 0, 100, 0, 1
 
-    mypb 300, 15, hProg3, 2
-        pbmarq hProg3, 1, 30
-        y = ginfo_cy
+    mes "hProg(1) (min:0, Max:200, start:200, step:-1)"
+    mypb 300, 15, hProg(1), 0
+    pbset hProg(1), 0, 200, 200, -1
 
-    pos 50, 10
-    mypb 15, 300, hProg4, 1
-        pbset hProg4, 0, 100, -1, 100
+    mes "hProg(2) (MARQUEE)"
+    mypb 300, 15, hProg(2), 2
+    pbmarq hProg(2), 1, 30
 
-    pos 30, 10
-    mypb 15, 300, hProg5, 1
-        pbset hProg5, 0, 100, 1, 100
-
-    pos 70, y
-    mypb 300, 15, hProg6, 2
+    mes "hProg(3) (MARQUEE)"
+    mypb 300, 15, hProg(3), 2
 
     button gosub "statrt", *marqueesw
-        butid = stat
-        butstr = "start", "stop"
+    butid = stat
+    butstr = "start", "stop"
+
+    pos 20, 220
+    mes "hProg(4)\n(min:0, Max100, start:100, step:-1)"
+    mypb 15, 200, hProg(4), 1
+    pbset hProg(4), 0, 100, 100, -1
+
+    pos 50, ginfo_cy - 200
+    mypb 15, 200, hProg(5), 1
+    pbset hProg(5), 0, 100, 0, 1
+
+    pos ginfo_cx + 25, 400
+    mes "hProg(5)\n(min:0, Max100, start:0, step:+1)"
+
 
 *main
-    wait 8
+    wait 16
 
-    pbstep hProg1
-        pbsetst2 hProg1
+    pbstep hProg(0)         ; ステップ進行
+    pbsetst2 hProg(0)       ; 現在位置を取得し、その値に応じて状態を変更
 
-    pbstep hProg2
-        pbsetst2 hProg2
+    pbstep hProg(1)
+    pbsetst2 hProg(1), 50, 75
 
-    pbstep hProg4
-        pbsetst2 hProg4
+    pbstep hProg(4)
+    pbsetst2 hProg(4)
 
-    pbstep hProg5
-        pbsetst2 hProg5
+    pbstep hProg(5)
+    pbsetst2 hProg(5)
 
     goto *main
 
 
 *marqueesw
     a = a * -1
-    if a == -1 : b = 1 : else : b = 0
-    pbmarq hProg6, b, 30
+    if (a == -1) {b = 1}
+    else         {b = 0}
+
+    pbmarq hProg(3), b, 30
     objprm butid, butstr(b)
+
+    dim c
+    pbinfo(hProg(1), 2)
+    c = stat
+    logmes c
+
+    // logmes pbinfo(hProg(1), 2)
+
     return

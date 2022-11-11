@@ -2,7 +2,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Module   : 01_mypb.hsp
     Version  : 0.1.1
-    Date     : 2022/11/09
+    Date     : 2022/11/11
     Author   : YUZURANIUM（ゆずらにうむ）
     Twitter  : https://twitter.com/YUZRANIUM
     Git Hub  : https://github.com/YUZURANIUM/01_mypb
@@ -24,19 +24,19 @@
 # 導入方法
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 .
-├── common
-│   └── 01_mypb.hsp
-└── 01_mypb
+├─ 01_mypb.hsp
+│
+├── 01_mypb
 │   ├── 01_mypbhelp.hs
 │   ├── 01_mypb_smpl.hsp
 │   └── 01_mypb.txt
+│
 ├── README.md
 ├── README.html
 └── License.txt
 
-
-* common下の00_mypb.hspをユーザースクリプトのディレクトリか、HSPのインストール
-    ディレクトリ下のcommonフォルダ内において、01_mypb.hspをインクルードしてください。
+* 01_mypb.hspをユーザースクリプトのディレクトリか、HSPのインストールディレクトリ下の
+    commonフォルダ内において、01_mypb.hspをインクルードしてください。
 
     例） hsp36/common/01_mypb.hsp
 
@@ -68,6 +68,10 @@
 
 # 更新履歴
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ver 0.1.1
+2022/11/09
+ディレクトリの変更
 
 ver 0.1.0
 2022/11/07

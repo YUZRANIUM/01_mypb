@@ -29,12 +29,14 @@ __※ヘルプファイルまだできていません()__
 ## 導入方法（Introduction）
 
 ~~~
-├── common
-│   └── 01_mypb.hsp
+.
+├── 01_mypb.hsp
+│
 ├── 01_mypb
 │   ├── 01_mypbhelp.hs
 │   ├── 01_mypb_smpl.hsp
 │   └── 01_mypb.txt
+│
 ├── README.md
 ├── README.html
 └── License.txt
@@ -42,7 +44,7 @@ __※ヘルプファイルまだできていません()__
 
 <br>
 
-* common下の 00_mypb.hsp をユーザースクリプトのディレクトリか、HSP のインストールディレクトリ下の commonフォルダ内において、00_mypb.hspをインクルードしてください。
+* 00_mypb.hsp をユーザースクリプトのディレクトリか、HSP のインストールディレクトリ下の commonフォルダ内において、00_mypb.hspをインクルードしてください。
 
 ~~~
     例） hsp36/common/01_mypb.hsp
@@ -168,7 +170,6 @@ __※ヘルプファイルまだできていません()__
     ;
     ;第２パラメータに変数を指定し、その変数に 0 または 1 を渡して下さい
     ;buttonやlayerobj等のラベルジャンプ先に置いて使用して下さい
-
 ~~~
 
 </details>
@@ -192,7 +193,7 @@ __※ヘルプファイルまだできていません()__
 
 * Windows11 Pro 22H2 x64
 * Hot Soup Processor 3.7beta3
-* Visual Studio Code ver 1.73.0
+* Visual Studio Code ver 1.73.1
 
 <br>
 
@@ -212,7 +213,8 @@ __※ヘルプファイルまだできていません()__
 ## 更新履歴（Change Log）
 
 ### ver 0.1.1
-2022/11/09 ディレクトリの変更
+2022/11/09
+ディレクトリの変更
 
 ### ver 0.1.0
 2022/11/07 初公開
