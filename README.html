@@ -1331,7 +1331,7 @@ body,
                 <h1 id="マイプログレスバー-">マイ・プログレスバー <img src="https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&amp;style=flat-square" alt="GitHub release (latest SemVer including pre-releases)"></h1>
 <p>プログレスバーを比較的簡単に設置できるモジュールです。不定期更新です。</p>
 <p>不具合報告や要望等は <a href="https://twitter.com/YUZRANIUM">Twitter</a> のDMか <a href="http://hsp.tv/play/pforum.php">HSPの掲示板</a> 等で頂けると幸いです。</p>
-<p><strong>※ヘルプファイルまだできていません()</strong></p>
+<p><strong>※現在ヘルプファイルの制作中です()</strong></p>
 <br>
 <h2 id="特徴feature">特徴（Feature）</h2>
 <ul>
@@ -1348,9 +1348,10 @@ body,
 <br>
 <h2 id="今後の予定">今後の予定</h2>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ヘルプファイルの作製</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ヘルプファイルの作製（現在制作中）</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 設定に関する命令を1つにまとめたい</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 背景色、バーの色設定命令の追加</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 背景色、バーの色取得関数の追加</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 背景色、バーの色取得関数の追加</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ループ内で現在位置を監視・取得し、その値に応じて配色を変更する命令（バーの状態を変更することによる配色変更命令は実装済み）</li>
 </ul>
 <br>
@@ -1367,9 +1368,8 @@ body,
 ├── README.html
 └── License.txt
 </code></pre>
-<br>
 <ul>
-<li>00_mypb.hsp をユーザースクリプトのディレクトリか、HSP のインストールディレクトリ下の commonフォルダ内において、00_mypb.hspをインクルードしてください。</li>
+<li>01_mypb.hsp をユーザースクリプトのディレクトリか、HSP のインストールディレクトリ下の commonフォルダ内において、01_mypb.hspをインクルードしてください。</li>
 </ul>
 <pre><code>    例） hsp36/common/01_mypb.hsp
 </code></pre>
@@ -1381,8 +1381,8 @@ body,
 </code></pre>
 <br>
 <h2 id="機能function">機能（Function）</h2>
-<details open>
-<summary>追加される命令･関数</summary>
+<details>
+<summary>追加される命令･関数 全8つ</summary>
 <pre><code class="language-hsp"><span class="hljs-comment">;---------------------------------------</span>
 <span class="hljs-comment">;オブジェクトの設置</span>
 <span class="hljs-comment">;---------------------------------------</span>
@@ -1390,7 +1390,10 @@ body,
 <span class="hljs-comment">// プログレスバーの設置（命令・マクロ）</span>
 <span class="hljs-comment">// p1,p2 : Xサイズ, Yサイズ</span>
 <span class="hljs-comment">// p3    : オブジェクトハンドルを受け取る変数</span>
-<span class="hljs-comment">// p4(0) : スタイル(0 = 通常, 1 = 垂直, 2 = マーキー, 3 = 垂直マーキー)</span>
+<span class="hljs-comment">// p4(0) : スタイル</span>
+<span class="hljs-comment">//         0 : 通常</span>
+<span class="hljs-comment">//         1 : 垂直</span>
+<span class="hljs-comment">//         2 : マーキー</span>
     mypb X, Y, Objhwnd, style
 
 
@@ -1399,11 +1402,11 @@ body,
 <span class="hljs-comment">;---------------------------------------</span>
 
 <span class="hljs-comment">// プログレスバーの設定（命令・マクロ）</span>
-<span class="hljs-comment">// p1     : オブジェクトハンドル</span>
-<span class="hljs-comment">// p2(0)  : 最小値(int)</span>
-<span class="hljs-comment">// p3(10) : 最大値(int)</span>
-<span class="hljs-comment">// p4(1)  : 1ステップ当たりの変化量(+/-int)</span>
-<span class="hljs-comment">// p5(0)  : 現在位置(int)</span>
+<span class="hljs-comment">// p1      : オブジェクトハンドル</span>
+<span class="hljs-comment">// p2(0)   : 最小値   (int)</span>
+<span class="hljs-comment">// p3(100) : 最大値   (int)</span>
+<span class="hljs-comment">// p4(0)   : 現在位置 (int)</span>
+<span class="hljs-comment">// p5(1)   : 1ステップ当たりの変化量(+/-int)</span>
     pbset objhwnd, min, Max, delta, now
 
 
@@ -1417,6 +1420,24 @@ body,
 
 
 <span class="hljs-comment">;---------------------------------------</span>
+<span class="hljs-comment">;プログレスバーの情報取得</span>
+<span class="hljs-comment">;---------------------------------------</span>
+
+<span class="hljs-comment">//プログレスバーの情報取得（関数）</span>
+<span class="hljs-comment">// p1 : オブジェクトハンドル</span>
+<span class="hljs-comment">// p2 : 取得タイプ</span>
+<span class="hljs-comment">//       0 : 現在位置 (int)</span>
+<span class="hljs-comment">//       1 : 最小値 (int)</span>
+<span class="hljs-comment">//       2 : 最大値 (int)</span>
+<span class="hljs-comment">//       3 : 変化量 (int)    ※ 取得できない? 調整中</span>
+<span class="hljs-comment">//       4 : バーの状態 (int)</span>
+<span class="hljs-comment">//       5 : バーの色 (COLORREF)    ※ 取得できず 調整中</span>
+<span class="hljs-comment">//       6 : 背景色   (COLORREF)</span>
+    pbinfo(objhwnd, p2)
+
+
+
+<span class="hljs-comment">;---------------------------------------</span>
 <span class="hljs-comment">;現在位置</span>
 <span class="hljs-comment">;---------------------------------------</span>
 
@@ -1425,12 +1446,6 @@ body,
 <span class="hljs-comment">// p2    : 新しく設定する位置(int)</span>
 <span class="hljs-comment">// p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)</span>
     pbsetpos objhwnd, newpos, flag
-
-
-<span class="hljs-comment">// プログレスバーの現在位置取得（関数）</span>
-<span class="hljs-comment">// p1 : オブジェクトハンドル</span>
-<span class="hljs-comment">// 戻り値 : stat</span>
-    pbgetp objhwnd
 
 
 <span class="hljs-comment">;---------------------------------------</span>
@@ -1446,15 +1461,6 @@ body,
     pbsetst objhwnd, status
 
 
-<span class="hljs-comment">// プログレスバーの状態取得（関数）</span>
-<span class="hljs-comment">// p1 : オブジェクトハンドル</span>
-<span class="hljs-comment">// 戻り値 : stat</span>
-<span class="hljs-comment">//        1 = PBST_NORMAL (緑色)</span>
-<span class="hljs-comment">//        2 = PBST_ERROR  (赤色)</span>
-<span class="hljs-comment">//        3 = PBST_PAUSED (黄色)</span>
-    pbgetst objhwnd
-
-
 <span class="hljs-comment">// プログレスバーの配色変更（命令・マクロ）</span>
 <span class="hljs-comment">// p1     : オブジェクトハンドル</span>
 <span class="hljs-comment">// p2(25) : 中間域の下限値(int)</span>
@@ -1463,13 +1469,7 @@ body,
 <span class="hljs-comment">// p5(3)  : 中間域の状態 (PBST_PAUSED (黄色))</span>
 <span class="hljs-comment">// p6(1)  : 上位域の状態 (PBST_NORMAL (緑色))</span>
     pbsetst2 objhwnd, under, higher, p4, p5, p6
-    <span class="hljs-comment">;</span>
-    <span class="hljs-comment">;（※補足）</span>
-    <span class="hljs-comment">;ループ内に置くことで現在位置に応じたバーの状態（色）に変更する。</span>
-    <span class="hljs-comment">;初期値では</span>
-    <span class="hljs-comment">;       25未満  PBST_ERROR  (赤色)</span>
-    <span class="hljs-comment">;25以上,40以下  PBST_PAUSED (黄色)</span>
-    <span class="hljs-comment">;       40超過  PBST_NORMAL (緑色)</span>
+
 
 <span class="hljs-comment">;---------------------------------------</span>
 <span class="hljs-comment">;マーキーの操作</span>
@@ -1480,12 +1480,6 @@ body,
 <span class="hljs-comment">// p2     : マーキー(0 = 停止, 1 = 再生)</span>
 <span class="hljs-comment">// p3(30) : アニメーション更新間隔(ms)</span>
     pbmarq objhwnd, p2, p3
-    <span class="hljs-comment">;</span>
-    <span class="hljs-comment">;（※補足）</span>
-    <span class="hljs-comment">;ループ内に置く必要なし</span>
-    <span class="hljs-comment">;</span>
-    <span class="hljs-comment">;第２パラメータに変数を指定し、その変数に 0 または 1 を渡して下さい</span>
-    <span class="hljs-comment">;buttonやlayerobj等のラベルジャンプ先に置いて使用して下さい</span>
 </code></pre>
 </details>
 <br>
@@ -1499,14 +1493,14 @@ body,
 <ul>
 <li><a href="https://hsp.tv/">Hot Soup Processor(HSP3)</a></li>
 </ul>
-<br>
+<!-- <br> -->
 <h2 id="開発環境development-environment">開発環境（Development environment）</h2>
 <ul>
 <li>Windows11 Pro 22H2 x64</li>
 <li>Hot Soup Processor 3.7beta3</li>
 <li>Visual Studio Code ver 1.73.1</li>
 </ul>
-<br>
+<!-- <br> -->
 <h2 id="license">LICENSE</h2>
 <p>本ソフトウェアおよび関連文書のファイル（以下「ソフトウェア」）の複製を取得するすべての人に対し、ソフトウェアを無制限に扱うことを無償で許可します。</p>
 <p>これには、ソフトウェアの複製を使用、複写、変更、結合、掲載、頒布、サブライセンス、および/または販売する権利、およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。</p>
@@ -1514,6 +1508,17 @@ body,
 <p>作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。</p>
 <br>
 <h2 id="更新履歴change-log">更新履歴（Change Log）</h2>
+<h3 id="ver-020">ver 0.2.0</h3>
+<p>2022/11/12</p>
+<ul>
+<li>
+<p>情報取得関数 <code>pbinfo関数</code> の新規追加。 それに伴い次の関数を削除</p>
+<ul>
+<li>pbgetp    (現在位置の取得)</li>
+<li>pbgetst   (状態の取得)</li>
+</ul>
+</li>
+</ul>
 <h3 id="ver-011">ver 0.1.1</h3>
 <p>2022/11/09<br>
 ディレクトリの変更</p>
