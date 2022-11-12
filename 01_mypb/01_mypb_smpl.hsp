@@ -12,7 +12,9 @@
 
     #include "C:/gitproject/01_mypb/01_mypb.hsp"
 
-    font "メイリオ", 16  :  objmode 2, 1  :  a = 1  :  dim hProg, 6 : c = ""
+    font "Myrica M", 16  :  objmode 2, 1  :  a = 1  :  dim hProg, 6  :  sdim moni, 512
+    mref BMSCR, 67 : hFont = BMSCR(38)
+
 
     pos 20, 10  :  objsize , , 20
 
@@ -48,6 +50,13 @@
     mes "hProg(5)\n(min:0, Max100, start:0, step:+1)"
 
 
+	pos 385, 15
+
+    winobj "static", "", , $50000000 | $800000, 250, 120
+    id_static = stat  :  hStatic = objinfo(stat, 2)
+
+    sendmsg hStatic, $30, hFont
+
 *main
     wait 16
 
@@ -63,6 +72,16 @@
     pbstep hProg(5)
     pbsetst2 hProg(5)
 
+    sdim moni, 32
+    moni += " hProg(0) 現在位置 = " + pbinfo(hProg(0), 0)
+    moni += "\n hProg(0) 最小値   = " + pbinfo(hProg(0), 1)
+    moni += "\n hProg(0) 最大値   = " + pbinfo(hProg(0), 2)
+    moni += "\n hProg(0) 変化量   = " + pbinfo(hProg(0), 3)
+    moni += "\n hProg(0) 状  態   = " + pbinfo(hProg(0), 4)
+    moni += "\n hProg(0) バー色   = " + pbinfo(hProg(0), 5)
+    moni += "\n hProg(0) 背景色   = " + pbinfo(hProg(0), 6)
+    sendmsg hStatic, $C, 0, moni
+
     goto *main
 
 
@@ -74,11 +93,5 @@
     pbmarq hProg(3), b, 30
     objprm butid, butstr(b)
 
-    dim c
-    pbinfo(hProg(1), 2)
-    c = stat
-    logmes c
-
-    // logmes pbinfo(hProg(1), 2)
-
+    logmes pbinfo(hProg(1), 3)
     return

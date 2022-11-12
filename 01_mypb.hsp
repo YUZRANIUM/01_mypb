@@ -1,7 +1,7 @@
 // INFO ****************************************************
 // FileName : 01_mypb.hsp
-// Version : 0.1.1
-// Date    : 2022/11/11
+// Version : 0.2.0
+// Date    : 2022/11/12
 // Author  : YUZURANIUM（ゆずらにうむ）
 // Twitter : https://twitter.com/YUZRANIUM
 // Git Hub : https://github.com/YUZURANIUM/01_mypb
@@ -12,9 +12,10 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 不具合報告や要望等はTwitterのDM、
 もしくはHSPの掲示板等で頂けると幸いです。
+
+※ 注意 ※
+    if文とelse、またはelse:ifの間を空けないようお願い致します。
 ************************************************************/
-
-
 
 #ifndef __mypb__
 #define __mypb__
@@ -30,8 +31,8 @@ user32やgdi32、hsp3utilなどは必要ありません。
     #const PBS_MARQUEE          0x0008  // マーキーアニメーション
     #const PBS_SMOOTHREVERSE    0x0010  // 減少時もなめらかに
 
-    #const GWL_EXSTYLE     -20  // 拡張ウィンドウスタル
-    #const GWL_STYLE       -16  // ウィンドウスタル
+    // #const GWL_EXSTYLE     -20  // 拡張ウィンドウスタル
+    // #const GWL_STYLE       -16  // ウィンドウスタル
 //==============================================================================
 
     /*****  message  *****/
@@ -65,10 +66,15 @@ user32やgdi32、hsp3utilなどは必要ありません。
     #const PBST_PAUSED          0x0003  // 一時停止 (黄色)
 //==============================================================================
 
+    /*****  Color Default  *****/
+
+    #const CLR_DEFAULT          0xFF000000  // デフォルトカラー
+//==============================================================================
 
     #const my_style0 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE
     #const my_style1 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL
     #const my_style2 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_MARQUEE
+
 
 
 ;---------------------------------------
@@ -77,9 +83,13 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 
 // プログレスバーの設置
+//
 // p1,p2 : Xサイズ, Yサイズ
 // p3    : オブジェクトハンドルを受け取る変数
-// p4(0) : スタイル(0 = 通常, 1 = 垂直, 2 = マーキー)
+// p4(0) : スタイル
+//         0 : 通常
+//         1 : 垂直
+//         2 : マーキー
 #deffunc local mypb_ int p1, int p2, var p3, int p4
 
     if      (p4 == 0) {style = my_style0}
@@ -92,13 +102,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
     return stat
 
 
-// プログレスバーの設置
-// p1,p2 : Xサイズ, Yサイズ
-// p3    : オブジェクトハンドルを受け取る変数
-// p4(0) : スタイル(0 = 通常, 1 = 垂直, 2 = マーキー)
-
 #define global mypb(%1,%2,%3,%4=0) mypb_@MyProgBar %1,%2,%3,%4
-
 
 
 
@@ -108,6 +112,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 
 // プログレスバーの設定
+//
 // p1      : オブジェクトハンドル
 // p2(0)   : 最小値(int)
 // p3(100) : 最大値(int)
@@ -121,13 +126,6 @@ user32やgdi32、hsp3utilなどは必要ありません。
     return
 
 
-// プログレスバーの設定
-// p1      : オブジェクトハンドル
-// p2(0)   : 最小値(int)
-// p3(100) : 最大値(int)
-// p4(0)   : 開始位置(int)
-// p5(1)   : 1ステップ当たりの変化量(+/-int)
-
 #define global pbset(%1,%2=0,%3=100,%4=0,%5=1) pbset_@MyProgBar %1,%2,%3,%4,%5
 
 
@@ -137,11 +135,41 @@ user32やgdi32、hsp3utilなどは必要ありません。
 ;---------------------------------------
 
 // 設定した変化量だけ進める
+//
 // p1 : オブジェクトハンドル
 
 #deffunc pbstep var p1
     sendmsg p1, PBM_STEPIT, 0, 0
     return
+
+
+;---------------------------------------
+;プログレスバーの情報取得
+;---------------------------------------
+
+//プログレスバーの情報取得
+//
+// p1 : オブジェクトハンドル
+// p2 : 取得タイプ
+//       0 : 現在位置 (int)
+//       1 : 最小値 (int)
+//       2 : 最大値 (int)
+//       3 : 変化量 (int)       ※ 期待した動作をしないので現在調整中
+//       4 : バーの状態 (int)
+//       5 : バーの色 (COLORREF)    ※ 期待した動作をしないので現在調整中
+//       6 : 背景色   (COLORREF)
+#defcfunc pbinfo var p1, int p2
+
+    if      (p2 == 0) {sendmsg p1, PBM_GETPOS, 0, 0}        // 現在位置
+    else:if (p2 == 1) {sendmsg p1, PBM_GETRANGE, p2, 0}     // 最小値
+    else:if (p2 == 2) {sendmsg p1, PBM_GETRANGE, 0, 0}      // 最大値
+    else:if (p2 == 3) {sendmsg p1, PBM_GETSTEP, 0, 0}       // 変化量
+    else:if (p2 == 4) {sendmsg p1, PBM_GETSTATE, 0, 0}      // 状態
+    else:if (p2 == 5) {sendmsg p1, PBM_GETBARCOLOR, 0, 0}   // バーの色
+    else:if (p2 == 6) {sendmsg p1, PBM_GETBKCOLOR, 0, 0}    // 背景色
+    else              {sendmsg p1, PBM_GETPOS, 0, 0}
+
+    return stat
 
 
 
@@ -151,6 +179,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 
 // プログレスバーの位置設定
+//
 // p1    : オブジェクトハンドル
 // p2    : 新しく設定する位置(int)
 // p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)
@@ -158,25 +187,11 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
     if      (p3 == 0) {sendmsg p1, PBM_SETPOS, p2, 0}
     else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
-    else:             {sendmsg p1, PBM_SETPOS, p2, 0}
+    else              {sendmsg p1, PBM_SETPOS, p2, 0}
     return
 
 
-// プログレスバーの位置設定
-// p1    : オブジェクトハンドル
-// p2    : 新しく設定する位置(int)
-// p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)
-
 #define global pbsetpos(%1,%2,%3=0) pbsetpos_@MyProgBar %1,%2,%3
-
-
-// プログレスバーの現在位置取得
-// p1 : オブジェクトハンドル
-// 戻り値 : stat
-
-#defcfunc pbgetp var p1
-    sendmsg p1, PBM_GETPOS, 0, 0
-    return stat
 
 
 
@@ -186,6 +201,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 
 // プログレスバーの状態設定
+//
 // p1 : オブジェクトハンドル
 // p2 : バーの状態
 //  1 = PBST_NORMAL (緑色)
@@ -197,19 +213,9 @@ user32やgdi32、hsp3utilなどは必要ありません。
     return
 
 
-// プログレスバーの状態取得
-// p1 : オブジェクトハンドル
-// 戻り値 : stat
-//        1 = PBST_NORMAL (緑色)
-//        2 = PBST_ERROR  (赤色)
-//        3 = PBST_PAUSED (黄色)
 
-#defcfunc pbgetst var p1
-    sendmsg p1, PBM_GETSTATE, 0, 0
-    return stat
-
-
-// プログレスバーの状態配色セット
+// プログレスバーの状態配色変更
+//
 // p1     : オブジェクトハンドル
 // p2(25) : 中間域の下限値(int)
 // p3(40) : 中間域の上限値(int)
@@ -217,18 +223,11 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p5(3)  : 中間域の状態 (PBST_PAUSED (黄色))
 // p6(1)  : 上位域の状態 (PBST_NORMAL (緑色))
 #deffunc local pbsetst2_ var p1, int p2, int p3, int p4, int p5, int p6
-    if      (pbgetp(p1) > p3) {pbsetst p1, p6}
-    else:if (pbgetp(p1) < p2) {pbsetst p1, p4}
-    else                      {pbsetst p1, p5}
+    if      (pbinfo(p1, 0) > p3) {pbsetst p1, p6}
+    else:if (pbinfo(p1, 0) < p2) {pbsetst p1, p4}
+    else                         {pbsetst p1, p5}
     return
 
-// プログレスバーの状態配色セット
-// p1     : オブジェクトハンドル
-// p2(25) : 中間域の下限値(int)
-// p3(40) : 中間域の上限値(int)
-// p4(2)  : 下位域の状態 (PBST_ERROR  (赤色))
-// p5(3)  : 中間域の状態 (PBST_PAUSED (黄色))
-// p6(1)  : 上位域の状態 (PBST_NORMAL (緑色))
 
 #define global pbsetst2(%1,%2=25,%3=40,%4=2,%5=3,%6=1) pbsetst2_@MyProgBar %1,%2,%3,%4,%5,%6
 
@@ -239,6 +238,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 ;---------------------------------------
 
 // マーキーの操作
+//
 // p1     : オブジェクトハンドル
 // p2     : マーキー(0 = 停止, 1 = 再生)
 // p3(30) : アニメーション更新間隔(ms)
@@ -247,64 +247,8 @@ user32やgdi32、hsp3utilなどは必要ありません。
     return
 
 
-// マーキーの操作
-// p1     : オブジェクトハンドル
-// p2     : マーキー(0 = 停止, 1 = 再生)
-// p3(30) : アニメーション更新間隔(ms)
-
 #define global pbmarq(%1,%2,%3=30) pbmarq_@MyProgBar %1,%2,%3
 
-
-;---------------------------------------
-;プログレスバーの情報取得
-;---------------------------------------
-
-//プログレスバーの情報取得
-// p1    : オブジェクトハンドル
-// p2(0) : 取得タイプ
-//    0  : 現在位置 (int)
-//    1  : 最小値 (int)
-//    2  : 最大値 (int)
-//    3  : 変化量 (int)
-//    4  : バーの状態 (int)
-//    5  : バーの色 (COLORREF)
-//    6  : 背景色   (COLORREF)
-#defcfunc local pbinfo_ var p1, int p2
-
-    logmes "1:p1 = " + p1 + "\n1:p2 = " + p2
-
-    if      (p2 == 0) {mesid = PBM_GETPOS}        // 現在位置
-    else:if ((p2 == 1) | (p2 == 2)) {mesid = PBM_GETRANGE}     // 最小値 最大値
-    else:if (p2 == 3) {mesid = PBM_GETSTEP}       // 変化量
-    else:if (p2 == 4) {mesid = PBM_GETSTATE}      // 状態
-    else:if (p2 == 5) {mesid = PBM_GETBARCOLOR}   // バーの色
-    else:if (p2 == 6) {mesid = PBM_GETBKCOLOR}    // 背景色
-    else              {mesid = PBM_GETPOS}
-
-    if (p2 == 1) {sendmsg p1, mesid, p2, 0}
-    else         {sendmsg p1, mesid, 0, 0}
-
-    logmes "2:p1 = " + p1 + "\n2:p2 = " + p2
-    logmes "\nlparam = " + lparam
-    logmes "\niparam = " + iparam
-    logmes "\nwparam = " + wparam
-    logmes "\nstat = " + stat
-
-    return stat
-
-
-//プログレスバーの情報取得
-// p1    : オブジェクトハンドル
-// p2(0) : 取得タイプ
-//    0  : 現在位置 (int)
-//    1  : 最小値 (int)
-//    2  : 最大値 (int)
-//    3  : 変化量 (int)
-//    4  : バーの状態 (int)
-//    5  : バーの色 (COLORREF)
-//    6  : 背景色   (COLORREF)
-
-#define global ctype pbinfo(%1,%2=0) pbinfo_@MyProgBar %1,%2
 
 #global
 
