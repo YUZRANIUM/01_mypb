@@ -1,10 +1,10 @@
 ; INFO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ; FileName : 01_mypbhelp.hs
-; Version  : 0.1.1
-; Date     : 2022/11/11
-; Author   : YUZURANIUM（ゆずらにうむ）
+; Version  : 0.2.0
+; Date     : 2022/11/12
+; Author   : YUZRANIUM（ゆずらにうむ）
 ; Twitter  : https://twitter.com/YUZRANIUM
-; GitHub   : https://github.com/YUZURANIUM/01_mypb
+; GitHub   : https://github.com/YUZRANIUM/01_mypb
 ;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ; Description
 ; HSP3でプログレスバーを設置するモジュール 01_mypb のヘルプファイルです。
@@ -17,10 +17,10 @@
 %date
 2022/11/10
 %author
-YUZURANIUM(ゆずらにうむ)
+YUZRANIUM(ゆずらにうむ)
 %url
 https://twitter.com/YUZRANIUM
-https://github.com/YUZURANIUM/01_mypb
+https://github.com/YUZRANIUM/01_mypb
 %note
 01_mypb.hspをインクルードすること
 %port

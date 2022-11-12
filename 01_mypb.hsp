@@ -2,9 +2,9 @@
 // FileName : 01_mypb.hsp
 // Version : 0.2.0
 // Date    : 2022/11/12
-// Author  : YUZURANIUM（ゆずらにうむ）
+// Author  : YUZRANIUM（ゆずらにうむ）
 // Twitter : https://twitter.com/YUZRANIUM
-// Git Hub : https://github.com/YUZURANIUM/01_mypb
+// Git Hub : https://github.com/YUZRANIUM/01_mypb
 //**********************************************************
 /* Description
 user32やgdi32、hsp3utilなどは必要ありません。
