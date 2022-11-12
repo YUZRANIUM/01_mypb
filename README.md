@@ -1,4 +1,4 @@
-# マイ・プログレスバー ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/YUZURANIUM/01_mypb?include_prereleases&style=flat-square)
+# マイ・プログレスバー ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/YUZRANIUM/01_mypb?include_prereleases&style=flat-square)
 
 プログレスバーを比較的簡単に設置できるモジュールです。不定期更新です。
 
