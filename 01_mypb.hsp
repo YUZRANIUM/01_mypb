@@ -1,7 +1,7 @@
 // INFO ****************************************************
 // FileName : 01_mypb.hsp
-// Version : 0.2.0
-// Date    : 2022/11/12
+// Version : 0.2.2
+// Date    : 2022/11/13
 // Author  : YUZRANIUM（ゆずらにうむ）
 // Twitter : https://twitter.com/YUZRANIUM
 // Git Hub : https://github.com/YUZRANIUM/01_mypb
@@ -30,9 +30,6 @@ user32やgdi32、hsp3utilなどは必要ありません。
     #const PBS_VERTICAL         0x0004  // 垂直プログレスバー
     #const PBS_MARQUEE          0x0008  // マーキーアニメーション
     #const PBS_SMOOTHREVERSE    0x0010  // 減少時もなめらかに
-
-    // #const GWL_EXSTYLE     -20  // 拡張ウィンドウスタル
-    // #const GWL_STYLE       -16  // ウィンドウスタル
 //==============================================================================
 
     /*****  message  *****/
@@ -40,7 +37,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
     #const PBM_SETRANGE32       0x0406  // 最大･最小値の設定(32bit)
     #const PBM_GETRANGE         0x0407  // 最大･最小値の取得
 
-    #const PBM_GETSTEP          0x040C  // 増分値の取得
+    #const PBM_GETSTEP          0x040D  // 増分値の取得
     #const PBM_SETSTEP          0x0404  // 増分値の設定
     #const PBM_STEPIT           0x0405  // 増分値だけ進める
 
@@ -50,7 +47,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
     #const PBM_GETBKCOLOR       0x040E  // 背景色の取得
     #const PBM_SETBKCOLOR       0x0409  // 背景色の設置
-    #const PBM_GETBARCOLOR      0x040D  // バーの色取得
+    #const PBM_GETBARCOLOR      0x040C  // バーの色取得
     #const PBM_SETBARCOLOR      0x2001  // バーの色設定
 
     #const PBM_GETSTATE         0x0411  // バーの状態取得
@@ -154,7 +151,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //       0 : 現在位置 (int)
 //       1 : 最小値 (int)
 //       2 : 最大値 (int)
-//       3 : 変化量 (int)       ※ 期待した動作をしないので現在調整中
+//       3 : 変化量 (int)
 //       4 : バーの状態 (int)
 //       5 : バーの色 (COLORREF)    ※ 期待した動作をしないので現在調整中
 //       6 : 背景色   (COLORREF)

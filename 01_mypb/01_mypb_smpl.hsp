@@ -1,7 +1,7 @@
 // INFO ****************************************************
 // FileName : 01_mypb_smpl.hsp
-// Version  : 0.2.0
-// Date     : 2022/11/12
+// Version  : 0.2.2
+// Date     : 2022/11/13
 // Author   : YUZRANIUM（ゆずらにうむ）
 // Twitter  : https://twitter.com/YUZRANIUM
 // GitHub   : https://github.com/YUZRANIUM/01_mypb
@@ -10,11 +10,12 @@
 01_mypbモジュールを扱うためのサンプルです。
 ************************************************************/
 
-    #include "C:/gitproject/01_mypb/01_mypb.hsp"
+    #include "01_mypb.hsp"
 
     font "Myrica M", 16  :  objmode 2, 1  :  a = 1  :  dim hProg, 6  :  sdim moni, 512
     mref BMSCR, 67 : hFont = BMSCR(38)
 
+    n = 1
 
     pos 20, 10  :  objsize , , 20
 
@@ -52,7 +53,7 @@
 
 	pos 385, 15
 
-    winobj "static", "", , $50000000 | $800000, 250, 120
+    winobj "static", "", , $50000000 | $800000, 250, 130
     id_static = stat  :  hStatic = objinfo(stat, 2)
 
     sendmsg hStatic, $30, hFont
@@ -72,14 +73,15 @@
     pbstep hProg(5)
     pbsetst2 hProg(5)
 
-    sdim moni, 32
-    moni += " hProg(0) 現在位置 = " + pbinfo(hProg(0), 0)
-    moni += "\n hProg(0) 最小値   = " + pbinfo(hProg(0), 1)
-    moni += "\n hProg(0) 最大値   = " + pbinfo(hProg(0), 2)
-    moni += "\n hProg(0) 変化量   = " + pbinfo(hProg(0), 3)
-    moni += "\n hProg(0) 状  態   = " + pbinfo(hProg(0), 4)
-    moni += "\n hProg(0) バー色   = " + pbinfo(hProg(0), 5)
-    moni += "\n hProg(0) 背景色   = " + pbinfo(hProg(0), 6)
+    sdim moni, 64
+    moni += "hProg(" + n + ")"
+    moni += "\n 現在位置 = " + pbinfo(hProg(n), 0)
+    moni += "\n 最小値   = " + pbinfo(hProg(n), 1)
+    moni += "\n 最大値   = " + pbinfo(hProg(n), 2)
+    moni += "\n 変化量   = " + pbinfo(hProg(n), 3)
+    moni += "\n 状  態   = " + pbinfo(hProg(n), 4)
+    moni += "\n バー色   = " + pbinfo(hProg(n), 5)
+    moni += "\n 背景色   = " + pbinfo(hProg(n), 6)
     sendmsg hStatic, $C, 0, moni
 
     goto *main

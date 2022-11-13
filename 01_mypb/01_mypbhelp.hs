@@ -1,7 +1,7 @@
 ; INFO „ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª
 ; FileName : 01_mypbhelp.hs
-; Version  : 0.2.0
-; Date     : 2022/11/12
+; Version  : 0.2.2
+; Date     : 2022/11/13
 ; Author   : YUZRANIUMi‚ä‚¸‚ç‚É‚¤‚Şj
 ; Twitter  : https://twitter.com/YUZRANIUM
 ; GitHub   : https://github.com/YUZRANIUM/01_mypb
@@ -13,11 +13,11 @@
 %dll
 01_mypb
 %ver
-0.1.1
+0.2.2
 %date
-2022/11/10
+2022/11/13
 %author
-YUZRANIUM(‚ä‚¸‚ç‚É‚¤‚Ş)
+YUZRANIUM
 %url
 https://twitter.com/YUZRANIUM
 https://github.com/YUZRANIUM/01_mypb
@@ -30,7 +30,7 @@ Win
 
 %index
 mypb
-ƒvƒƒOƒŒƒXƒo[‚Ìİ’u
+ƒvƒƒOƒŒƒXƒo[İ’u
 %prm
 p1,p2,p3,p4
 p1,p2 : XƒTƒCƒY, YƒTƒCƒY
@@ -78,13 +78,12 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ğİ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
 ƒ†[ƒU[’è‹`–½—ß
 %href
 pbset
-pbmarq
-pbsetpos
-pbgetp
-pbsetst
-pbgetst
-pbsetst2
 pbstep
+pbinfo
+pbsetpos
+pbsetst
+pbsetst2
+pbmarq
 
 
 ;===============================================================================
@@ -92,7 +91,7 @@ pbstep
 
 %index
 pbset
-ƒvƒƒOƒŒƒXƒo[‚Ìİ’è
+ƒvƒƒOƒŒƒXƒo[İ’è
 %prm
 p1,p2,p3,p4,p5
 p1      : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
@@ -111,7 +110,6 @@ p5‚É‚ÍƒvƒƒOƒŒƒXƒo[‚ª1‰ñ‚Ì“®ì‚Åi‚Ş•Ï‰»—Ê‚ğ®”’l‚Åw’è‚µ‚Ü‚·B³•‰—¼•ûæ‚é‚±‚
 ’ˆÓ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
 ^
 pbset <ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹>, <min>, <Max>, <start>, <step>
-
 %sample
 #include "01_mypb.hsp"
 
@@ -127,7 +125,6 @@ pbset <ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹>, <min>, <Max>, <start>, <step>
                                     ;        <--           ª
                                     ; •Ï‰»—Ê -1    ŠJnˆÊ’u100
 
-
 *main
     wait 8
 
@@ -142,10 +139,113 @@ pbset <ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹>, <min>, <Max>, <start>, <step>
 ƒ†[ƒU[’è‹`–½—ß
 %href
 mypb
-pbmarq
-pbsetpos
-pbgetp
-pbsetst
-pbgetst
-pbsetst2
 pbstep
+pbinfo
+pbsetpos
+pbsetst
+pbsetst2
+pbmarq
+
+;===============================================================================
+
+%index
+pbstep
+•Ï‰»—Ê‚¾‚¯i‚ß‚é
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚Ì–½—ß‚ÍƒvƒƒOƒŒƒXƒo[‚ğİ’è‚µ‚½•Ï‰»—Ê‚¾‚¯i‚ß‚é‚à‚Ì‚Å‚·B
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ğw’è‚µ‚Ä‰º‚³‚¢B
+^
+Šî–{“I‚É‚ÍŠeˆ—‚ÌÅŒã‚É’u‚¢‚Ä‰º‚³‚¢Bˆ—‚ªI—¹‚·‚é‚½‚Ñ‚ÉƒvƒƒOƒŒƒXƒo[‚ği‚ß‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+^
+’ˆÓ–€‚Æ‚µ‚ÄAƒo[‚ªÅ‘å’liÅ¬’lj‚É“’B‚µ‚½ê‡‚É‚±‚Ì–½—ß‚ªÀs‚³‚ê‚é‚ÆÄ“x‰ŠúˆÊ’u‚©‚çi‚İn‚ß‚Ü‚·B
+ƒo[‚ª’[‚É“’B‚µ‚½‚©‚ç‚Æ‚¢‚Á‚Ä~‚Ü‚é‚±‚Æ‚Í‚È‚¢‚Ì‚ÅAi’»‚ğ”cˆ¬‚µ‚½‚¢ˆ—ŒQ‚ğŠm”F‚µ‚Äpbset–½—ß‚Å“ü”O‚Éİ’è‚ğs‚Á‚Ä‰º‚³‚¢B
+%sample
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+mypb
+pbset
+pbinfo
+pbsetpos
+pbsetst
+pbsetst2
+pbmarq
+
+;===============================================================================
+
+%index
+pbinfo
+î•ñæ“¾
+%prm
+p1,p2
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2 : æ“¾ƒ^ƒCƒv
+%inst
+‚±‚ÌŠÖ”‚ÍƒvƒƒOƒŒƒXƒo[‚ÌŠeíî•ñ‚ğæ“¾‚·‚é‚à‚Ì‚Å‚·B
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ğw’è‚µ‚Ä‰º‚³‚¢B
+p2‚Éæ“¾‚µ‚½‚¢î•ñ‚Ìæ“¾ƒ^ƒCƒv‚ğw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³‚ê‚Ü‚·B
+^
+    æ“¾ƒ^ƒCƒv  |    “à—e    |         •Ô‚è’listatj
+---------------------------------------------------------------------------------------------------
+            0     :  Œ»İˆÊ’u (PBM_GETPOS)           :  pbinfoŠÖ”Às“_‚Å‚ÌŒ»İˆÊ’u‚ª®”‚Å•Ô‚è‚Ü‚·
+            1     :  Å¬’l    (PBM_GETRANGE)       :  pbset–½—ß‚Åİ’è‚µ‚½®”’l
+            2     :  Å‘å’l    (PBM_GETRANGE)       :           “¯ã
+            3     :  •Ï‰»—Ê    (PBM_GETSTEP)          :           “¯ã
+            4     :  ó   ‘Ô    (PBM_GETSTATE)        :  pbinfoŠÖ”Às“_‚Å‚Ìƒo[‚Ìó‘Ô¦
+            5     :  ƒo[‚ÌF (PBM_GETBARCOLOR) :  COLORREF
+            6     :  ”wŒiF    (PBM_GETBKCOLOR)   :  COLORREF
+^
+æ“¾ƒ^ƒCƒv4‚Ìó‘Ô‚ÍŸ‚Ì‚¢‚¸‚ê‚©‚É‚È‚è‚Ü‚·B
+^
+    1   :   PBST_NORMAL (—ÎF)
+    2   :   PBST_ERROR   (ÔF)
+    3   :   PBST_PAUSED (‰©F)
+
+
+%sample
+    #include "01_mypb.hsp"
+
+    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
+    mypb 300, 15, hProg(0), 0
+    pbset hProg(0), 0, 100, 0, 1
+
+    winobj "static", "", , $50000000 | $800000, 250, 130
+    id_static = stat  :  hStatic = objinfo(stat, 2)
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbsetst2 hProg(0)    ; Œ»İˆÊ’u‚ğæ“¾‚µA‚»‚Ì’l‚É‰‚¶‚Äó‘Ô‚ğ•ÏX
+
+    sdim moni, 64
+    moni += "hProg(0)"
+    moni += "\n Œ»İˆÊ’u = " + pbinfo(hProg(0), 0)
+    moni += "\n Å¬’l   = " + pbinfo(hProg(0), 1)
+    moni += "\n Å‘å’l   = " + pbinfo(hProg(0), 2)
+    moni += "\n •Ï‰»—Ê   = " + pbinfo(hProg(0), 3)
+    moni += "\n ó  ‘Ô   = " + pbinfo(hProg(0), 4)
+    moni += "\n ƒo[F   = " + pbinfo(hProg(0), 5)
+    moni += "\n ”wŒiF   = " + pbinfo(hProg(0), 6)
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+mypb
+pbset
+pbstep
+pbsetpos
+pbsetst
+pbsetst2
+pbmarq
