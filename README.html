@@ -1381,7 +1381,7 @@ body,
 </code></pre>
 <br>
 <h2 id="機能function">機能（Function）</h2>
-<details>
+<details open>
 <summary>追加される命令･関数 全8つ</summary>
 <pre><code class="language-hsp"><span class="hljs-comment">;---------------------------------------</span>
 <span class="hljs-comment">;オブジェクトの設置</span>
@@ -1429,12 +1429,11 @@ body,
 <span class="hljs-comment">//       0 : 現在位置 (int)</span>
 <span class="hljs-comment">//       1 : 最小値 (int)</span>
 <span class="hljs-comment">//       2 : 最大値 (int)</span>
-<span class="hljs-comment">//       3 : 変化量 (int)    ※ 取得できない? 調整中</span>
+<span class="hljs-comment">//       3 : 変化量 (int)    ※ 2022/11/13 修正済み</span>
 <span class="hljs-comment">//       4 : バーの状態 (int)</span>
 <span class="hljs-comment">//       5 : バーの色 (COLORREF)    ※ 取得できず 調整中</span>
 <span class="hljs-comment">//       6 : 背景色   (COLORREF)</span>
     pbinfo(objhwnd, p2)
-
 
 
 <span class="hljs-comment">;---------------------------------------</span>
@@ -1508,6 +1507,28 @@ body,
 <p>作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。</p>
 <br>
 <h2 id="更新履歴change-log">更新履歴（Change Log）</h2>
+<h3 id="ver-022">ver 0.2.2</h3>
+<p>2022/11/13</p>
+<ul>
+<li>
+<p><code>pbinfo関数</code> の不具合修正</p>
+<ul>
+<li>修正内容 : 第2パラメータが3（プログレスバーの変化量取得）の場合での取得内容が全く異なるものであったこと</li>
+<li>原因 : <code>sendmsg</code> におけるメッセージID及びマクロ登録の定数が異なるものであったこと
+<ul>
+<li>誤 : <code>#const PBM_GETSTEP    0x040C</code></li>
+<li>正 : <code>#const PBM_GETSTEP    0x040D</code> ← <code>0x040C</code> ではなく <code>0x040D</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>既知の不具合</p>
+<ul>
+<li>同じく、<code>pbinfo関数</code> のバー色の取得</li>
+</ul>
+</li>
+</ul>
 <h3 id="ver-020">ver 0.2.0</h3>
 <p>2022/11/12</p>
 <ul>
