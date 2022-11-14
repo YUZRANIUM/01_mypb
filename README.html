@@ -1331,15 +1331,15 @@ body,
                 <h1 id="マイプログレスバー-">マイ・プログレスバー <img src="https://img.shields.io/github/v/release/YUZRANIUM/01_mypb?include_prereleases&amp;style=flat-square" alt="GitHub release (latest by date including pre-releases)"></h1>
 <p>プログレスバーを比較的簡単に設置できるモジュールです。不定期更新です。</p>
 <p>不具合報告や要望等は <a href="https://twitter.com/YUZRANIUM">Twitter</a> のDMか <a href="http://hsp.tv/play/pforum.php">HSPの掲示板</a> 等で頂けると幸いです。</p>
-<p><strong>※現在ヘルプファイルの制作中です()</strong></p>
 <br>
 <h2 id="特徴feature">特徴（Feature）</h2>
 <ul>
 <li>
-<p><code>user32.as</code> や <code>gdi32.as</code>、<code>hsp3util.as</code> 等を必要とせず、本モジュールのみでプログレスバーを設置可能。</p>
+<p><code>user32.as</code> や <code>gdi32.as</code>、<code>hsp3util.as</code> 等を必要とせず、本モジュールのみでプログレスバーを設置可能。<br>
+※ウィンドウスタイルを変更するには<code>user32.as</code>が必要です。</p>
 </li>
 <li>
-<p>設置したプログレスバーに関する情報の取得は全て関数で行うため、式の中で利用可能。</p>
+<p>設置したプログレスバーに関する情報の取得は関数で行うため、式の中で利用可能。</p>
 </li>
 <li>
 <p>内部で、オブジェクトの設置には <code>winobj 命令</code>、それ以外の命令･関数は <code>sendmsg 命令</code> を使用。</p>
@@ -1348,11 +1348,11 @@ body,
 <br>
 <h2 id="今後の予定">今後の予定</h2>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ヘルプファイルの作製（現在制作中）</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> ヘルプファイルの作製（完了）</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> pbsetst2命令を割合で指定できるようにしたい</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 設定に関する命令を1つにまとめたい</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 背景色、バーの色設定命令の追加</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 背景色、バーの色取得関数の追加</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> ループ内で現在位置を監視・取得し、その値に応じて配色を変更する命令（バーの状態を変更することによる配色変更命令は実装済み）</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> たくさん並べて、音楽に合わせてピコピコしているアレを作りたい()</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> 背景色、バーの色設定命令の追加（断念）</li>
 </ul>
 <br>
 <h2 id="導入方法introduction">導入方法（Introduction）</h2>
@@ -1381,7 +1381,7 @@ body,
 </code></pre>
 <br>
 <h2 id="機能function">機能（Function）</h2>
-<details open>
+<details>
 <summary>追加される命令･関数 全8つ</summary>
 <pre><code class="language-hsp"><span class="hljs-comment">;---------------------------------------</span>
 <span class="hljs-comment">;オブジェクトの設置</span>
@@ -1431,8 +1431,6 @@ body,
 <span class="hljs-comment">//       2 : 最大値 (int)</span>
 <span class="hljs-comment">//       3 : 変化量 (int)    ※ 2022/11/13 修正済み</span>
 <span class="hljs-comment">//       4 : バーの状態 (int)</span>
-<span class="hljs-comment">//       5 : バーの色 (COLORREF)    ※ 取得できず 調整中</span>
-<span class="hljs-comment">//       6 : 背景色   (COLORREF)</span>
     pbinfo(objhwnd, p2)
 
 
@@ -1444,7 +1442,7 @@ body,
 <span class="hljs-comment">// p1    : オブジェクトハンドル</span>
 <span class="hljs-comment">// p2    : 新しく設定する位置(int)</span>
 <span class="hljs-comment">// p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)</span>
-    pbsetpos objhwnd, newpos, flag
+    pbrepos objhwnd, newpos, flag
 
 
 <span class="hljs-comment">;---------------------------------------</span>
@@ -1478,7 +1476,7 @@ body,
 <span class="hljs-comment">// p1     : オブジェクトハンドル</span>
 <span class="hljs-comment">// p2     : マーキー(0 = 停止, 1 = 再生)</span>
 <span class="hljs-comment">// p3(30) : アニメーション更新間隔(ms)</span>
-    pbmarq objhwnd, p2, p3
+    pbswmarq objhwnd, p2, p3
 </code></pre>
 </details>
 <br>
@@ -1507,6 +1505,9 @@ body,
 <p>作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。</p>
 <br>
 <h2 id="更新履歴change-log">更新履歴（Change Log）</h2>
+<h3 id="ver-030">ver 0.3.0</h3>
+<p>2022/11/14<br>
+ヘルプファイルの完成</p>
 <h3 id="ver-022">ver 0.2.2</h3>
 <p>2022/11/13</p>
 <ul>
