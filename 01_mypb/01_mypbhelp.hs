@@ -1,7 +1,7 @@
 ; INFO „ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª
 ; FileName : 01_mypbhelp.hs
-; Version  : 0.2.2
-; Date     : 2022/11/13
+; Version  : 0.3.0
+; Date     : 2022/11/14
 ; Author   : YUZRANIUMi‚ä‚¸‚ç‚É‚¤‚Þj
 ; Twitter  : https://twitter.com/YUZRANIUM
 ; GitHub   : https://github.com/YUZRANIUM/01_mypb
@@ -13,9 +13,9 @@
 %dll
 01_mypb
 %ver
-0.2.2
+0.3.0
 %date
-2022/11/13
+2022/11/14
 %author
 YUZRANIUM
 %url
@@ -38,6 +38,7 @@ p3    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽó‚¯Žæ‚é•Ï”
 p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[)
 %inst
 ‚±‚Ì–½—ß‚Íwinobj–½—ß‚ðŽg—p‚µ‚ÄƒvƒƒOƒŒƒXƒo[‚ðÝ’u‚·‚é‚à‚Ì‚Å‚·BÝ’uˆÊ’u‚ÍƒJƒŒƒ“ƒgƒ|ƒWƒVƒ‡ƒ“‚É‚È‚è‚Ü‚·B
+^
 p1, p2‚ÅƒvƒƒOƒŒƒXƒo[‚ÌXƒTƒCƒY‚ÆYƒTƒCƒY‚ðŽw’è‚µ‚Ü‚·B
 p3‚ÅƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽó‚¯Žæ‚é•Ï”‚ðŽw’è‚µ‚Ü‚·B•Ï”‚Í‚ ‚ç‚©‚¶‚ß—pˆÓ‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚è‚Ü‚·B
 p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚ÅÈ—ª‰Â”\‚Å‚·B
@@ -46,16 +47,16 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
 ^
     ’l |   Œ©‚½–Ú
 ----------------------------------------
-    0  | …•½‚ÌƒvƒƒOƒŒƒXƒo[
-    1  | ‚’¼‚ÌƒvƒƒOƒŒƒXƒo[
-    2  | ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“
+    0  : …•½‚ÌƒvƒƒOƒŒƒXƒo[
+    1  : ‚’¼‚ÌƒvƒƒOƒŒƒXƒo[
+    2  : ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“
 ^
 ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚Å‚Í•sŠm’è‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚Ì‘€ì‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·B
 ^
-‚±‚Ì–½—ß‚ÍƒIƒuƒWƒFƒNƒg‚ðÝ’u‚·‚é‚¾‚¯‚Å‚·‚Ì‚ÅA’P‘Ì‚Å‚Í“®ì‚µ‚Ü‚¹‚ñB“®ì‚É‚Í•Ê“rÝ’è–½—ß‚ð’u‚­•K—v‚ª‚ ‚è‚Ü‚·B
-^
-Ý’è–½—ß‚É‚ÍAp4‚ª0, 1‚Ìê‡‚Í pbset–½—ß‚ðAp4‚ª2, 3‚Ìê‡‚Í pbmarq–½—ß‚ðŽg—p‚µ‚Ü‚·B
-^
+¦’ˆÓŽ–€‚Æ‚µ‚ÄA‚±‚Ì–½—ß‚ÍƒIƒuƒWƒFƒNƒg‚ðÝ’u‚·‚é‚¾‚¯‚Å‚·‚Ì‚ÅA’P‘Ì‚Å‚Í“®ì‚µ‚Ü‚¹‚ñB
+“®ì‚É‚Í•Ê“rÝ’è–½—ß‚ð’u‚­•K—v‚ª‚ ‚è‚Ü‚·B
+Ý’è–½—ß‚É‚ÍAp4‚ª0, 1‚Ìê‡‚Í pbset–½—ß‚ðAp4‚ª2, 3‚Ìê‡‚Í pbswmarq–½—ß‚ðŽg—p‚µ‚Ü‚·B
+
 %sample
 #include "01_mypb.hsp"
 
@@ -63,7 +64,7 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
     pbset hProg, 0, 100, 1, 0
 
     mypb 300, 15, hProg2, 2
-    pbmarq hProg2, 1, 30
+    pbswmarq hProg2, 1, 30
 
 *main
     wait 8
@@ -77,17 +78,16 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
 %type
 ƒ†[ƒU[’è‹`–½—ß
 %href
+mypb
 pbset
 pbstep
 pbinfo
-pbsetpos
+pbrepos
 pbsetst
 pbsetst2
-pbmarq
-
+pbswmarq
 
 ;===============================================================================
-
 
 %index
 pbset
@@ -107,9 +107,7 @@ p2, p3‚ÅŽw’è‚µ‚½’l‚Ì”ÍˆÍ‚ªƒvƒƒOƒŒƒXƒo[‚Ì”ÍˆÍ‚Æ‚È‚è‚Ü‚·Bp2‚ªÅ¬’lAp3‚ªÅ‘å’l
 p4‚É‚Íƒo[‚ÌŠJŽnˆÊ’u‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B
 p5‚É‚ÍƒvƒƒOƒŒƒXƒo[‚ª1‰ñ‚Ì“®ì‚Åi‚Þ•Ï‰»—Ê‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B³•‰—¼•ûŽæ‚é‚±‚Æ‚ª‚Å‚«A•‰‚Ì®”’l‚ðŽw’è‚µ‚½ê‡‚ÍŒ¸­‚µ‚Ä‚¢‚«‚Ü‚·B
 ^
-’ˆÓŽ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
-^
-pbset <ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹>, <min>, <Max>, <start>, <step>
+¦’ˆÓŽ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
 %sample
 #include "01_mypb.hsp"
 
@@ -124,7 +122,6 @@ pbset <ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹>, <min>, <Max>, <start>, <step>
                                     ;  [#########          ]
                                     ;        <--           ª
                                     ; •Ï‰»—Ê -1    ŠJŽnˆÊ’u100
-
 *main
     wait 8
 
@@ -139,12 +136,13 @@ pbset <ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹>, <min>, <Max>, <start>, <step>
 ƒ†[ƒU[’è‹`–½—ß
 %href
 mypb
+pbset
 pbstep
 pbinfo
-pbsetpos
+pbrepos
 pbsetst
 pbsetst2
-pbmarq
+pbswmarq
 
 ;===============================================================================
 
@@ -156,12 +154,12 @@ p1
 p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
 %inst
 ‚±‚Ì–½—ß‚ÍƒvƒƒOƒŒƒXƒo[‚ðÝ’è‚µ‚½•Ï‰»—Ê‚¾‚¯i‚ß‚é‚à‚Ì‚Å‚·B
-p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 ^
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 Šî–{“I‚É‚ÍŠeˆ—‚ÌÅŒã‚É’u‚¢‚Ä‰º‚³‚¢Bˆ—‚ªI—¹‚·‚é‚½‚Ñ‚ÉƒvƒƒOƒŒƒXƒo[‚ði‚ß‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
 ^
-’ˆÓŽ–€‚Æ‚µ‚ÄAƒo[‚ªÅ‘å’liÅ¬’lj‚É“ž’B‚µ‚½ê‡‚É‚±‚Ì–½—ß‚ªŽÀs‚³‚ê‚é‚ÆÄ“x‰ŠúˆÊ’u‚©‚çi‚ÝŽn‚ß‚Ü‚·B
-ƒo[‚ª’[‚É“ž’B‚µ‚½‚©‚ç‚Æ‚¢‚Á‚ÄŽ~‚Ü‚é‚±‚Æ‚Í‚È‚¢‚Ì‚ÅAi’»‚ð”cˆ¬‚µ‚½‚¢ˆ—ŒQ‚ðŠm”F‚µ‚Äpbset–½—ß‚Å“ü”O‚ÉÝ’è‚ðs‚Á‚Ä‰º‚³‚¢B
+¦’ˆÓŽ–€‚Æ‚µ‚ÄAƒo[‚ªÅ‘å’liÅ¬’lj‚É“ž’B‚µ‚½ê‡‚É‚±‚Ì–½—ß‚ªŽÀs‚³‚ê‚é‚ÆÄ“x‰ŠúˆÊ’u‚©‚çi‚ÝŽn‚ß‚Ü‚·B
+ƒo[‚ª’[‚É“ž’B‚µ‚Ä‚àŽ~‚Ü‚é‚±‚Æ‚Í‚È‚¢‚Ì‚ÅAi’»‚ð”cˆ¬‚µ‚½‚¢ˆ—ŒQ‚ðŠm”F‚µ‚Äpbset–½—ß‚Å“ü”O‚ÉÝ’è‚ðs‚Á‚Ä‰º‚³‚¢B
 %sample
 
 %group
@@ -171,42 +169,40 @@ p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 %href
 mypb
 pbset
+pbstep
 pbinfo
-pbsetpos
+pbrepos
 pbsetst
 pbsetst2
-pbmarq
+pbswmarq
 
 ;===============================================================================
 
 %index
 pbinfo
-î•ñŽæ“¾
+ƒo[‚Ìî•ñŽæ“¾
 %prm
 p1,p2
 p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
 p2 : Žæ“¾ƒ^ƒCƒv
 %inst
 ‚±‚ÌŠÖ”‚ÍƒvƒƒOƒŒƒXƒo[‚ÌŠeŽíî•ñ‚ðŽæ“¾‚·‚é‚à‚Ì‚Å‚·B
+^
 p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³‚ê‚Ü‚·B
 ^
-    Žæ“¾ƒ^ƒCƒv  |    “à—e    |         •Ô‚è’listatj
----------------------------------------------------------------------------------------------------
-            0     :  Œ»ÝˆÊ’u (PBM_GETPOS)           :  pbinfoŠÖ”ŽÀsŽž“_‚Å‚ÌŒ»ÝˆÊ’u‚ª®”‚Å•Ô‚è‚Ü‚·
-            1     :  Å¬’l    (PBM_GETRANGE)       :  pbset–½—ß‚ÅÝ’è‚µ‚½®”’l
-            2     :  Å‘å’l    (PBM_GETRANGE)       :           “¯ã
-            3     :  •Ï‰»—Ê    (PBM_GETSTEP)          :           “¯ã
-            4     :  ó   ‘Ô    (PBM_GETSTATE)        :  pbinfoŠÖ”ŽÀsŽž“_‚Å‚Ìƒo[‚Ìó‘Ô¦
-            5     :  ƒo[‚ÌF (PBM_GETBARCOLOR) :  COLORREF
-            6     :  ”wŒiF    (PBM_GETBKCOLOR)   :  COLORREF
+ƒ^ƒCƒv |            “à—e           |         •Ô‚è’listatj
+------------------------------------------------------------------------------------
+    0  :  Œ»ÝˆÊ’u (PBM_GETPOS)    :  pbinfoŠÖ”ŽÀsŽž“_‚Å‚ÌŒ»ÝˆÊ’u‚ª®”‚Å•Ô‚è‚Ü‚·
+    1  :  Å¬’l   (PBM_GETRANGE)  :  pbset–½—ß‚ÅÝ’è‚µ‚½®”’l
+    2  :  Å‘å’l   (PBM_GETRANGE)  :           “¯ã
+    3  :  •Ï‰»—Ê   (PBM_GETSTEP)   :           “¯ã
+    4  :  ó  ‘Ô   (PBM_GETSTATE)  :  pbinfoŠÖ”ŒÄ‚Ño‚µŽž“_‚Å‚Ìƒo[‚Ìó‘Ô
 ^
 Žæ“¾ƒ^ƒCƒv4‚Ìó‘Ô‚ÍŽŸ‚Ì‚¢‚¸‚ê‚©‚É‚È‚è‚Ü‚·B
-^
-    1   :   PBST_NORMAL (—ÎF)
-    2   :   PBST_ERROR   (ÔF)
-    3   :   PBST_PAUSED (‰©F)
-
+    1  :  PBST_NORMAL (—ÎF)
+    2  :  PBST_ERROR  (ÔF)
+    3  :  PBST_PAUSED (‰©F)
 
 %sample
     #include "01_mypb.hsp"
@@ -230,8 +226,6 @@ p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³
     moni += "\n Å‘å’l   = " + pbinfo(hProg(0), 2)
     moni += "\n •Ï‰»—Ê   = " + pbinfo(hProg(0), 3)
     moni += "\n ó  ‘Ô   = " + pbinfo(hProg(0), 4)
-    moni += "\n ƒo[F   = " + pbinfo(hProg(0), 5)
-    moni += "\n ”wŒiF   = " + pbinfo(hProg(0), 6)
 
     sendmsg hStatic, $C, 0, moni
 
@@ -245,7 +239,225 @@ p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³
 mypb
 pbset
 pbstep
-pbsetpos
+pbinfo
+pbrepos
 pbsetst
 pbsetst2
-pbmarq
+pbswmarq
+
+;===============================================================================
+
+%index
+pbrepos
+ƒo[‚ÌˆÊ’uÝ’è
+%prm
+p1,p2,p3
+p1    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2    : V‚µ‚­Ý’è‚·‚éˆÊ’u (+/-int)
+p3(0) : Ý’èƒ^ƒCƒv(0 = â‘ÎˆÊ’u, 1 = ‘Š‘ÎˆÊ’u)
+%inst
+‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚ÌŒ»ÝˆÊ’u‚ðÄÝ’è‚·‚é‚à‚Ì‚Å‚·B
+^
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p2‚ÅV‚µ‚­Ý’è‚·‚éˆÊ’u‚ð®”’l‚ÅŽw’è‚µ‚Ä‰º‚³‚¢B
+p3‚ÅÝ’èƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢BŽw’è‚Å‚«‚éƒ^ƒCƒv‚ÍˆÈ‰º‚É‚È‚è‚Ü‚·B
+^
+ƒ^ƒCƒv |          “à—e             |         “®ì
+--------------------------------------------------------------------
+    0  :  â‘ÎˆÊ’u (PBM_SETPOS)    :  Žw’è‚³‚ê‚½’l‚ðŒ»ÝˆÊ’u‚Æ‚·‚é
+    1  :  ‘Š‘ÎˆÊ’u (PBM_DELTAPOS)  :  Žw’è‚³‚ê‚½’l‚ðŒ»ÝˆÊ’u‚É‰ÁŽZ
+^
+‚Ü‚½Ap2‚É‚Í•‰‚Ì®”’l‚ðŽw’è‚·‚é‚±‚Æ‚à‚Å‚«Aƒo[‚ÌŒ»ÝˆÊ’u‚©‚çŽw’è’l‚¾‚¯Œ¸‚¸‚é‚±‚Æ‚à‰Â”\‚Å‚·B
+^
+¦’ˆÓŽ–€‚Æ‚µ‚ÄApbset–½—ß‚ÅŽw’è‚µ‚½Å¬’l‹y‚ÑÅ‘å’l‚Ì”ÍˆÍ‚ð’´‚¦‚ÄˆÊ’u‚ðŽw’è‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB
+
+%sample
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+mypb
+pbset
+pbstep
+pbinfo
+pbrepos
+pbsetst
+pbsetst2
+pbswmarq
+
+;===============================================================================
+
+%index
+pbsetst
+ƒo[‚Ìó‘ÔÝ’è
+%prm
+p1,p2
+p1  :  ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2  :  ƒo[‚Ìó‘Ô
+%inst
+‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô‚ðÝ’è‚·‚é‚à‚Ì‚Å‚·B
+^
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p2‚É‚ÍAˆÈ‰º‚Ì’l‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+Žw’è’l |         “à—e             |  ƒo[‚ÌF
+-------------------------------------------------
+    1  :  PBST_NORMAL (’Êí)      :  —ÎF
+    2  :  PBST_ERROR  (ƒGƒ‰[)    :  ÔF
+    3  :  PBST_PAUSED (ˆêŽž’âŽ~)  :  ‰©F
+^
+‚±‚ÌÝ’è‚É‚æ‚èAƒo[‚ÌF‚ð•ÏX‚·‚é‚±‚Æ‚ª‰Â”\‚Å‚·B
+
+%sample
+
+*main
+    pbstep hProg(0)
+
+    if      (pbinfo(hProg(0), 0) > 40) {pbsetst hProg(0), 1}  ; 40’´‰ß‚Å—ÎF
+    else:if (pbinfo(hProg(0), 0) < 25) {pbsetst hProg(0), 2}  ; 25–¢–ž‚ÅÔF
+    else                               {pbsetst hProg(0), 3}  ; 25ˆÈã40ˆÈ‰º‚Í‰©F
+
+    goto *main
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+mypb
+pbset
+pbstep
+pbinfo
+pbrepos
+pbsetst
+pbsetst2
+pbswmarq
+
+;===============================================================================
+
+%index
+pbsetst2
+ƒo[‚ÌF•ÏX
+%prm
+p1,p2,p3,p4,p5,p6
+p1     :  ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2(25) :  ’†ŠÔˆæ‚Ì‰ºŒÀ’l(int)
+p3(40) :  ’†ŠÔˆæ‚ÌãŒÀ’l(int)
+p4(2)  :  ‰ºˆÊˆæ‚Ìó‘Ô (PBST_ERROR  (ÔF))
+p5(3)  :  ’†ŠÔˆæ‚Ìó‘Ô (PBST_PAUSED (‰©F))
+p6(1)  :  ãˆÊˆæ‚Ìó‘Ô (PBST_NORMAL (—ÎF))
+%inst
+‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚ÌŒ»ÝˆÊ’u‚É‚æ‚Á‚Äƒo[‚ÌF‚ð•ÏX‚·‚é‚Ì‚à‚Å‚·B
+^
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p2, p3‚Å‚ÍƒvƒƒOƒŒƒXƒo[‚ð3•ªŠ„‚·‚é‚½‚ß‚Ì’l‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p4, p5, p6‚Å‚Í3•ªŠ„‚³‚ê‚½‚»‚ê‚¼‚ê‚Ì—Ìˆæ“à‚ÉŒ»ÝˆÊ’u‚ª‘¶Ý‚·‚éê‡Aƒo[‚É“K—p‚³‚¹‚½‚¢ó‘Ô‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+p4,p5,p6‚ÅŽw’è‚Å‚«‚éó‘Ô‚ð•\‚·”’l‚ÍˆÈ‰º‚Ì‚à‚Ì‚Æ‚È‚è‚Ü‚·B(pbsetst–½—ß‚Æ“¯‚¶‚à‚Ì‚Å‚·B)
+Žw’è’l |         “à—e             |  ƒo[‚ÌF
+-------------------------------------------------
+    1  :  PBST_NORMAL (’Êí)      :  —ÎF
+    2  :  PBST_ERROR  (ƒGƒ‰[)    :  ÔF
+    3  :  PBST_PAUSED (ˆêŽž’âŽ~)  :  ‰©F
+^
+‚±‚Ì–½—ß‚ÍApbsetst–½—ß‚Å‚ÌƒTƒ“ƒvƒ‹ƒXƒNƒŠƒvƒg‚ð‚»‚Ì‚Ü‚Ü–½—ß‰»‚µ‚½‚à‚Ì‚Å‚·B
+p2ˆÈ~‚Ìƒpƒ‰ƒ[ƒ^‚ÍÈ—ª‰Â”\‚ÅAÈ—ªŽž‚Í40’´‰ß‚Å—ÎFA25–¢–ž‚ÅÔFA25ˆÈã40ˆÈ‰º‚Å‰©F‚Æ‚È‚è‚Ü‚·B
+
+%sample
+    #include "01_mypb.hsp"
+
+    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
+    mypb 300, 15, hProg(0), 0
+    pbset hProg(0), 0, 100, 0, 1
+
+*main
+    wait 16
+    pbstep hProg(0)     ; ƒXƒeƒbƒvis
+    pbsetst2 hProg(0)   ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+                        ; 40’´‰ß‚Å—ÎF, 25–¢–ž‚ÅÔF, 25ˆÈã40ˆÈ‰º‚Í‰©F
+    goto *main
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+mypb
+pbset
+pbstep
+pbinfo
+pbrepos
+pbsetst
+pbsetst2
+pbswmarq
+
+;===============================================================================
+
+%index
+pbswmarq
+ƒ}[ƒL[‘€ì
+%prm
+p1,p2,p3
+p1     : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2(1)  : ƒAƒjƒ[ƒVƒ‡ƒ“‘€ì
+p3(30) : ƒAƒjƒ[ƒVƒ‡ƒ“XVŠÔŠu(ms)
+%inst
+‚±‚Ì–½—ß‚ÍAƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚ð‘€ì‚·‚é‚à‚Ì‚Å‚·B
+^
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p2‚Åƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚ÌON/OFF‚ðØ‚è‘Ö‚¦‚Ü‚·B
+    0  :  ’âŽ~
+    1  :  Ä¶
+^
+p3‚Íƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚ÌXVŠÔŠu‚ðms(ƒ~ƒŠ•b)‚ÅŽw’è‚µ‚Ä‰º‚³‚¢BÈ—ª‚µ‚½ê‡‚Í30ms‚Æ‚È‚è‚Ü‚·B
+ƒ}[ƒL[‚Æ‚Í“dŒõŒfŽ¦”Â‚Ì‚æ‚¤‚Éˆê’è‚Ì•ûŒüAŠÔŠu‚Å—¬‚ê‚éƒAƒjƒ[ƒVƒ‡ƒ“‚ðŽw‚·‚à‚Ì‚ÅA“Á‚ÉƒvƒƒOƒŒƒXƒo[‚Ìê‡‚Å‚Í "ƒoƒbƒNƒOƒ‰ƒEƒ“ƒh‚Å‚Ì•ÊƒvƒƒZƒX‚ÌŽÀs’†" ‚â "ƒvƒƒZƒX‚Ì‘Ò‹@’†"A"•sŠm’è" “™‚ðƒ†[ƒU[‚ÉŽ¦‚·‚à‚Ì‚Æ‚µ‚Ä—˜—p‚µ‚Ü‚·B
+^
+html{
+<b>
+¦’ˆÓŽ–€‚Æ‚µ‚ÄA’ZŽžŠÔ‚É‰½“x‚àŒÄ‚Ño‚·‚à‚Ì‚Å‚Í‚ ‚è‚Ü‚¹‚ñB<br>
+<span style="border-bottom: solid 1px red;">
+‚Ü‚½Aˆê“xÄ¶‚³‚¹‚½ŒãA’âŽ~‚³‚¹‚½‚¢ê‡‚Í“¯–½—ß‚É‚Ä’âŽ~‚³‚¹‚é•K—v‚ª‚ ‚è‚Ü‚·B<br>
+F10ƒL[‚âAltƒL[AƒfƒoƒbƒOƒEƒBƒ“ƒhƒE‚©‚ç‚Ì‘€ì‚Å‚Í’âŽ~‚µ‚Ü‚¹‚ñB</span>
+</b>
+}html
+
+%sample
+    butstr = "start", "stop"
+
+    mes "hProg(3) (MARQUEE)"
+    mypb 300, 15, hProg(3), 2
+
+    button gosub "statrt", *marqueesw
+    butid(0) = stat
+
+    stop
+
+*marqueesw
+    a = a * -1
+    if (a == -1) {b = 1}
+    else         {b = 0}
+
+    pbswmarq hProg(3), b, 30
+    objprm butid(0), butstr(b)
+
+    return
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+mypb
+pbset
+pbstep
+pbinfo
+pbrepos
+pbsetst
+pbsetst2
+pbswmarq
+
+;===============================================================================
+;===============================================================================
+;===============================================================================
