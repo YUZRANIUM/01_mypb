@@ -4,7 +4,6 @@
 
 不具合報告や要望等は [Twitter](https://twitter.com/YUZRANIUM) のDMか [HSPの掲示板](http://hsp.tv/play/pforum.php) 等で頂けると幸いです。
 
-<!-- <br> -->
 
 ## 特徴（Feature）
 
