@@ -1,7 +1,7 @@
 ; INFO „ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª
 ; FileName : 01_mypbhelp.hs
-; Version  : 0.3.0
-; Date     : 2022/11/14
+; Version  : 0.3.1
+; Date     : 2022/11/16
 ; Author   : YUZRANIUMi‚ä‚¸‚ç‚É‚¤‚Þj
 ; Twitter  : https://twitter.com/YUZRANIUM
 ; GitHub   : https://github.com/YUZRANIUM/01_mypb
@@ -13,9 +13,9 @@
 %dll
 01_mypb
 %ver
-0.3.0
+0.3.1
 %date
-2022/11/14
+2022/11/16
 %author
 YUZRANIUM
 %url
@@ -78,13 +78,13 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
 %type
 ƒ†[ƒU[’è‹`–½—ß
 %href
-mypb
+winobj
 pbset
 pbstep
-pbinfo
 pbrepos
 pbsetst
-pbsetst2
+pbstcol
+pbstcol2
 pbswmarq
 
 ;===============================================================================
@@ -107,7 +107,7 @@ p2, p3‚ÅŽw’è‚µ‚½’l‚Ì”ÍˆÍ‚ªƒvƒƒOƒŒƒXƒo[‚Ì”ÍˆÍ‚Æ‚È‚è‚Ü‚·Bp2‚ªÅ¬’lAp3‚ªÅ‘å’l
 p4‚É‚Íƒo[‚ÌŠJŽnˆÊ’u‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B
 p5‚É‚ÍƒvƒƒOƒŒƒXƒo[‚ª1‰ñ‚Ì“®ì‚Åi‚Þ•Ï‰»—Ê‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B³•‰—¼•ûŽæ‚é‚±‚Æ‚ª‚Å‚«A•‰‚Ì®”’l‚ðŽw’è‚µ‚½ê‡‚ÍŒ¸­‚µ‚Ä‚¢‚«‚Ü‚·B
 ^
-¦’ˆÓŽ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
+¦’ˆÓŽ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB‚±‚ê‚ÍƒEƒBƒ“ƒhƒEƒƒbƒZ[ƒW‚ª®”’l(int)‚Ì‚Ý‚Ì‘Î‰ž‚Æ‚È‚Á‚Ä‚¢‚é‚½‚ß‚Å‚·B
 %sample
 #include "01_mypb.hsp"
 
@@ -135,13 +135,9 @@ p5‚É‚ÍƒvƒƒOƒŒƒXƒo[‚ª1‰ñ‚Ì“®ì‚Åi‚Þ•Ï‰»—Ê‚ð®”’l‚ÅŽw’è‚µ‚Ü‚·B³•‰—¼•ûŽæ‚é‚±‚
 %type
 ƒ†[ƒU[’è‹`–½—ß
 %href
-mypb
-pbset
 pbstep
-pbinfo
 pbrepos
 pbsetst
-pbsetst2
 pbswmarq
 
 ;===============================================================================
@@ -163,93 +159,19 @@ p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 %sample
 
 %group
-ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+ƒIƒuƒWƒFƒNƒg‘€ì–½—ß
 %type
 ƒ†[ƒU[’è‹`–½—ß
 %href
-mypb
 pbset
-pbstep
-pbinfo
 pbrepos
-pbsetst
-pbsetst2
-pbswmarq
-
-;===============================================================================
-
-%index
-pbinfo
-ƒo[‚Ìî•ñŽæ“¾
-%prm
-p1,p2
-p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
-p2 : Žæ“¾ƒ^ƒCƒv
-%inst
-‚±‚ÌŠÖ”‚ÍƒvƒƒOƒŒƒXƒo[‚ÌŠeŽíî•ñ‚ðŽæ“¾‚·‚é‚à‚Ì‚Å‚·B
-^
-p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³‚ê‚Ü‚·B
-^
-ƒ^ƒCƒv |            “à—e           |         •Ô‚è’listatj
-------------------------------------------------------------------------------------
-    0  :  Œ»ÝˆÊ’u (PBM_GETPOS)    :  pbinfoŠÖ”ŽÀsŽž“_‚Å‚ÌŒ»ÝˆÊ’u‚ª®”‚Å•Ô‚è‚Ü‚·
-    1  :  Å¬’l   (PBM_GETRANGE)  :  pbset–½—ß‚ÅÝ’è‚µ‚½®”’l
-    2  :  Å‘å’l   (PBM_GETRANGE)  :           “¯ã
-    3  :  •Ï‰»—Ê   (PBM_GETSTEP)   :           “¯ã
-    4  :  ó  ‘Ô   (PBM_GETSTATE)  :  pbinfoŠÖ”ŒÄ‚Ño‚µŽž“_‚Å‚Ìƒo[‚Ìó‘Ô
-^
-Žæ“¾ƒ^ƒCƒv4‚Ìó‘Ô‚ÍŽŸ‚Ì‚¢‚¸‚ê‚©‚É‚È‚è‚Ü‚·B
-    1  :  PBST_NORMAL (—ÎF)
-    2  :  PBST_ERROR  (ÔF)
-    3  :  PBST_PAUSED (‰©F)
-
-%sample
-    #include "01_mypb.hsp"
-
-    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
-    mypb 300, 15, hProg(0), 0
-    pbset hProg(0), 0, 100, 0, 1
-
-    winobj "static", "", , $50000000 | $800000, 250, 130
-    id_static = stat  :  hStatic = objinfo(stat, 2)
-
-*main
-    wait 16
-    pbstep hProg(0)      ; ƒXƒeƒbƒvis
-    pbsetst2 hProg(0)    ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
-
-    sdim moni, 64
-    moni += "hProg(0)"
-    moni += "\n Œ»ÝˆÊ’u = " + pbinfo(hProg(0), 0)
-    moni += "\n Å¬’l   = " + pbinfo(hProg(0), 1)
-    moni += "\n Å‘å’l   = " + pbinfo(hProg(0), 2)
-    moni += "\n •Ï‰»—Ê   = " + pbinfo(hProg(0), 3)
-    moni += "\n ó  ‘Ô   = " + pbinfo(hProg(0), 4)
-
-    sendmsg hStatic, $C, 0, moni
-
-    goto *main
-
-%group
-ƒIƒuƒWƒFƒNƒg§Œä–½—ß
-%type
-ƒ†[ƒU[’è‹`ŠÖ”
-%href
-mypb
-pbset
-pbstep
-pbinfo
-pbrepos
-pbsetst
-pbsetst2
 pbswmarq
 
 ;===============================================================================
 
 %index
 pbrepos
-ƒo[‚ÌˆÊ’uÝ’è
+ƒo[ˆÊ’uÄÝ’è
 %prm
 p1,p2,p3
 p1    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
@@ -268,129 +190,51 @@ p3‚ÅÝ’èƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢BŽw’è‚Å‚«‚éƒ^ƒCƒv‚ÍˆÈ‰º‚É‚È‚è‚Ü‚·B
     1  :  ‘Š‘ÎˆÊ’u (PBM_DELTAPOS)  :  Žw’è‚³‚ê‚½’l‚ðŒ»ÝˆÊ’u‚É‰ÁŽZ
 ^
 ‚Ü‚½Ap2‚É‚Í•‰‚Ì®”’l‚ðŽw’è‚·‚é‚±‚Æ‚à‚Å‚«Aƒo[‚ÌŒ»ÝˆÊ’u‚©‚çŽw’è’l‚¾‚¯Œ¸‚¸‚é‚±‚Æ‚à‰Â”\‚Å‚·B
+‚±‚Ì–½—ß‚ÌÅ‘å‚Ì“Á’¥‚Í•Ï‰»—Ê‚É‚Æ‚ç‚í‚ê‚¸A”CˆÓ‚Ìƒ^ƒCƒ~ƒ“ƒO‚Å”CˆÓ‚Ì”’l‚¾‚¯Œ»ÝˆÊ’u‚ðˆÚ“®A‚Ü‚½‚ÍŽw’è‚Å‚«‚é‚Æ‚±‚ë‚É‚ ‚è‚Ü‚·B
+pbstep–½—ßˆÈŠO‚Ì—vˆö‚Å’l‚ª•Ï“®‚·‚éê‡‚âŽÀ”‚ðˆµ‚¢‚½‚¢ê‡A•Ï‰»—Ê‚ª•s‹K‘¥Aƒ‰ƒ“ƒ_ƒ€A‚Ü‚½‚ÍŽw’è‚Å‚«‚È‚¢A‚à‚µ‚­‚Í–Ê“|‚Èê‡‚È‚Ç‚ÍŒø‰Ê“I‚Å‚·B
 ^
-¦’ˆÓŽ–€‚Æ‚µ‚ÄApbset–½—ß‚ÅŽw’è‚µ‚½Å¬’l‹y‚ÑÅ‘å’l‚Ì”ÍˆÍ‚ð’´‚¦‚ÄˆÊ’u‚ðŽw’è‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB
+¦’ˆÓŽ–€‚Æ‚µ‚ÄApbset–½—ß‚ÅŽw’è‚µ‚½Å¬’l‹y‚ÑÅ‘å’l‚Ì”ÍˆÍ‚ð’´‚¦‚ÄˆÊ’u‚ðŽw’è‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB‚Ü‚½A‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
 
 %sample
+    mes "Battery"
+    mypb 200, 15, hProg1, 0
+    pbset hProg1, 0, 1000, 1000, -1     ; ¬”‘æ1ˆÊ‚Ü‚Å‚ðˆµ‚¢‚½‚¢ê‡‚Í1,000‚ðA
+                                        ; ‘æ2ˆÊ‚Ü‚Åˆµ‚¤ê‡‚Í10,000‚ðÅ‘å’l‚ÉŽw’è‚µ‚Ä‰º‚³‚¢
+    pos 20, 50
+    winobj "static", "", , $50000000 | $800000, 150, 120
+    hStatic(0) = objinfo(stat, 2)
 
-%group
-ƒIƒuƒWƒFƒNƒg§Œä–½—ß
-%type
-ƒ†[ƒU[’è‹`–½—ß
-%href
-mypb
-pbset
-pbstep
-pbinfo
-pbrepos
-pbsetst
-pbsetst2
-pbswmarq
-
-;===============================================================================
-
-%index
-pbsetst
-ƒo[‚Ìó‘ÔÝ’è
-%prm
-p1,p2
-p1  :  ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
-p2  :  ƒo[‚Ìó‘Ô
-%inst
-‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô‚ðÝ’è‚·‚é‚à‚Ì‚Å‚·B
-^
-p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-p2‚É‚ÍAˆÈ‰º‚Ì’l‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-^
-Žw’è’l |         “à—e             |  ƒo[‚ÌF
--------------------------------------------------
-    1  :  PBST_NORMAL (’Êí)      :  —ÎF
-    2  :  PBST_ERROR  (ƒGƒ‰[)    :  ÔF
-    3  :  PBST_PAUSED (ˆêŽž’âŽ~)  :  ‰©F
-^
-‚±‚ÌÝ’è‚É‚æ‚èAƒo[‚ÌF‚ð•ÏX‚·‚é‚±‚Æ‚ª‰Â”\‚Å‚·B
-
-%sample
+    pos 230, ginfo_mesy
+    winobj "static", "", , $50000000 | $800000, 80, 20
+    hStatic(1) = objinfo(stat, 2)
 
 *main
-    pbstep hProg(0)
+    await 32
+    power -= 0.1
+    if power <= 0 : power = 100.0
 
-    if      (pbinfo(hProg(0), 0) > 40) {pbsetst hProg(0), 1}  ; 40’´‰ß‚Å—ÎF
-    else:if (pbinfo(hProg(0), 0) < 25) {pbsetst hProg(0), 2}  ; 25–¢–ž‚ÅÔF
-    else                               {pbsetst hProg(0), 3}  ; 25ˆÈã40ˆÈ‰º‚Í‰©F
+    pbrepos hProg1, int(power * 10), 0  ; ’l‚ðŽw’è‚·‚éê‡‚Í¬”“_ˆÈ‰º‚ð–³‚­‚·‚æ‚¤‚ÉH•v‚µ‚Ä‰º‚³‚¢
+                                        ; ŽÀ”’l‚ðŽw’è‚µ‚Ä‚µ‚Ü‚¤‚Æ‚»‚Ì’l‚ª–³Ž‹‚³‚ê‚Ä‚µ‚Ü‚¢‚Ü‚·
+
+    moni(0) = "hProg1"
+    repeat 6, 1
+        moni(0) += "\n " + moni(cnt) + pbinfo(hProg1, cnt - 1)
+    loop
+    sendmsg hStatic(0), $C, 0, moni
+
+
+    moni2 = "" + strf(" %.2f%%", double(pb_now(hProg1)) / 10)
+    sendmsg hStatic(1), $C, 0, moni2
 
     goto *main
 
 %group
-ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+ƒIƒuƒWƒFƒNƒg‘€ì–½—ß
 %type
 ƒ†[ƒU[’è‹`–½—ß
 %href
-mypb
 pbset
 pbstep
-pbinfo
-pbrepos
-pbsetst
-pbsetst2
-pbswmarq
-
-;===============================================================================
-
-%index
-pbsetst2
-ƒo[‚ÌF•ÏX
-%prm
-p1,p2,p3,p4,p5,p6
-p1     :  ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
-p2(25) :  ’†ŠÔˆæ‚Ì‰ºŒÀ’l(int)
-p3(40) :  ’†ŠÔˆæ‚ÌãŒÀ’l(int)
-p4(2)  :  ‰ºˆÊˆæ‚Ìó‘Ô (PBST_ERROR  (ÔF))
-p5(3)  :  ’†ŠÔˆæ‚Ìó‘Ô (PBST_PAUSED (‰©F))
-p6(1)  :  ãˆÊˆæ‚Ìó‘Ô (PBST_NORMAL (—ÎF))
-%inst
-‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚ÌŒ»ÝˆÊ’u‚É‚æ‚Á‚Äƒo[‚ÌF‚ð•ÏX‚·‚é‚Ì‚à‚Å‚·B
-^
-p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-p2, p3‚Å‚ÍƒvƒƒOƒŒƒXƒo[‚ð3•ªŠ„‚·‚é‚½‚ß‚Ì’l‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-p4, p5, p6‚Å‚Í3•ªŠ„‚³‚ê‚½‚»‚ê‚¼‚ê‚Ì—Ìˆæ“à‚ÉŒ»ÝˆÊ’u‚ª‘¶Ý‚·‚éê‡Aƒo[‚É“K—p‚³‚¹‚½‚¢ó‘Ô‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-^
-p4,p5,p6‚ÅŽw’è‚Å‚«‚éó‘Ô‚ð•\‚·”’l‚ÍˆÈ‰º‚Ì‚à‚Ì‚Æ‚È‚è‚Ü‚·B(pbsetst–½—ß‚Æ“¯‚¶‚à‚Ì‚Å‚·B)
-Žw’è’l |         “à—e             |  ƒo[‚ÌF
--------------------------------------------------
-    1  :  PBST_NORMAL (’Êí)      :  —ÎF
-    2  :  PBST_ERROR  (ƒGƒ‰[)    :  ÔF
-    3  :  PBST_PAUSED (ˆêŽž’âŽ~)  :  ‰©F
-^
-‚±‚Ì–½—ß‚ÍApbsetst–½—ß‚Å‚ÌƒTƒ“ƒvƒ‹ƒXƒNƒŠƒvƒg‚ð‚»‚Ì‚Ü‚Ü–½—ß‰»‚µ‚½‚à‚Ì‚Å‚·B
-p2ˆÈ~‚Ìƒpƒ‰ƒ[ƒ^‚ÍÈ—ª‰Â”\‚ÅAÈ—ªŽž‚Í40’´‰ß‚Å—ÎFA25–¢–ž‚ÅÔFA25ˆÈã40ˆÈ‰º‚Å‰©F‚Æ‚È‚è‚Ü‚·B
-
-%sample
-    #include "01_mypb.hsp"
-
-    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
-    mypb 300, 15, hProg(0), 0
-    pbset hProg(0), 0, 100, 0, 1
-
-*main
-    wait 16
-    pbstep hProg(0)     ; ƒXƒeƒbƒvis
-    pbsetst2 hProg(0)   ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
-                        ; 40’´‰ß‚Å—ÎF, 25–¢–ž‚ÅÔF, 25ˆÈã40ˆÈ‰º‚Í‰©F
-    goto *main
-
-%group
-ƒIƒuƒWƒFƒNƒg§Œä–½—ß
-%type
-ƒ†[ƒU[’è‹`–½—ß
-%href
-mypb
-pbset
-pbstep
-pbinfo
-pbrepos
-pbsetst
-pbsetst2
 pbswmarq
 
 ;===============================================================================
@@ -410,6 +254,7 @@ p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
 p2‚Åƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚ÌON/OFF‚ðØ‚è‘Ö‚¦‚Ü‚·B
     0  :  ’âŽ~
     1  :  Ä¶
+ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚ð’âŽ~ŒãAÄŠJ‚³‚¹‚é‚Æ•K‚¸¶’[‚©‚ç‚ÌƒXƒ^[ƒg‚É‚È‚è‚Ü‚·B
 ^
 p3‚Íƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚ÌXVŠÔŠu‚ðms(ƒ~ƒŠ•b)‚ÅŽw’è‚µ‚Ä‰º‚³‚¢BÈ—ª‚µ‚½ê‡‚Í30ms‚Æ‚È‚è‚Ü‚·B
 ƒ}[ƒL[‚Æ‚Í“dŒõŒfŽ¦”Â‚Ì‚æ‚¤‚Éˆê’è‚Ì•ûŒüAŠÔŠu‚Å—¬‚ê‚éƒAƒjƒ[ƒVƒ‡ƒ“‚ðŽw‚·‚à‚Ì‚ÅA“Á‚ÉƒvƒƒOƒŒƒXƒo[‚Ìê‡‚Å‚Í "ƒoƒbƒNƒOƒ‰ƒEƒ“ƒh‚Å‚Ì•ÊƒvƒƒZƒX‚ÌŽÀs’†" ‚â "ƒvƒƒZƒX‚Ì‘Ò‹@’†"A"•sŠm’è" “™‚ðƒ†[ƒU[‚ÉŽ¦‚·‚à‚Ì‚Æ‚µ‚Ä—˜—p‚µ‚Ü‚·B
@@ -441,23 +286,610 @@ F10ƒL[‚âAltƒL[AƒfƒoƒbƒOƒEƒBƒ“ƒhƒE‚©‚ç‚Ì‘€ì‚Å‚Í’âŽ~‚µ‚Ü‚¹‚ñB</span>
 
     pbswmarq hProg(3), b, 30
     objprm butid(0), butstr(b)
-
     return
 
 %group
-ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+ƒIƒuƒWƒFƒNƒg‘€ì–½—ß
 %type
 ƒ†[ƒU[’è‹`–½—ß
 %href
 mypb
 pbset
 pbstep
-pbinfo
-pbrepos
-pbsetst
-pbsetst2
-pbswmarq
 
 ;===============================================================================
+
+%index
+pbsetst
+ƒo[‚Ìó‘ÔÝ’è
+%prm
+p1,p2
+p1  :  ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2  :  ƒo[‚Ìó‘Ô
+%inst
+‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô‚ðÝ’è‚·‚é‚à‚Ì‚Å‚·B
+^
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p2‚É‚ÍAˆÈ‰º‚Ì’l‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+Žw’è’l |         “à—e             |  ƒo[‚ÌF
+-------------------------------------------------
+    1  :  PBST_NORMAL (’Êí)      :  —ÎF
+    2  :  PBST_ERROR  (ƒGƒ‰[)    :  ÔF
+    3  :  PBST_PAUSED (ˆêŽž’âŽ~)  :  ‰©F
+^
+‚±‚ÌÝ’è‚É‚æ‚èAƒo[‚ÌF‚ð•ÏX‚·‚é‚±‚Æ‚ª‰Â”\‚Å‚·B
+
+%sample
+
+*main
+    pbstep hProg(0)
+
+    if      (pb_now(hProg(0)) > 40) {pbsetst hProg(0), 1}  ; 40’´‰ß‚Å—ÎF
+    else:if (pb_now(hProg(0)) < 25) {pbsetst hProg(0), 2}  ; 25–¢–ž‚ÅÔF
+    else                            {pbsetst hProg(0), 3}  ; 25ˆÈã40ˆÈ‰º‚Í‰©F
+
+    goto *main
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+pbset
+pbinfo
+pb_now
+pbstcol
+pbstcol2
+
 ;===============================================================================
+
+%index
+pbstcol
+ƒo[F•ÏX
+%prm
+p1,p2,p3,p4,p5,p6
+p1     :  ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2(25) :  ’†ŠÔˆæ‚Ì‰ºŒÀ’l(int)
+p3(40) :  ’†ŠÔˆæ‚ÌãŒÀ’l(int)
+p4(2)  :  ‰ºˆÊˆæ‚Ìó‘Ô (PBST_ERROR  (ÔF))
+p5(3)  :  ’†ŠÔˆæ‚Ìó‘Ô (PBST_PAUSED (‰©F))
+p6(1)  :  ãˆÊˆæ‚Ìó‘Ô (PBST_NORMAL (—ÎF))
+%inst
+‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚ÌŒ»ÝˆÊ’u‚É‚æ‚Á‚Äƒo[‚ÌF‚ð•ÏX‚·‚é‚Ì‚à‚Å‚·B
+^
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p2, p3‚Å‚ÍƒvƒƒOƒŒƒXƒo[‚ð3•ªŠ„‚·‚é‚½‚ß‚Ì’l‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p4, p5, p6‚Å‚Í3•ªŠ„‚³‚ê‚½‚»‚ê‚¼‚ê‚Ì—Ìˆæ“à‚ÉŒ»ÝˆÊ’u‚ª“ž’B‚µ‚½ê‡Aƒo[‚É“K—p‚³‚¹‚½‚¢ó‘Ô‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+p4,p5,p6‚ÅŽw’è‚Å‚«‚éó‘Ô‚ð•\‚·”’l‚ÍˆÈ‰º‚Ì‚à‚Ì‚Æ‚È‚è‚Ü‚·B(pbsetst–½—ß‚Æ“¯‚¶‚à‚Ì‚Å‚·B)
+Žw’è’l |         “à—e             |  ƒo[‚ÌF
+-------------------------------------------------
+    1  :  PBST_NORMAL (’Êí)      :  —ÎF
+    2  :  PBST_ERROR  (ƒGƒ‰[)    :  ÔF
+    3  :  PBST_PAUSED (ˆêŽž’âŽ~)  :  ‰©F
+^
+‚±‚Ì–½—ß‚ÍApbsetst–½—ß‚Å‚ÌƒTƒ“ƒvƒ‹ƒXƒNƒŠƒvƒg‚ð‚»‚Ì‚Ü‚Ü–½—ß‰»‚µ‚½‚à‚Ì‚Å‚·B
+p2ˆÈ~‚Ìƒpƒ‰ƒ[ƒ^‚ÍÈ—ª‰Â”\‚ÅAÈ—ªŽž‚Í40’´‰ß‚Å—ÎFA25–¢–ž‚ÅÔFA25ˆÈã40ˆÈ‰º‚Å‰©F‚Æ‚È‚è‚Ü‚·B
+
+%sample
+    #include "01_mypb.hsp"
+
+    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
+    mypb 300, 15, hProg(0), 0
+    pbset hProg(0), 0, 100, 0, 1
+
+*main
+    wait 16
+    pbstep hProg(0)     ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)    ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+                        ; 40’´‰ß‚Å—ÎF, 25–¢–ž‚ÅÔF, 25ˆÈã40ˆÈ‰º‚Í‰©F
+    goto *main
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+pbinfo
+pb_now
+pb_rag
+pb_sts
+pbsetst
+pbstcol2
+
+;===============================================================================
+
+%index
+pbstcol2
+ƒo[F•ÏX •S•ª—¦
+%prm
+p1,p2,p3,p4,p5,p6
+p1     :  ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2(25) :  ’†ŠÔˆæ‚Ì‰ºŒÀ’l(int:•S•ª—¦)
+p3(40) :  ’†ŠÔˆæ‚ÌãŒÀ’l(int:•S•ª—¦)
+p4(2)  :  ‰ºˆÊˆæ‚Ìó‘Ô (PBST_ERROR  (ÔF))
+p5(3)  :  ’†ŠÔˆæ‚Ìó‘Ô (PBST_PAUSED (‰©F))
+p6(1)  :  ãˆÊˆæ‚Ìó‘Ô (PBST_NORMAL (—ÎF))
+%inst
+‚±‚Ì–½—ß‚ÍApbstcol–½—ß‚Ì‘æ2,3ƒpƒ‰ƒ[ƒ^‚ð•S•ª—¦‚ÅŽw’è‚Å‚«‚é‚æ‚¤‚É‚µ‚½‚à‚Ì‚Å‚·B
+•S•ª—¦‚ÅŽw’è‚Å‚«‚é‚æ‚¤‚É‚È‚Á‚½‚Ì‚ÅAÅ‘å’l‚ªØ‚è‚Ìˆ«‚¢ê‡‚â³Šm‚È”’l‚ðŽw’è‚·‚é‚±‚Æ‚ª–Ê“|‚Èê‡‚ÉŒø‰Ê“I‚Å‚·B
+^
+—á‚¦‚ÎAÅ¬’l : 0, Å‘å’l : 17931, ‰Šú’l : 0 ‚Æ‚¢‚¤ðŒ‚Å
+25%–¢–ž‚ÍÔFA25%ˆÈã40%ˆÈ‰º‚Í‰©FA40%’´‰ß‚Å—ÎF‚É‚µ‚½‚¢ê‡A
+
+    pbstcol2 objhwnd, 25, 40, 2, 3, 1
+
+‚Æ‚È‚è‚Ü‚·B
+‚Ü‚½A
+    pbstcol2 objhwnd, 25, 40
+
+‚Æ‚¢‚¤‚æ‚¤‚É‘æ4ƒpƒ‰ƒ[ƒ^ˆÈ~‚ðÈ—ª‚µ‚Ä‚à\‚¢‚Ü‚¹‚ñB
+ã‹L‚ÌÝ’è‚Å‚ÍA17931‚Ì25%‚Í4482.75A40%‚Í7172.40‚Æ‚È‚è‚Ü‚·‚ª“à•”‚ÅintŠÖ”‚É‚æ‚è‚»‚ê‚¼‚ê4482A7172‚Æ¬”“_ˆÈ‰ºØ‚èŽÌ‚Ä‚Åˆ—‚³‚ê‚Ü‚·B
+^
+‚±‚êˆÈ~‚Ìƒpƒ‰ƒ[ƒ^“™‚Ì‰ðà‚Ípbstcol–½—ß‚Æ“¯‚¶‚à‚Ì‚Æ‚È‚è‚Ü‚·B
+^
+¦’ˆÓŽ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
+
+%sample
+    #include "01_mypb.hsp"
+
+    mes "hProg(0)"
+    mypb 300, 15, hProg(0), 0
+    pbset hProg(0), 0, 1783, 0, 2
+
+*main
+    wait 16
+
+    pbstep hProg(0)                     ; ƒXƒeƒbƒvis
+    pbstcol2 hProg(0), 25, 35           ; •S•ª—¦Žw’è
+
+    goto *main
+
+%group
+ƒIƒuƒWƒFƒNƒg§Œä–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+pbinfo
+pb_now
+pb_rag
+pb_sts
+pbsetst
+pbstcol
+pbstcol2
+
+;===============================================================================
+
+%index
+pbinfo
+ƒo[‚Ìî•ñŽæ“¾
+%prm
+p1,p2
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2 : Žæ“¾ƒ^ƒCƒv
+%inst
+‚±‚ÌŠÖ”‚ÍƒvƒƒOƒŒƒXƒo[‚ÌŠeŽíî•ñ‚ðŽæ“¾‚·‚é‚à‚Ì‚Å‚·B
+^
+p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³‚ê‚Ü‚·B
+^
+ƒ^ƒCƒv |            “à—e          |         •Ô‚è’listatj
+------------------------------------------------------------------------------------
+    0  :  Œ»ÝˆÊ’u (PBM_GETPOS)   :  pbinfoŠÖ”ŽÀsŽž“_‚Å‚ÌŒ»ÝˆÊ’u‚ª®”‚Å•Ô‚è‚Ü‚·
+    1  :  Å¬’l   (PBM_GETRANGE) :  pbset–½—ß‚ÅÝ’è‚µ‚½®”’l
+    2  :  Å‘å’l   (PBM_GETRANGE) :           “¯ã
+    3  :  ”Í  ˆÍ                  :  (Å‘å’l) - (Å¬’l)
+    4  :  •Ï‰»—Ê   (PBM_GETSTEP)  :  pbset–½—ß‚ÅÝ’è‚µ‚½®”’l
+    5  :  ó  ‘Ô   (PBM_GETSTATE) :  pbinfoŠÖ”ŒÄ‚Ño‚µŽž“_‚Å‚Ìƒo[‚Ìó‘Ô
+^
+Žæ“¾ƒ^ƒCƒv4‚Ìó‘Ô‚ÍŽŸ‚Ì‚¢‚¸‚ê‚©‚É‚È‚è‚Ü‚·B
+    1  :  PBST_NORMAL (—ÎF)
+    2  :  PBST_ERROR  (ÔF)
+    3  :  PBST_PAUSED (‰©F)
+^
+¦’ˆÓŽ–€‚Æ‚µ‚ÄApbinfoŠÖ”‚Í ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·‚Ì‚Å•K‚¸ƒpƒ‰ƒ[ƒ^‚ðŠÛŠ‡ŒÊ‚ÅˆÍ‚ñ‚Å‰º‚³‚¢B
+
+%sample
+    #include "01_mypb.hsp"
+
+    sdim moni, 256, 7                   ; ƒvƒƒOƒŒƒXƒo[‚Ìî•ñ•\Ž¦—p
+    moni(0) = "hProg(" + n + ")"
+    moni(1) = "Œ»ÝˆÊ’u = "
+    moni(2) = "Å¬’l   = "
+    moni(3) = "Å‘å’l   = "
+    moni(4) = "”Í  ˆÍ   = "
+    moni(5) = "•Ï‰»—Ê   = "
+    moni(6) = "ó  ‘Ô   = "
+
+    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
+    mypb 300, 15, hProg(0), 0
+    pbset hProg(0), 0, 100, 0, 1
+
+    winobj "static", "", , $50000000 | $800000, 250, 130
+    id_static = stat  :  hStatic = objinfo(stat, 2)
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    repeat 6, 1
+        moni(0) += "\n " + moni(cnt) + pbinfo(hProg(n), cnt - 1)    ; ’ÊíŒ^ : ƒ‹[ƒv“à‚ÅŽg—p‰Â
+    loop
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+
+;===============================================================================
+
+%index
+pb_now
+Œ»ÝˆÊ’uƒ}ƒNƒ
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚ÌŠÖ”‚ÍApbinfoŠÖ”‚ÌŒ»ÝˆÊ’u‚ð•Ô‚·ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·B
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+pb_now(p1) ‚Æ pbinfo(p1, 0) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
+
+%sample
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+
+;===============================================================================
+
+%index
+pb_min
+Å¬’lƒ}ƒNƒ
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚ÌŠÖ”‚ÍApbinfoŠÖ”‚ÌÅ¬’l‚ð•Ô‚·ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·B
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+pb_min(p1) ‚Æ pbinfo(p1, 1) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
+%sample
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+
+;===============================================================================
+
+%index
+pb_max
+Å‘å’lƒ}ƒNƒ
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚ÌŠÖ”‚ÍApbinfoŠÖ”‚ÌÅ‘å’l‚ð•Ô‚·ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·B
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+pb_max(p1) ‚Æ pbinfo(p1, 2) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
+%sample
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+
+;===============================================================================
+
+%index
+pb_rag
+”ÍˆÍƒ}ƒNƒ
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚ÌŠÖ”‚ÍApbinfoŠÖ”‚Ì”ÍˆÍ‚ð•Ô‚·ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·B
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+pb_rag(p1) ‚Æ pbinfo(p1, 3) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
+%sample
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+
+;===============================================================================
+
+%index
+pb_var
+•Ï‰»—Êƒ}ƒNƒ
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚ÌŠÖ”‚ÍApbinfoŠÖ”‚Ì•Ï‰»—Ê‚ð•Ô‚·ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·B
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+pb_var(p1) ‚Æ pbinfo(p1, 4) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
+%sample
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+
+;===============================================================================
+
+%index
+pb_sts
+ó‘Ôƒ}ƒNƒ
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚ÌŠÖ”‚ÍApbinfoŠÖ”‚Ìó‘Ô‚ð•Ô‚·ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·B
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+pb_sts(p1) ‚Æ pbinfo(p1, 5) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
+%sample
+
+*main
+    wait 16
+    pbstep hProg(0)      ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+
+;===============================================================================
+
+%index
+PBST_NORMAL
+’Êí(—ÎF)
+%prm
+0x0001
+0x0001 : —ÎF
+%inst
+ƒo[‘S‘Ì‚ª—ÎF‚É‚È‚è‚Ü‚·B
+’Êí‚Æ‚ ‚è‚Ü‚·‚ªA‚ ‚­‚Ü‚Å‚»‚¤‚¢‚¤•\Œ»‚È‚Ì‚Å‚µ‚å‚¤B
+^
+ƒo[‚ÌisA’âŽ~‚Í‚±‚Ì’è”‚É¶‰E‚³‚ê‚Ü‚¹‚ñB
+%sample
+#const PBST_NORMAL  0x0001
+%group
+’è”
+%type
+win32API’è”
+%href
+pbinfo
+pb_sts
+pbsetst
+pbstcol
+pbstcol2
+
+;===============================================================================
+
+%index
+PBST_ERROR
+ƒGƒ‰[(ÔF)
+%prm
+0x0002
+0x0002 : ÔF
+%inst
+ƒo[‘S‘Ì‚ªÔF‚É‚È‚è‚Ü‚·B
+’âŽ~‚Í‚µ‚Ü‚¹‚ñB‚ ‚­‚Ü‚Å‚»‚¤‚¢‚¤•\Œ»‚È‚Ì‚Å‚µ‚å‚¤B
+^
+ƒo[‚ÌisA’âŽ~‚Í‚±‚Ì’è”‚É¶‰E‚³‚ê‚Ü‚¹‚ñB
+%sample
+#const PBST_ERROR   0x0002
+%group
+’è”
+%type
+win32API’è”
+%href
+pbinfo
+pb_sts
+pbsetst
+pbstcol
+pbstcol2
+
+;===============================================================================
+
+%index
+PBST_PAUSED
+ˆêŽž’âŽ~ (‰©F)
+%prm
+0x0003
+0x0003 : ‰©F
+%inst
+ƒo[‘S‘Ì‚ª‰©F‚É‚È‚è‚Ü‚·B
+ˆêŽž’âŽ~‚Í‚µ‚Ü‚¹‚ñB‚ ‚­‚Ü‚Å‚»‚¤‚¢‚¤•\Œ»‚È‚Ì‚Å‚µ‚å‚¤B
+^
+ƒo[‚ÌisA’âŽ~‚Í‚±‚Ì’è”‚É¶‰E‚³‚ê‚Ü‚¹‚ñB
+%sample
+#const PBST_PAUSED  0x0003
+%group
+’è”
+%type
+win32API’è”
+%href
+pbinfo
+pb_sts
+pbsetst
+pbstcol
+pbstcol2
+
 ;===============================================================================

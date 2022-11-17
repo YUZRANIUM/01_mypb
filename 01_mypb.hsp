@@ -1,10 +1,10 @@
 // INFO ****************************************************
 // FileName : 01_mypb.hsp
-// Version : 0.3.0
-// Date    : 2022/11/14
-// Author  : YUZRANIUM（ゆずらにうむ）
-// Twitter : https://twitter.com/YUZRANIUM
-// Git Hub : https://github.com/YUZRANIUM/01_mypb
+// Version  : 0.3.1
+// Date     : 2022/11/16
+// Author   : YUZRANIUM（ゆずらにうむ）
+// Twitter  : https://twitter.com/YUZRANIUM
+// GitHub   : https://github.com/YUZRANIUM/01_mypb
 //**********************************************************
 /* Description
 user32やgdi32、hsp3utilなどは必要ありません。
@@ -68,9 +68,9 @@ user32やgdi32、hsp3utilなどは必要ありません。
     // #const CLR_DEFAULT          0xFF000000  // デフォルトカラー
 //==============================================================================
 
-    #const my_style0 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE
-    #const my_style1 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL
-    #const my_style2 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_MARQUEE
+    #const MYPB_STYLE0 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE
+    #const MYPB_STYLE1 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_VERTICAL
+    #const MYPB_STYLE2 0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE | PBS_MARQUEE
 
 
 
@@ -87,19 +87,18 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //         0 : 通常
 //         1 : 垂直
 //         2 : マーキー
+#define global mypb(%1,%2,%3,%4=0) mypb_@MyProgBar %1,%2,%3,%4
+
+
 #deffunc local mypb_ int p1, int p2, var p3, int p4
 
-    if      (p4 == 0) {style = my_style0}
-    else:if (p4 == 1) {style = my_style1}
-    else:if (p4 == 2) {style = my_style2}
-    else              {style = my_style0}
+    if      (p4 == 0) {style = MYPB_STYLE0}
+    else:if (p4 == 1) {style = MYPB_STYLE1}
+    else:if (p4 == 2) {style = MYPB_STYLE2}
 
     winobj "msctls_progress32", "", , style, p1, p2
     p3 = objinfo(stat, 2)
     return stat
-
-
-#define global mypb(%1,%2,%3,%4=0) mypb_@MyProgBar %1,%2,%3,%4
 
 
 
@@ -115,15 +114,13 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p3(100) : 最大値(int)
 // p4(0)   : 開始位置(int)
 // p5(1)   : 1ステップ当たりの変化量(+/-int)
-#deffunc local pbset_ var p1, int p2, int p3, int p4, int p5
+#define global pbset(%1,%2=0,%3=100,%4=0,%5=1) pbset_@MyProgBar %1,%2,%3,%4,%5
 
+#deffunc local pbset_ int p1, int p2, int p3, int p4, int p5
     sendmsg p1, PBM_SETRANGE32, p2, p3
     sendmsg p1, PBM_SETPOS, p4, 0
     sendmsg p1, PBM_SETSTEP, p5, 0
     return
-
-
-#define global pbset(%1,%2=0,%3=100,%4=0,%5=1) pbset_@MyProgBar %1,%2,%3,%4,%5
 
 
 
@@ -131,54 +128,59 @@ user32やgdi32、hsp3utilなどは必要ありません。
 ;プログレスバーの実行
 ;---------------------------------------
 
+
 // 設定した変化量だけ進める
 //
 // p1 : オブジェクトハンドル
-
-#deffunc pbstep var p1
+#deffunc pbstep int p1
     sendmsg p1, PBM_STEPIT, 0, 0
     return
+
 
 
 ;---------------------------------------
 ;プログレスバーの情報取得
 ;---------------------------------------
 
+
+// プログレスバーの範囲（最大値と最小値の差）を返す内部関数
+#defcfunc local pbrange_ int p1
+    sendmsg p1, PBM_GETRANGE, 0, 0  :  _pmax = stat
+    sendmsg p1, PBM_GETRANGE, 1, 0  :  _pmin = stat
+    return (_pmax - _pmin)
+
+
 //プログレスバーの情報取得
 //
 // p1 : オブジェクトハンドル
 // p2 : 取得タイプ
 //       0 : 現在位置 (int)
-//       1 : 最小値 (int)
-//       2 : 最大値 (int)
-//       3 : 変化量 (int)
-//       4 : バーの状態 (int)
-
-#defcfunc pbinfo var p1, int p2
+//       1 : 最小値   (int)
+//       2 : 最大値   (int)
+//       3 : 範  囲   (int)
+//       4 : 変化量   (int)
+//       5 : 状  態   (int)
+#defcfunc pbinfo int p1, int p2
 
     if      (p2 == 0) {sendmsg p1, PBM_GETPOS, 0, 0}        // 現在位置
     else:if (p2 == 1) {sendmsg p1, PBM_GETRANGE, p2, 0}     // 最小値
     else:if (p2 == 2) {sendmsg p1, PBM_GETRANGE, 0, 0}      // 最大値
-    else:if (p2 == 3) {sendmsg p1, PBM_GETSTEP, 0, 0}       // 変化量
-    else:if (p2 == 4) {sendmsg p1, PBM_GETSTATE, 0, 0}      // 状態
-    else              {sendmsg p1, PBM_GETPOS, 0, 0}
+    else:if (p2 == 3) {return pbrange_@MyProgBar (p1)}      // 範  囲
+    else:if (p2 == 4) {sendmsg p1, PBM_GETSTEP, 0, 0}       // 変化量
+    else:if (p2 == 5) {sendmsg p1, PBM_GETSTATE, 0, 0}      // 状  態
 
     return stat
 
 
-/*  色関係機能せず実装断念 念のため残しておきます
+    /*****  省略型  *****/
 
-#defcfunc pbinfo var p1, int p2
-    if      (p2 == 0) {sendmsg p1, PBM_GETPOS, 0, 0}        // 現在位置
-    else:if (p2 == 1) {sendmsg p1, PBM_GETRANGE, p2, 0}     // 最小値
-    else:if (p2 == 2) {sendmsg p1, PBM_GETRANGE, 0, 0}      // 最大値
-    else:if (p2 == 3) {sendmsg p1, PBM_GETSTEP, 0, 0}       // 変化量
-    else:if (p2 == 4) {sendmsg p1, PBM_GETSTATE, 0, 0}      // 状態
-    // else:if (p2 == 5) {sendmsg p1, PBM_GETBARCOLOR, 0, 0}   // バーの色
-    // else:if (p2 == 6) {sendmsg p1, PBM_GETBKCOLOR, 0, 0}    // 背景色
-    else              {sendmsg p1, PBM_GETPOS, 0, 0}
-    return stat
-*/
+    #define global ctype pb_now(%1) pbinfo(%1, 0)          // 現在位置
+    #define global ctype pb_min(%1) pbinfo(%1, 1)          // 最小値
+    #define global ctype pb_max(%1) pbinfo(%1, 2)          // 最大値
+    #define global ctype pb_rag(%1) pbinfo(%1, 3)          // 範  囲
+    #define global ctype pb_var(%1) pbinfo(%1, 4)          // 変化量
+    #define global ctype pb_sts(%1) pbinfo(%1, 5)          // 状  態
+
 
 
 ;---------------------------------------
@@ -191,15 +193,14 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p1    : オブジェクトハンドル
 // p2    : 新しく設定する位置(int)
 // p3(0) : 設定タイプ(0 = 絶対位置, 1 = 相対位置)
-#deffunc local pbrepos_ var p1, int p2, int p3
+#define global pbrepos(%1,%2,%3=0) pbrepos_@MyProgBar %1,%2,%3
+
+
+#deffunc local pbrepos_ int p1, int p2, int p3
 
     if      (p3 == 0) {sendmsg p1, PBM_SETPOS, p2, 0}
     else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
-    else              {sendmsg p1, PBM_SETPOS, p2, 0}
     return
-
-
-#define global pbrepos(%1,%2,%3=0) pbrepos_@MyProgBar %1,%2,%3
 
 
 
@@ -211,15 +212,22 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // プログレスバーの状態設定
 //
 // p1    : オブジェクトハンドル
-// p2(0) : バーの状態
+// p2(1) : バーの状態
 //  1 = PBST_NORMAL (緑色)
 //  2 = PBST_ERROR  (赤色)
 //  3 = PBST_PAUSED (黄色)
-#deffunc local pbsetst_ var p1, int p2
+#define global pbsetst(%1,%2=1) pbsetst_@MyProgBar %1,%2
+
+
+#deffunc local pbsetst_ int p1, int p2
     sendmsg p1, PBM_SETSTATE, p2, 0
     return
 
-#define global pbsetst(%1,%2=1) pbsetst_@MyProgBar %1,%2
+
+
+;---------------------------------------
+;プログレスバーの配色設定
+;---------------------------------------
 
 
 // プログレスバーの状態配色変更
@@ -230,14 +238,37 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p4(2)  : 下位域の状態 (PBST_ERROR  (赤色))
 // p5(3)  : 中間域の状態 (PBST_PAUSED (黄色))
 // p6(1)  : 上位域の状態 (PBST_NORMAL (緑色))
-#deffunc local pbsetst2_ var p1, int p2, int p3, int p4, int p5, int p6
-    if      (pbinfo(p1, 0) > p3) {pbsetst p1, p6}
-    else:if (pbinfo(p1, 0) < p2) {pbsetst p1, p4}
-    else                         {pbsetst p1, p5}
+#define global pbstcol(%1,%2=25,%3=40,%4=2,%5=3,%6=1) pbstcol_@MyProgBar %1,%2,%3,%4,%5,%6
+
+
+#deffunc local pbstcol_ int p1, int p2, int p3, int p4, int p5, int p6
+
+    if      (pb_now(p1) > p3) {pbsetst p1, p6}
+    else:if (pb_now(p1) < p2) {pbsetst p1, p4}
+    else                      {pbsetst p1, p5}
     return
 
 
-#define global pbsetst2(%1,%2=25,%3=40,%4=2,%5=3,%6=1) pbsetst2_@MyProgBar %1,%2,%3,%4,%5,%6
+
+// プログレスバーの状態配色変更(百分率指定)
+//
+// p1     : オブジェクトハンドル
+// p2(25) : 中間域の下限値(int:百分率)
+// p3(40) : 中間域の上限値(int:百分率)
+// p4(2)  : 下位域の状態 (PBST_ERROR  (赤色))
+// p5(3)  : 中間域の状態 (PBST_PAUSED (黄色))
+// p6(1)  : 上位域の状態 (PBST_NORMAL (緑色))
+#define global pbstcol2(%1,%2=25,%3=40,%4=2,%5=3,%6=1) pbstcol2_@MyProgBar %1,%2,%3,%4,%5,%6
+
+
+#deffunc local pbstcol2_ int p1, int p2, int p3, int p4, int p5, int p6
+
+    per = int((absf(pb_now(p1)) / double(pb_rag(p1))) * 100)
+
+    if      (per > p3) {pbsetst p1, p6}
+    else:if (per < p2) {pbsetst p1, p4}
+    else               {pbsetst p1, p5}
+    return
 
 
 
@@ -250,14 +281,16 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p1     : オブジェクトハンドル
 // p2     : マーキー(0 = 停止, 1 = 再生)
 // p3(30) : アニメーション更新間隔(ms)
+#define global pbswmarq(%1,%2=1,%3=30) pbswmarq_@MyProgBar %1,%2,%3
+
+
 #deffunc local pbswmarq_ int p1, int p2, int p3
     sendmsg p1, PBM_SETMARQUEE, p2, p3
     return
 
 
-#define global pbswmarq(%1,%2=1,%3=30) pbswmarq_@MyProgBar %1,%2,%3
-
 
 #global
+
 
 #endif

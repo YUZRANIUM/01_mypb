@@ -1,0 +1,197 @@
+// INFO ****************************************************
+// FileName : 01_mypb_smpl1.hsp
+// Version  : 0.3.1
+// Date     : 2022/11/16
+// Author   : YUZRANIUM（ゆずらにうむ）
+// Twitter  : https://twitter.com/YUZRANIUM
+// GitHub   : https://github.com/YUZRANIUM/01_mypb
+//**********************************************************
+/* Description
+01_mypbモジュールを扱うためのサンプルです。
+************************************************************/
+
+
+    #include "user32.as"                ; スタイル変更 SetWindowLong
+    #include "C:/gitproject/doclib/01_mypb.hsp"
+
+    screen 0, , ,2
+    font "MyricaM M", 16  :  mref BMSCR, 67 : hFont = BMSCR(38)  :  objmode 2, 1
+
+    /*****  変数定義  *****/
+
+    dim x, 3
+    dim y, 3
+    n = 0           ; リストボックス用
+
+    dim butid, 2                        ; ボタンのオブジェクトID
+    dim tgsw, 3                         ; マーキーON/OFF トグルスイッチ用
+    tgsw = 1, 1, 1                      ;
+    butstr = "start", "stop"            ; マーキーON/OFF ボタン表示用
+
+    dim hProg, 6                        ; プログレスバーのオブジェクトハンドル
+    dim hStatic, 2
+    sdim moni, 256, 7                   ; プログレスバーの情報表示用
+    moni(0) = "hProg(" + n + ")", "現在位置 = ", "最小値   = ", "最大値   = ", "範  囲   = ", "変化量   = ", "状  態   = "
+
+    moni2 = ""
+    power = 0.0
+//------------------------------------------------------------------------------
+
+
+    /*****  オブジェクトの設置  *****/
+
+    pos 20, 10  :  objsize , , 20
+
+    mes "hProg(0)"
+    mypb 300, 15, hProg(0), 0
+    pbset hProg(0), 0, 100, 0, 1
+
+
+    mes "hProg(1)"
+    mypb 300, 15, hProg(1), 0
+    pbset hProg(1), 0, 200, 200, -1
+
+
+    mes "hProg(2) (MARQUEE)"    :   x(0) = ginfo_cx  :  y(0) = ginfo_cy
+    mypb 300, 15, hProg(2), 2
+    pbswmarq hProg(2), 1, 30
+
+
+    mes "hProg(3) (MARQUEE)"
+    mypb 300, 15, hProg(3), 2   :   x(1) = ginfo_cx  :  y(1) = ginfo_cy
+
+
+    pos 20, 220
+    mes "hProg(4)"
+    mypb 15, 200, hProg(4), 1
+    pbset hProg(4), 0, 100, 100, -1
+
+
+    pos 50, ginfo_cy - 200
+    mypb 15, 200, hProg(5), 1   :   x(2) = ginfo_cx  :  y(2) = ginfo_cy
+    pbset hProg(5), 0, 1000, 0, 1
+
+    pos x(2) + 25, 400
+    mes "hProg(5)"
+
+//----------------------------------------------------------
+
+
+    /*****  プログレスバー情報表示用  *****/
+    pos 370, 20
+    listbox n, 100, "hProg0\nhProg1\nhProg2\nhProg3\nhProg4\nhProg5"
+
+    pos 450, 20
+    winobj "static", "", , $50000000 | $800000, 150, 120
+    hStatic(0) = objinfo(stat, 2)
+
+    pos x(2) + 25, y(2) - 20
+    winobj "static", "", , $50000000 | $800000, 90, 20
+    hStatic(1) = objinfo(stat, 2)
+//----------------------------------------------------------
+
+
+    /***  マーキー・アニメーションのON/OFF  ***/
+    pos x(1), y(1)
+    button gosub "statrt", *marqueesw
+    butid(0) = stat
+
+    objsize 120, 24,
+    /***  マーキー, 通常スタイル相互変更  ***/
+    button gosub "Style_Chenge", *style_ch
+    butid(1) = stat
+//----------------------------------------------------------
+
+    sendmsg hStatic(0), $30, hFont
+    sendmsg hStatic(1), $30, hFont
+
+    gsel 0, 1
+
+
+
+//##############################################################################
+
+
+
+*main               /*#######  メインループここから  #######*/
+    wait 16
+
+    pbstep hProg(0)                     ; ステップ進行
+    pbstcol2 hProg(0), 20, 35           ; 百分率による色指定
+
+
+    pbstep hProg(1)
+    pbstcol2 hProg(1)
+
+
+    // スタイルがマーキーから通常になった際にプログレス開始
+    if (tgsw(1) == -1) {pbstep hProg(2)}
+
+
+    pbstep hProg(4)
+    pbstcol hProg(4), 30, 40            ; 直接数値指定
+
+
+    //  実数を扱ってみる  //
+    power += 0.1
+    if (power <= 0) {power = 100.0}
+    pbrepos hProg(5), int(power * 10), 0    ; プログレスバーの現在位置を直接指定する
+    pbstcol2 hProg(5), 25, 40               ; 百分率による色指定
+
+
+
+    /***  プログレスバー情報表示  ***/
+
+    moni(0) = "hProg(" + n + ")"
+
+    // repeat 6, 1
+    //     moni(0) += "\n " + moni(cnt) + pbinfo(hProg(n), cnt - 1)    ; 通常型 : ループ内で使用可
+    // loop
+
+    moni(0) += "\n 現在位置 = " + pb_now(hProg(n))     ; パラメータ略称型
+    moni(0) += "\n 最小値   = " + pb_min(hProg(n))     ; メリット
+    moni(0) += "\n 最大値   = " + pb_max(hProg(n))     ; * 何の値を返しているのかがスクリプト上でわかる
+    moni(0) += "\n 範  囲   = " + pb_rag(hProg(n))     ;
+    moni(0) += "\n 変化量   = " + pb_var(hProg(n))     ;
+    moni(0) += "\n 状  態   = " + pb_sts(hProg(n))     ;
+
+    sendmsg hStatic(0), $C, 0, moni(0)
+
+
+    //  実数を扱ってみる  //
+    moni2 = "" + strf("%.2f%%", double(pb_now(hProg(5))) / 10)  ; 実数で扱う場合は double関数を利用して下さい。
+    sendmsg hStatic(1), $C, 0, moni2
+
+
+    goto *main      /*#######  メインループここまで  #######*/
+
+
+
+//##############################################################################
+
+
+
+; マーキー・アニメーションのON/OFF
+*marqueesw
+    tgsw(0) = tgsw(0) * -1
+    if (tgsw(0) == -1) {tgsw(2) = 1}
+    else               {tgsw(2) = 0}
+
+    pbswmarq hProg(3), tgsw(2), 30
+    objprm butid(0), butstr(tgsw(2))
+
+    return
+
+
+
+; マーキー, 通常スタイル相互変更
+*style_ch
+    tgsw(1) = tgsw(1) * -1
+    if (tgsw(1) == 1) {stysw = 0x50000000 | 0x0001 | 0x0010 | 0x0008}
+    else              {stysw = 0x50000000 | 0x0001 | 0x0010}
+
+    SetWindowLong hProg(2), -16, stysw
+    SetWindowPos hProg(2), 0, x(0), y(0), 300, 15, 0
+    pbset hProg(2), 0, 150
+
+    return
