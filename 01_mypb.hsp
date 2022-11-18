@@ -17,8 +17,8 @@ user32やgdi32、hsp3utilなどは必要ありません。
     if文とelse、またはelse:ifの間を空けないようお願い致します。
 ************************************************************/
 
-#ifndef __mypb__
-#define __mypb__
+#ifndef mypb__
+#define global mypb__
 
 
 #module "MyProgBar"
@@ -137,6 +137,44 @@ user32やgdi32、hsp3utilなどは必要ありません。
     return
 
 
+;---------------------------------------
+;現在位置
+;---------------------------------------
+
+
+// プログレスバーの位置再設定
+//
+// p1    : オブジェクトハンドル
+// p2    : 新しく設定する位置(int)
+// p3(0) : 設定タイプ(0 = 絶対位置, 1 = 相対位置)
+#define global pbrepos(%1,%2,%3=0) pbrepos_@MyProgBar %1,%2,%3
+
+
+#deffunc local pbrepos_ int p1, int p2, int p3
+
+    if      (p3 == 0) {sendmsg p1, PBM_SETPOS, p2, 0}
+    else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
+    return
+
+
+;---------------------------------------
+;プログレスバーの状態
+;---------------------------------------
+
+
+// プログレスバーの状態設定
+//
+// p1    : オブジェクトハンドル
+// p2(1) : バーの状態
+//  1 = PBST_NORMAL (緑色)
+//  2 = PBST_ERROR  (赤色)
+//  3 = PBST_PAUSED (黄色)
+#define global pbsetst(%1,%2=1) pbsetst_@MyProgBar %1,%2
+
+
+#deffunc local pbsetst_ int p1, int p2
+    sendmsg p1, PBM_SETSTATE, p2, 0
+    return
 
 ;---------------------------------------
 ;プログレスバーの情報取得
@@ -180,48 +218,6 @@ user32やgdi32、hsp3utilなどは必要ありません。
     #define global ctype pb_rag(%1) pbinfo(%1, 3)          // 範  囲
     #define global ctype pb_var(%1) pbinfo(%1, 4)          // 変化量
     #define global ctype pb_sts(%1) pbinfo(%1, 5)          // 状  態
-
-
-
-;---------------------------------------
-;現在位置
-;---------------------------------------
-
-
-// プログレスバーの位置設定
-//
-// p1    : オブジェクトハンドル
-// p2    : 新しく設定する位置(int)
-// p3(0) : 設定タイプ(0 = 絶対位置, 1 = 相対位置)
-#define global pbrepos(%1,%2,%3=0) pbrepos_@MyProgBar %1,%2,%3
-
-
-#deffunc local pbrepos_ int p1, int p2, int p3
-
-    if      (p3 == 0) {sendmsg p1, PBM_SETPOS, p2, 0}
-    else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
-    return
-
-
-
-;---------------------------------------
-;プログレスバーの状態
-;---------------------------------------
-
-
-// プログレスバーの状態設定
-//
-// p1    : オブジェクトハンドル
-// p2(1) : バーの状態
-//  1 = PBST_NORMAL (緑色)
-//  2 = PBST_ERROR  (赤色)
-//  3 = PBST_PAUSED (黄色)
-#define global pbsetst(%1,%2=1) pbsetst_@MyProgBar %1,%2
-
-
-#deffunc local pbsetst_ int p1, int p2
-    sendmsg p1, PBM_SETSTATE, p2, 0
-    return
 
 
 
@@ -290,7 +286,26 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 
 
+//##############################################################################
+    // インクルードガード
+    // #ifndef __USER32__
+    // #include "user32.as"
+    // #endif //__USER32__
+
+
+// スタイルの操作
+//
+// p1 : オブジェクトハンドル
+// p2 : 初期スタイル
+// p3 : 変更スタイル
+// p4 : 切り替えスイッチ
+// #deffunc pbstyle_ int p1, int p2, int p3, int p4
+
+
+
+
+    // return
+
+
 #global
-
-
-#endif
+#endif      // mypb__
