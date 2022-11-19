@@ -1,7 +1,7 @@
 ; INFO „ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª
 ; FileName : 01_mypbhelp.hs
-; Version  : 0.3.1
-; Date     : 2022/11/16
+; Version  : 0.40
+; Date     : 2022/11/19
 ; Author   : YUZRANIUMi‚ä‚¸‚ç‚É‚¤‚Þj
 ; Twitter  : https://twitter.com/YUZRANIUM
 ; GitHub   : https://github.com/YUZRANIUM/01_mypb
@@ -13,9 +13,9 @@
 %dll
 01_mypb
 %ver
-0.3.1
+0.40
 %date
-2022/11/16
+2022/11/19
 %author
 YUZRANIUM
 %url
@@ -35,7 +35,7 @@ mypb
 p1,p2,p3,p4
 p1,p2 : XƒTƒCƒY, YƒTƒCƒY
 p3    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽó‚¯Žæ‚é•Ï”
-p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[)
+p4(0) : ƒXƒ^ƒCƒ‹(0 = ’Êí, 1 = ‚’¼, 2 = ƒ}[ƒL[, 3 = ‚’¼ƒ}[ƒL[)
 %inst
 ‚±‚Ì–½—ß‚Íwinobj–½—ß‚ðŽg—p‚µ‚ÄƒvƒƒOƒŒƒXƒo[‚ðÝ’u‚·‚é‚à‚Ì‚Å‚·BÝ’uˆÊ’u‚ÍƒJƒŒƒ“ƒgƒ|ƒWƒVƒ‡ƒ“‚É‚È‚è‚Ü‚·B
 ^
@@ -50,6 +50,7 @@ p4‚ÍƒvƒƒOƒŒƒXƒo[‚ÌƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹‚ðÝ’è‚µ‚Ü‚·B‰Šú’l‚Å‚Í0‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚
     0  : …•½‚ÌƒvƒƒOƒŒƒXƒo[
     1  : ‚’¼‚ÌƒvƒƒOƒŒƒXƒo[
     2  : ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“
+    3  : ‚’¼ƒ}[ƒL[
 ^
 ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“‚Å‚Í•sŠm’è‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚Ì‘€ì‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·B
 ^
@@ -86,6 +87,7 @@ pbsetst
 pbstcol
 pbstcol2
 pbswmarq
+pbcstyle
 
 ;===============================================================================
 
@@ -171,12 +173,12 @@ pbswmarq
 
 %index
 pbrepos
-ƒo[ˆÊ’uÄÝ’è
+ƒo[ˆÊ’u‘€ì
 %prm
 p1,p2,p3
-p1    : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
-p2    : V‚µ‚­Ý’è‚·‚éˆÊ’u (+/-int)
-p3(0) : Ý’èƒ^ƒCƒv(0 = â‘ÎˆÊ’u, 1 = ‘Š‘ÎˆÊ’u)
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+p2 : V‚µ‚­Ý’è‚·‚éˆÊ’u (+/-int)
+p3 : Ý’èƒ^ƒCƒv(0 = â‘ÎˆÊ’u, 1 = ‘Š‘ÎˆÊ’u)
 %inst
 ‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚ÌŒ»ÝˆÊ’u‚ðÄÝ’è‚·‚é‚à‚Ì‚Å‚·B
 ^
@@ -198,14 +200,14 @@ pbstep–½—ßˆÈŠO‚Ì—vˆö‚Å’l‚ª•Ï“®‚·‚éê‡‚âŽÀ”‚ðˆµ‚¢‚½‚¢ê‡A•Ï‰»—Ê‚ª•s‹K‘¥Aƒ‰ƒ“
 %sample
     mes "Battery"
     mypb 200, 15, hProg1, 0
-    pbset hProg1, 0, 1000, 1000, -1     ; ¬”‘æ1ˆÊ‚Ü‚Å‚ðˆµ‚¢‚½‚¢ê‡‚Í1,000‚ðA
-                                        ; ‘æ2ˆÊ‚Ü‚Åˆµ‚¤ê‡‚Í10,000‚ðÅ‘å’l‚ÉŽw’è‚µ‚Ä‰º‚³‚¢
+    pbset hProg1, 0, 1000, 1000, -1 ; ¬”‘æ1ˆÊ‚Ü‚Å‚ðˆµ‚¢‚½‚¢ê‡‚Í1,000‚ðA
+                                    ; ‘æ2ˆÊ‚Ü‚Åˆµ‚¤ê‡‚Í10,000‚ðÅ‘å’l‚ÉŽw’è‚µ‚Ä‰º‚³‚¢
     pos 20, 50
-    winobj "static", "", , $50000000 | $800000, 150, 120
+    winobj "static", "", , $50000000 | $800000, 150, 130
     hStatic(0) = objinfo(stat, 2)
 
     pos 230, ginfo_mesy
-    winobj "static", "", , $50000000 | $800000, 80, 20
+    winobj "static", "", , $50000000 | $800000, 90, 20
     hStatic(1) = objinfo(stat, 2)
 
 *main
@@ -213,11 +215,11 @@ pbstep–½—ßˆÈŠO‚Ì—vˆö‚Å’l‚ª•Ï“®‚·‚éê‡‚âŽÀ”‚ðˆµ‚¢‚½‚¢ê‡A•Ï‰»—Ê‚ª•s‹K‘¥Aƒ‰ƒ“
     power -= 0.1
     if power <= 0 : power = 100.0
 
-    pbrepos hProg1, int(power * 10), 0  ; ’l‚ðŽw’è‚·‚éê‡‚Í¬”“_ˆÈ‰º‚ð–³‚­‚·‚æ‚¤‚ÉH•v‚µ‚Ä‰º‚³‚¢
-                                        ; ŽÀ”’l‚ðŽw’è‚µ‚Ä‚µ‚Ü‚¤‚Æ‚»‚Ì’l‚ª–³Ž‹‚³‚ê‚Ä‚µ‚Ü‚¢‚Ü‚·
+    // ’l‚ðŽw’è‚·‚éê‡‚Í¬”“_ˆÈ‰º‚ð–³‚­‚·‚æ‚¤‚ÉH•v‚µ‚Ä‰º‚³‚¢
+    pbrepos hProg1, int(power * 10), 0
 
     moni(0) = "hProg1"
-    repeat 6, 1
+    repeat 7, 1
         moni(0) += "\n " + moni(cnt) + pbinfo(hProg1, cnt - 1)
     loop
     sendmsg hStatic(0), $C, 0, moni
@@ -298,6 +300,60 @@ pbset
 pbstep
 
 ;===============================================================================
+%index
+pbcstyle
+ƒXƒ^ƒCƒ‹‚Ì‘€ì
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚Ì–½—ß‚ÍAƒvƒƒOƒŒƒXƒo[‚Éƒ}[ƒL[¥ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌƒXƒ^ƒCƒ‹•t—^E‰ðœ‚ðs‚È‚¤‚à‚Ì‚Å‚·B
+^
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+‚±‚Ì–½—ß‚ªŒÄ‚Ño‚³‚ê‚½Žž“_‚Å‚ÌƒvƒƒOƒŒƒXƒo[‚ÌƒXƒ^ƒCƒ‹‚ª’Êí‚ÌƒXƒ^ƒCƒ‹(0)‚Å‚ ‚ê‚Îƒ}[ƒL[(2)‚ÉA‚’¼ƒXƒ^ƒCƒ‹(1)‚Å‚ ‚ê‚Î‚’¼ƒ}[ƒL[(3)‚É•ÏX‚µ‚Ü‚·B
+‚Ü‚½A‚»‚ê‚¼‚ê‹t•ûŒü‚Ö‚Ì•ÏX‚às‚¢‚Ü‚·‚ªA’ÊíƒXƒ^ƒCƒ‹(0)‹y‚Ñ‚’¼ƒXƒ^ƒCƒ‹(1)ŠÔ‚Ì•ÏX‚Ís‚¢‚Ü‚¹‚ñB
+^
+    ’ÊíƒXƒ^ƒCƒ‹(0) <---> ƒ}[ƒL[(2)
+    ‚’¼ƒXƒ^ƒCƒ‹(1) <---> ‚’¼ƒ}[ƒL[(3)
+^
+‚Ü‚½AŠeƒXƒ^ƒCƒ‹‚Ì’l‚Ímypb–½—ß‚Æ“¯—l‚Ì‚à‚Ì‚Å‚·B
+^
+    ’l |   Œ©‚½–Ú
+----------------------------------------
+    0  : …•½‚ÌƒvƒƒOƒŒƒXƒo[
+    1  : ‚’¼‚ÌƒvƒƒOƒŒƒXƒo[
+    2  : ƒ}[ƒL[EƒAƒjƒ[ƒVƒ‡ƒ“
+    3  : ‚’¼ƒ}[ƒL[
+^
+‚±‚Ì–½—ß‚É‚æ‚Á‚Äƒ}[ƒL[(2)‚à‚µ‚­‚Í‚’¼ƒ}[ƒL[(3)‚É•ÏX‚³‚ê‚é‚ÆAŽ©“®‚Åpbswmarq–½—ß‚É‚æ‚éÄ¶‚Æpbsetst–½—ß‚É‚æ‚éó‘Ô‚Ì•ÏX‚ªs‚í‚ê‚Ü‚·B
+%sample
+
+    goto *main  /*#######  ƒƒCƒ“ƒ‹[ƒv‚±‚±‚Ü‚Å  #######*/
+
+    ; ƒ}[ƒL[, ’ÊíƒXƒ^ƒCƒ‹‘ŠŒÝ•ÏX
+*style_ch
+
+    pbcstyle hProg(2)
+    pbset hProg(2), 0, 150
+
+    pbcstyle hProg(5)
+    pbset hProg(5), 0, 1000
+
+    return
+
+%group
+ƒIƒuƒWƒFƒNƒg‘€ì–½—ß
+%type
+ƒ†[ƒU[’è‹`–½—ß
+%href
+pbswmarq
+pbinfo
+pb_sty
+pbstcol
+pbstcol2
+
+;===============================================================================
 
 %index
 pbsetst
@@ -369,7 +425,7 @@ p4,p5,p6‚ÅŽw’è‚Å‚«‚éó‘Ô‚ð•\‚·”’l‚ÍˆÈ‰º‚Ì‚à‚Ì‚Æ‚È‚è‚Ü‚·B(pbsetst–½—ß‚Æ“¯‚¶‚à‚Ì
     2  :  PBST_ERROR  (ƒGƒ‰[)    :  ÔF
     3  :  PBST_PAUSED (ˆêŽž’âŽ~)  :  ‰©F
 ^
-‚±‚Ì–½—ß‚ÍApbsetst–½—ß‚Å‚ÌƒTƒ“ƒvƒ‹ƒXƒNƒŠƒvƒg‚ð‚»‚Ì‚Ü‚Ü–½—ß‰»‚µ‚½‚à‚Ì‚Å‚·B
+‚±‚Ì–½—ß‚ÍApbsetst–½—ß‚Ì€–Ú‚ÅŽ¦‚µ‚Ä‚¢‚éƒTƒ“ƒvƒ‹ƒXƒNƒŠƒvƒg‚ð‚»‚Ì‚Ü‚Ü–½—ß‰»‚µ‚½‚à‚Ì‚Å‚·B
 p2ˆÈ~‚Ìƒpƒ‰ƒ[ƒ^‚ÍÈ—ª‰Â”\‚ÅAÈ—ªŽž‚Í40’´‰ß‚Å—ÎFA25–¢–ž‚ÅÔFA25ˆÈã40ˆÈ‰º‚Å‰©F‚Æ‚È‚è‚Ü‚·B
 
 %sample
@@ -427,6 +483,8 @@ p6(1)  :  ãˆÊˆæ‚Ìó‘Ô (PBST_NORMAL (—ÎF))
 ‚Æ‚¢‚¤‚æ‚¤‚É‘æ4ƒpƒ‰ƒ[ƒ^ˆÈ~‚ðÈ—ª‚µ‚Ä‚à\‚¢‚Ü‚¹‚ñB
 ã‹L‚ÌÝ’è‚Å‚ÍA17931‚Ì25%‚Í4482.75A40%‚Í7172.40‚Æ‚È‚è‚Ü‚·‚ª“à•”‚ÅintŠÖ”‚É‚æ‚è‚»‚ê‚¼‚ê4482A7172‚Æ¬”“_ˆÈ‰ºØ‚èŽÌ‚Ä‚Åˆ—‚³‚ê‚Ü‚·B
 ^
+‚Ü‚½AÅ¬’l‚ª0ˆÈŠO‚Ìê‡‚É‚à‘Î‰ž‚µ‚Ä‚¢‚Ü‚·B
+^
 ‚±‚êˆÈ~‚Ìƒpƒ‰ƒ[ƒ^“™‚Ì‰ðà‚Ípbstcol–½—ß‚Æ“¯‚¶‚à‚Ì‚Æ‚È‚è‚Ü‚·B
 ^
 ¦’ˆÓŽ–€‚Æ‚µ‚ÄA‚¢‚¸‚ê‚Ìƒpƒ‰ƒ[ƒ^‚à®”’liintj‚Æ‚È‚Á‚Ä‚¢‚Ü‚·BŽÀ”’lidoublej‚Íˆµ‚¦‚Ü‚¹‚ñB
@@ -441,8 +499,8 @@ p6(1)  :  ãˆÊˆæ‚Ìó‘Ô (PBST_NORMAL (—ÎF))
 *main
     wait 16
 
-    pbstep hProg(0)                     ; ƒXƒeƒbƒvis
-    pbstcol2 hProg(0), 25, 35           ; •S•ª—¦Žw’è
+    pbstep hProg(0)             ; ƒXƒeƒbƒvis
+    pbstcol2 hProg(0), 25, 35   ; •S•ª—¦Žw’è
 
     goto *main
 
@@ -472,7 +530,7 @@ p2 : Žæ“¾ƒ^ƒCƒv
 ‚±‚ÌŠÖ”‚ÍƒvƒƒOƒŒƒXƒo[‚ÌŠeŽíî•ñ‚ðŽæ“¾‚·‚é‚à‚Ì‚Å‚·B
 ^
 p1‚ÉƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
-p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³‚ê‚Ü‚·B
+p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B–ß‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³‚ê‚Ü‚·B
 ^
 ƒ^ƒCƒv |            “à—e          |         •Ô‚è’listatj
 ------------------------------------------------------------------------------------
@@ -482,18 +540,29 @@ p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³
     3  :  ”Í  ˆÍ                  :  (Å‘å’l) - (Å¬’l)
     4  :  •Ï‰»—Ê   (PBM_GETSTEP)  :  pbset–½—ß‚ÅÝ’è‚µ‚½®”’l
     5  :  ó  ‘Ô   (PBM_GETSTATE) :  pbinfoŠÖ”ŒÄ‚Ño‚µŽž“_‚Å‚Ìƒo[‚Ìó‘Ô
+    6  :  ƒXƒ^ƒCƒ‹                :  mypb–½—ß‚Ü‚½‚Ípbcstyle–½—ß‚ÅÝ’è‚³‚ê‚½®”’l
 ^
-Žæ“¾ƒ^ƒCƒv4‚Ìó‘Ô‚ÍŽŸ‚Ì‚¢‚¸‚ê‚©‚É‚È‚è‚Ü‚·B
+Žæ“¾ƒ^ƒCƒv4‚Ì•Ô‚è’l‚ÍŽŸ‚Ì‚¢‚¸‚ê‚©‚É‚È‚è‚Ü‚·B
+•Ô‚è’l |     “à—e
+-------------------------------
     1  :  PBST_NORMAL (—ÎF)
     2  :  PBST_ERROR  (ÔF)
     3  :  PBST_PAUSED (‰©F)
 ^
-¦’ˆÓŽ–€‚Æ‚µ‚ÄApbinfoŠÖ”‚Í ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·‚Ì‚Å•K‚¸ƒpƒ‰ƒ[ƒ^‚ðŠÛŠ‡ŒÊ‚ÅˆÍ‚ñ‚Å‰º‚³‚¢B
+Žæ“¾ƒ^ƒCƒv6‚Ì•Ô‚è’l‚ÍŽŸ‚Ì‚¢‚¸‚ê‚©‚É‚È‚è‚Ü‚·B
+•Ô‚è’l |  “à—e
+-----------------------
+    0  :  ’Êí
+    1  :  ‚’¼
+    2  :  ƒ}[ƒL[
+    3  :  ‚’¼ƒ}[ƒL[
+^
+¦’ˆÓŽ–€‚Æ‚µ‚ÄApbinfoŠÖ”‚Í "ŠÖ”"‚Å‚·‚Ì‚Å•K‚¸ƒpƒ‰ƒ[ƒ^‚ðŠÛŠ‡ŒÊ‚ÅˆÍ‚ñ‚Å‰º‚³‚¢B
 
 %sample
     #include "01_mypb.hsp"
 
-    sdim moni, 256, 7                   ; ƒvƒƒOƒŒƒXƒo[‚Ìî•ñ•\Ž¦—p
+    sdim moni, 256, 7          ; ƒvƒƒOƒŒƒXƒo[‚Ìî•ñ•\Ž¦—p
     moni(0) = "hProg(" + n + ")"
     moni(1) = "Œ»ÝˆÊ’u = "
     moni(2) = "Å¬’l   = "
@@ -501,23 +570,24 @@ p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³
     moni(4) = "”Í  ˆÍ   = "
     moni(5) = "•Ï‰»—Ê   = "
     moni(6) = "ó  ‘Ô   = "
+    moni(7) = "STYLE    = "
 
-    mes "hProg(0) (min:0, Max:100, start:0, step:+1)"
+    mes "hProg(0)"
     mypb 300, 15, hProg(0), 0
-    pbset hProg(0), 0, 100, 0, 1
+    pbset hProg(0), -50, 100, -50, 1
 
     winobj "static", "", , $50000000 | $800000, 250, 130
     id_static = stat  :  hStatic = objinfo(stat, 2)
 
 *main
     wait 16
-    pbstep hProg(0)      ; ƒXƒeƒbƒvis
-    pbstcol hProg(0)     ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+    pbstep hProg(0)   ; ƒXƒeƒbƒvis
+    pbstcol hProg(0)  ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
 
     moni(0) = "hProg(" + n + ")"
 
-    repeat 6, 1
-        moni(0) += "\n " + moni(cnt) + pbinfo(hProg(n), cnt - 1)    ; ’ÊíŒ^ : ƒ‹[ƒv“à‚ÅŽg—p‰Â
+    repeat 7, 1
+        moni(0) += "\n " + moni(cnt) + pbinfo(hProg(n), cnt - 1)
     loop
 
     sendmsg hStatic, $C, 0, moni
@@ -529,6 +599,7 @@ p2‚ÉŽæ“¾‚µ‚½‚¢î•ñ‚ÌŽæ“¾ƒ^ƒCƒv‚ðŽw’è‚µ‚Ä‰º‚³‚¢B•Ô‚è’l‚ÍƒVƒXƒeƒ€•Ï”stat‚ÉŠi”[‚³
 %type
 ƒ†[ƒU[’è‹`ŠÖ”
 %href
+pbcstyle
 pbinfo
 pb_now
 pb_min
@@ -536,6 +607,7 @@ pb_max
 pb_rag
 pb_var
 pb_sts
+pb_sty
 
 ;===============================================================================
 
@@ -566,6 +638,7 @@ pb_now(p1) ‚Æ pbinfo(p1, 0) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
     moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
     moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
     moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+    moni(0) += "\n STYLE    = " + pb_sty(hProg(n))   ;
 
     sendmsg hStatic, $C, 0, moni
 
@@ -583,6 +656,7 @@ pb_max
 pb_rag
 pb_var
 pb_sts
+pb_sty
 
 ;===============================================================================
 
@@ -606,12 +680,13 @@ pb_min(p1) ‚Æ pbinfo(p1, 1) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
 
     moni(0) = "hProg(" + n + ")"
 
-    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
-    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
-    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
-    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
-    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
-    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))
+    moni(0) += "\n STYLE    = " + pb_sty(hProg(n))
 
     sendmsg hStatic, $C, 0, moni
 
@@ -629,6 +704,7 @@ pb_max
 pb_rag
 pb_var
 pb_sts
+pb_sty
 
 ;===============================================================================
 
@@ -652,12 +728,13 @@ pb_max(p1) ‚Æ pbinfo(p1, 2) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
 
     moni(0) = "hProg(" + n + ")"
 
-    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
-    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
-    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
-    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
-    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
-    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))
+    moni(0) += "\n STYLE    = " + pb_sty(hProg(n))
 
     sendmsg hStatic, $C, 0, moni
 
@@ -675,6 +752,7 @@ pb_max
 pb_rag
 pb_var
 pb_sts
+pb_sty
 
 ;===============================================================================
 
@@ -698,12 +776,13 @@ pb_rag(p1) ‚Æ pbinfo(p1, 3) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
 
     moni(0) = "hProg(" + n + ")"
 
-    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
-    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
-    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
-    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
-    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
-    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))
+    moni(0) += "\n STYLE    = " + pb_sty(hProg(n))
 
     sendmsg hStatic, $C, 0, moni
 
@@ -721,6 +800,7 @@ pb_max
 pb_rag
 pb_var
 pb_sts
+pb_sty
 
 ;===============================================================================
 
@@ -744,12 +824,13 @@ pb_var(p1) ‚Æ pbinfo(p1, 4) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
 
     moni(0) = "hProg(" + n + ")"
 
-    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
-    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
-    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
-    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
-    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
-    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))
+    moni(0) += "\n STYLE    = " + pb_sty(hProg(n))
 
     sendmsg hStatic, $C, 0, moni
 
@@ -767,6 +848,7 @@ pb_max
 pb_rag
 pb_var
 pb_sts
+pb_sty
 
 ;===============================================================================
 
@@ -790,12 +872,13 @@ pb_sts(p1) ‚Æ pbinfo(p1, 5) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
 
     moni(0) = "hProg(" + n + ")"
 
-    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))   ; ƒpƒ‰ƒ[ƒ^—ªÌŒ^
-    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))   ; ƒƒŠƒbƒg
-    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))   ; * ‰½‚Ì’l‚ð•Ô‚µ‚Ä‚¢‚é‚Ì‚©‚ªƒXƒNƒŠƒvƒgã‚Å‚í‚©‚é
-    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))   ;
-    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))   ;
-    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))   ;
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))
+    moni(0) += "\n STYLE    = " + pb_sty(hProg(n))
 
     sendmsg hStatic, $C, 0, moni
 
@@ -813,6 +896,56 @@ pb_max
 pb_rag
 pb_var
 pb_sts
+pb_sty
+
+;===============================================================================
+%index
+pb_sty
+ƒXƒ^ƒCƒ‹ƒ}ƒNƒ
+%prm
+p1
+p1 : ƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹
+%inst
+‚±‚ÌŠÖ”‚ÍApbinfoŠÖ”‚ÌƒXƒ^ƒCƒ‹‚ð•Ô‚·ŠÖ”Œ`Ž®‚Ìƒ}ƒNƒ‚Å‚·B
+p1‚É‚ÍƒIƒuƒWƒFƒNƒgƒnƒ“ƒhƒ‹‚ðŽw’è‚µ‚Ä‰º‚³‚¢B
+^
+pb_sty(p1) ‚Æ pbinfo(p1, 6) ‚Í‘S‚­“¯‚¶’l‚ð•Ô‚µ‚Ü‚·B
+
+%sample
+
+*main
+    wait 16
+    pbstep hProg(0)            ; ƒXƒeƒbƒvis
+    pbstcol2 hProg(0), 25, 45  ; Œ»ÝˆÊ’u‚ðŽæ“¾‚µA‚»‚Ì’l‚É‰ž‚¶‚Äó‘Ô‚ð•ÏX
+
+    moni(0) = "hProg(" + n + ")"
+
+    moni(0) += "\n Œ»ÝˆÊ’u = " + pb_now(hProg(n))
+    moni(0) += "\n Å¬’l   = " + pb_min(hProg(n))
+    moni(0) += "\n Å‘å’l   = " + pb_max(hProg(n))
+    moni(0) += "\n ”Í  ˆÍ   = " + pb_rag(hProg(n))
+    moni(0) += "\n •Ï‰»—Ê   = " + pb_var(hProg(n))
+    moni(0) += "\n ó  ‘Ô   = " + pb_sts(hProg(n))
+    moni(0) += "\n STYLE    = " + pb_sty(hProg(n))
+
+    sendmsg hStatic, $C, 0, moni
+
+    goto *main
+
+%group
+î•ñŽæ“¾ŠÖ”
+%type
+ƒ†[ƒU[’è‹`ŠÖ”
+%href
+pbcstyle
+pbinfo
+pb_now
+pb_min
+pb_max
+pb_rag
+pb_var
+pb_sts
+pb_sty
 
 ;===============================================================================
 
@@ -824,7 +957,6 @@ PBST_NORMAL
 0x0001 : —ÎF
 %inst
 ƒo[‘S‘Ì‚ª—ÎF‚É‚È‚è‚Ü‚·B
-’Êí‚Æ‚ ‚è‚Ü‚·‚ªA‚ ‚­‚Ü‚Å‚»‚¤‚¢‚¤•\Œ»‚È‚Ì‚Å‚µ‚å‚¤B
 ^
 ƒo[‚ÌisA’âŽ~‚Í‚±‚Ì’è”‚É¶‰E‚³‚ê‚Ü‚¹‚ñB
 %sample
@@ -850,7 +982,7 @@ PBST_ERROR
 0x0002 : ÔF
 %inst
 ƒo[‘S‘Ì‚ªÔF‚É‚È‚è‚Ü‚·B
-’âŽ~‚Í‚µ‚Ü‚¹‚ñB‚ ‚­‚Ü‚Å‚»‚¤‚¢‚¤•\Œ»‚È‚Ì‚Å‚µ‚å‚¤B
+’âŽ~‚Í‚µ‚Ü‚¹‚ñB
 ^
 ƒo[‚ÌisA’âŽ~‚Í‚±‚Ì’è”‚É¶‰E‚³‚ê‚Ü‚¹‚ñB
 %sample
@@ -876,7 +1008,7 @@ PBST_PAUSED
 0x0003 : ‰©F
 %inst
 ƒo[‘S‘Ì‚ª‰©F‚É‚È‚è‚Ü‚·B
-ˆêŽž’âŽ~‚Í‚µ‚Ü‚¹‚ñB‚ ‚­‚Ü‚Å‚»‚¤‚¢‚¤•\Œ»‚È‚Ì‚Å‚µ‚å‚¤B
+ˆêŽž’âŽ~‚Í‚µ‚Ü‚¹‚ñB
 ^
 ƒo[‚ÌisA’âŽ~‚Í‚±‚Ì’è”‚É¶‰E‚³‚ê‚Ü‚¹‚ñB
 %sample

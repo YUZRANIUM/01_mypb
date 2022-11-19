@@ -1347,9 +1347,9 @@ body,
 <li>
 <p>設置したプログレスバーに関する情報の取得は関数で行うため、式の中で利用可能。<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
 </li>
-</ul>
-<ul>
-<li>内部で、オブジェクトの設置には <code>winobj 命令</code>、それ以外の命令･関数は <code>sendmsg 命令</code> を使用。</li>
+<li>
+<p>内部で、オブジェクトの設置には <code>winobj 命令</code>、それ以外の命令･関数は <code>sendmsg 命令</code> を使用。</p>
+</li>
 </ul>
 <br>
 <h2 id="今後の予定">今後の予定</h2>
@@ -1361,10 +1361,10 @@ body,
 <p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> pbsetst命令（pbstcolへ名称変更）を割合で指定できるようにしたい（pbstcol2命令）</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox"> <code>pbinfo関数</code> にスタイル情報の取得を追加する</p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> <code>pbinfo関数</code> にスタイル情報の取得を追加する</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" disabled="" type="checkbox"> マーキー、通常スタイルの相互変更命令の追加</p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> マーキー、通常スタイルの相互変更命令の追加</p>
 </li>
 <li class="task-list-item">
 <p><input class="task-list-item-checkbox" disabled="" type="checkbox"> 設定に関する命令を1つにまとめたい</p>
@@ -1396,9 +1396,6 @@ body,
 <pre><code>  例） hsp36/common/01_mypb.hsp
 </code></pre>
 </li>
-</ul>
-<!-- <br> -->
-<ul>
 <li>
 <p>01_mypbフォルダをHSPのインストールディレクトリ下にある <strong>doclibフォルダ内に01_mypbフォルダごと</strong> 置いて下さい。サンプルファイルもそのままで構いません。</p>
 <pre><code>  例） hsp36/doclib/01_mypb
@@ -1408,7 +1405,7 @@ body,
 <br>
 <h2 id="機能function">機能（Function）</h2>
 <details>
-<summary>追加される命令･関数 全15</summary>
+<summary>追加される使用可能命令･関数 全17</summary>
 <pre><code class="language-c"><span class="hljs-comment">//---------------------------------------</span>
 <span class="hljs-comment">// オブジェクトの設置</span>
 <span class="hljs-comment">//---------------------------------------</span>
@@ -1449,6 +1446,32 @@ body,
 
 
 <span class="hljs-comment">//---------------------------------------</span>
+<span class="hljs-comment">// 現在位置</span>
+<span class="hljs-comment">//---------------------------------------</span>
+
+<span class="hljs-comment">// プログレスバーの位置再設定（命令）</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// p1 : オブジェクトハンドル</span>
+<span class="hljs-comment">// p2 : 新しく設定する位置(int)</span>
+<span class="hljs-comment">// p3 : 設定フラグ(0 = 絶対位置, 1 = 相対位置)</span>
+    pbrepos objhwnd, newpos, flag
+
+
+<span class="hljs-comment">//---------------------------------------</span>
+<span class="hljs-comment">// プログレスバーの状態</span>
+<span class="hljs-comment">//---------------------------------------</span>
+
+<span class="hljs-comment">// プログレスバーの状態設定（命令）</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// p1 : オブジェクトハンドル</span>
+<span class="hljs-comment">// p2 : バーの状態</span>
+<span class="hljs-comment">//   1 = PBST_NORMAL (緑色)</span>
+<span class="hljs-comment">//   2 = PBST_ERROR  (赤色)</span>
+<span class="hljs-comment">//   3 = PBST_PAUSED (黄色)</span>
+    pbsetst objhwnd, status
+
+
+<span class="hljs-comment">//---------------------------------------</span>
 <span class="hljs-comment">// プログレスバーの情報取得</span>
 <span class="hljs-comment">//---------------------------------------</span>
 
@@ -1462,6 +1485,7 @@ body,
 <span class="hljs-comment">//       3 : 範  囲   (int)</span>
 <span class="hljs-comment">//       4 : 変化量   (int)</span>
 <span class="hljs-comment">//       5 : 状  態   (int)</span>
+<span class="hljs-comment">//       6 : スタイル (int)     ※user32.asが必要です。</span>
     pbinfo(objhwnd, p2)
 
 
@@ -1473,32 +1497,7 @@ body,
     pb_rag(objhwnd)          <span class="hljs-comment">// 範  囲</span>
     pb_var(objhwnd)          <span class="hljs-comment">// 変化量</span>
     pb_sts(objhwnd)          <span class="hljs-comment">// 状  態</span>
-
-
-<span class="hljs-comment">//---------------------------------------</span>
-<span class="hljs-comment">// 現在位置</span>
-<span class="hljs-comment">//---------------------------------------</span>
-
-<span class="hljs-comment">// プログレスバーの位置設定（命令・マクロ）</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// p1    : オブジェクトハンドル</span>
-<span class="hljs-comment">// p2    : 新しく設定する位置(int)</span>
-<span class="hljs-comment">// p3(0) : 設定フラグ(0 = 絶対位置, 1 = 相対位置)</span>
-    pbrepos objhwnd, newpos, flag
-
-
-<span class="hljs-comment">//---------------------------------------</span>
-<span class="hljs-comment">// プログレスバーの状態</span>
-<span class="hljs-comment">//---------------------------------------</span>
-
-<span class="hljs-comment">// プログレスバーの状態設定（命令・マクロ）</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// p1    : オブジェクトハンドル</span>
-<span class="hljs-comment">// p2(1) : バーの状態</span>
-<span class="hljs-comment">//   1 = PBST_NORMAL (緑色)</span>
-<span class="hljs-comment">//   2 = PBST_ERROR  (赤色)</span>
-<span class="hljs-comment">//   3 = PBST_PAUSED (黄色)</span>
-    pbsetst objhwnd, status
+    pb_sty(objhwnd)          <span class="hljs-comment">// スタイル   ※user32.asが必要です。</span>
 
 
 <span class="hljs-comment">//---------------------------------------</span>
@@ -1537,6 +1536,16 @@ body,
 <span class="hljs-comment">// p2     : マーキー(0 = 停止, 1 = 再生)</span>
 <span class="hljs-comment">// p3(30) : アニメーション更新間隔(ms)</span>
     pbswmarq objhwnd, p2, p3
+
+
+<span class="hljs-comment">//---------------------------------------</span>
+<span class="hljs-comment">// スタイルの相互変更</span>
+<span class="hljs-comment">//---------------------------------------</span>
+
+<span class="hljs-comment">// スタイルの相互変更（命令）  ※user32.asが必要です。</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// p1 : オブジェクトハンドル</span>
+    pbcstyle objhwnd
 </code></pre>
 </details>
 <br>
@@ -1550,14 +1559,12 @@ body,
 <ul>
 <li><a href="https://hsp.tv/">Hot Soup Processor(HSP3)</a></li>
 </ul>
-<!-- <br> -->
 <h2 id="開発環境development-environment">開発環境（Development environment）</h2>
 <ul>
 <li>Windows11 Pro 22H2 x64</li>
-<li>Hot Soup Processor 3.7beta3</li>
+<li>Hot Soup Processor 3.7beta4</li>
 <li>Visual Studio Code ver 1.73.1</li>
 </ul>
-<!-- <br> -->
 <h2 id="license">LICENSE</h2>
 <p>本ソフトウェアおよび関連文書のファイル（以下「ソフトウェア」）の複製を取得するすべての人に対し、ソフトウェアを無制限に扱うことを無償で許可します。</p>
 <p>これには、ソフトウェアの複製を使用、複写、変更、結合、掲載、頒布、サブライセンス、および/または販売する権利、およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。</p>
@@ -1565,6 +1572,16 @@ body,
 <p>作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。</p>
 <br>
 <h2 id="更新履歴change-log">更新履歴（Change Log）</h2>
+<h3 id="ver-040">ver 0.40</h3>
+<p>2022/11/19</p>
+<ul>
+<li><code>pbinfo関数</code> にプログレスバーのスタイル取得機能を追加</li>
+<li>それに伴い関数形式のマクロ <code>pb_sty()</code> を追加</li>
+<li>プログレスバーのスタイルを交互に変更する <code>pbcstyle命令</code> を追加</li>
+<li><code>pbstcol2命令</code> をプログレスバーの最小値が0以外の場合にも対応</li>
+<li>プログレスバーのスタイルを追加</li>
+<li>インクルードガードの修正</li>
+</ul>
 <h3 id="ver-031">ver 0.3.1</h3>
 <p>2022/11/16</p>
 <ul>
@@ -1617,9 +1634,9 @@ body,
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>※ウィンドウスタイルを変更するには<code>user32.as</code>が必要です。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>内部で<code>user32.as</code>をインクルードしていますが、インクルードガードとしていますので二重インクルードにはなりません。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p><code>pbinfo関数</code>と、そのパラメータ省略版があります。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p><code>pbinfo関数</code>と、そのパラメータ省略版関数形式個別マクロがあります。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
