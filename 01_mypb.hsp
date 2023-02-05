@@ -14,7 +14,7 @@ user32やgdi32、hsp3utilなどは必要ありません。
 もしくはHSPの掲示板等で頂けると幸いです。
 
 ※ 注意 ※
-    if文とelse、またはelse:ifの間を空けないようお願い致します。
+	if文とelse、またはelse:ifの間を空けないようお願い致します。
 ************************************************************/
 
 #ifndef __mypb__
@@ -27,54 +27,54 @@ user32やgdi32、hsp3utilなどは必要ありません。
 #module "MyProgBar"
 
 
-    /*****  Style  *****/
+	/*****  Style  *****/
 
-    #const PBS_SMOOTH           0x0001  // なめらかな表示
-    #const PBS_VERTICAL         0x0004  // 垂直プログレスバー
-    #const PBS_MARQUEE          0x0008  // マーキーアニメーション
-    #const PBS_SMOOTHREVERSE    0x0010  // 減少時もなめらかに
+	#const PBS_SMOOTH           0x0001  // なめらかな表示
+	#const PBS_VERTICAL         0x0004  // 垂直プログレスバー
+	#const PBS_MARQUEE          0x0008  // マーキーアニメーション
+	#const PBS_SMOOTHREVERSE    0x0010  // 減少時もなめらかに
 //==============================================================================
 
-    /*****  message  *****/
+	/*****  message  *****/
 
-    #const PBM_SETRANGE32       0x0406  // 最大･最小値の設定(32bit)
-    #const PBM_GETRANGE         0x0407  // 最大･最小値の取得
+	#const PBM_SETRANGE32       0x0406  // 最大･最小値の設定(32bit)
+	#const PBM_GETRANGE         0x0407  // 最大･最小値の取得
 
-    #const PBM_GETSTEP          0x040D  // 増分値の取得
-    #const PBM_SETSTEP          0x0404  // 増分値の設定
-    #const PBM_STEPIT           0x0405  // 増分値だけ進める
+	#const PBM_GETSTEP          0x040D  // 増分値の取得
+	#const PBM_SETSTEP          0x0404  // 増分値の設定
+	#const PBM_STEPIT           0x0405  // 増分値だけ進める
 
-    #const PBM_GETPOS           0x0408  // 現在位置の取得
-    #const PBM_SETPOS           0x0402  // 現在位置の設定
-    #const PBM_DELTAPOS         0x0403  // 現在位置の相対設定
+	#const PBM_GETPOS           0x0408  // 現在位置の取得
+	#const PBM_SETPOS           0x0402  // 現在位置の設定
+	#const PBM_DELTAPOS         0x0403  // 現在位置の相対設定
 
-    // #const PBM_GETBKCOLOR       0x040E  // 背景色の取得
-    // #const PBM_SETBKCOLOR       0x0409  // 背景色の設置
-    // #const PBM_GETBARCOLOR      0x040C  // バーの色取得
-    // #const PBM_SETBARCOLOR      0x2001  // バーの色設定
+	// #const PBM_GETBKCOLOR       0x040E  // 背景色の取得
+	// #const PBM_SETBKCOLOR       0x0409  // 背景色の設置
+	// #const PBM_GETBARCOLOR      0x040C  // バーの色取得
+	// #const PBM_SETBARCOLOR      0x2001  // バーの色設定
 
-    #const PBM_GETSTATE         0x0411  // バーの状態取得
-    #const PBM_SETSTATE         0x0410  // バーの状態設定
+	#const PBM_GETSTATE         0x0411  // バーの状態取得
+	#const PBM_SETSTATE         0x0410  // バーの状態設定
 
-    #const PBM_SETMARQUEE       0x040A  // マーキーの操作
+	#const PBM_SETMARQUEE       0x040A  // マーキーの操作
 //==============================================================================
 
-    /*****  Progress Bar status  *****/
+	/*****  Progress Bar status  *****/
 
-    #const PBST_NORMAL          0x0001  // 通常     (緑色)
-    #const PBST_ERROR           0x0002  // エラー   (赤色)
-    #const PBST_PAUSED          0x0003  // 一時停止 (黄色)
+	#const PBST_NORMAL          0x0001  // 通常     (緑色)
+	#const PBST_ERROR           0x0002  // エラー   (赤色)
+	#const PBST_PAUSED          0x0003  // 一時停止 (黄色)
 //==============================================================================
 
-    /*****  Color Default  *****/
+	/*****  Color Default  *****/
 
-    // #const CLR_DEFAULT          0xFF000000  // デフォルトカラー
+	// #const CLR_DEFAULT          0xFF000000  // デフォルトカラー
 //==============================================================================
 
-    #const MYPB_STYLE0     0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE    // 通常
-    #const MYPB_STYLE1    MYPB_STYLE0 | PBS_VERTICAL                      // 垂直
-    #const MYPB_STYLE2    MYPB_STYLE0 | PBS_MARQUEE                       // マーキー
-    #const MYPB_STYLE3    MYPB_STYLE0 | PBS_MARQUEE | PBS_VERTICAL        // 垂直マーキー
+	#const MYPB_STYLE0     0x50000000 | PBS_SMOOTH | PBS_SMOOTHREVERSE    // 通常
+	#const MYPB_STYLE1    MYPB_STYLE0 | PBS_VERTICAL                      // 垂直
+	#const MYPB_STYLE2    MYPB_STYLE0 | PBS_MARQUEE                       // マーキー
+	#const MYPB_STYLE3    MYPB_STYLE0 | PBS_MARQUEE | PBS_VERTICAL        // 垂直マーキー
 
 
 
@@ -92,19 +92,16 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //         1 : 垂直
 //         2 : マーキー
 //         3 : 垂直マーキー
-#define global mypb(%1,%2,%3,%4=0) mypb_@MyProgBar %1,%2,%3,%4
+#deffunc mypb int p1, int p2, var p3, int p4
 
+	if      (p4 == 0) {style = MYPB_STYLE0}
+	else:if (p4 == 1) {style = MYPB_STYLE1}
+	else:if (p4 == 2) {style = MYPB_STYLE2}
+	else:if (p4 == 3) {style = MYPB_STYLE3}
 
-#deffunc local mypb_ int p1, int p2, var p3, int p4
-
-    if      (p4 == 0) {style = MYPB_STYLE0}
-    else:if (p4 == 1) {style = MYPB_STYLE1}
-    else:if (p4 == 2) {style = MYPB_STYLE2}
-    else:if (p4 == 3) {style = MYPB_STYLE3}
-
-    winobj "msctls_progress32", "", , style, p1, p2
-    p3 = objinfo(stat, 2)
-    return stat
+	winobj "msctls_progress32", "", , style, p1, p2
+	p3 = objinfo(stat, 2)
+	return stat
 
 
 
@@ -123,10 +120,10 @@ user32やgdi32、hsp3utilなどは必要ありません。
 #define global pbset(%1,%2=0,%3=100,%4=0,%5=1) pbset_@MyProgBar %1,%2,%3,%4,%5
 
 #deffunc local pbset_ int p1, int p2, int p3, int p4, int p5
-    sendmsg p1, PBM_SETRANGE32, p2, p3
-    sendmsg p1, PBM_SETPOS, p4, 0
-    sendmsg p1, PBM_SETSTEP, p5, 0
-    return
+	sendmsg p1, PBM_SETRANGE32, p2, p3
+	sendmsg p1, PBM_SETPOS, p4, 0
+	sendmsg p1, PBM_SETSTEP, p5, 0
+	return
 
 
 
@@ -139,8 +136,8 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //
 // p1 : オブジェクトハンドル
 #deffunc pbstep int p1
-    sendmsg p1, PBM_STEPIT, 0, 0
-    return
+	sendmsg p1, PBM_STEPIT, 0, 0
+	return
 
 
 ;---------------------------------------
@@ -154,9 +151,9 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p2 : 新しく設定する位置(int)
 // p3 : 設定タイプ(0 = 絶対位置, 1 = 相対位置)
 #deffunc pbrepos int p1, int p2, int p3
-    if      (p3 == 0) {sendmsg p1, PBM_SETPOS, p2, 0}
-    else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
-    return
+	if      (p3 == 0) {sendmsg p1, PBM_SETPOS,   p2, 0}
+	else:if (p3 == 1) {sendmsg p1, PBM_DELTAPOS, p2, 0}
+	return
 
 
 ;---------------------------------------
@@ -172,8 +169,8 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //  2 = PBST_ERROR  (赤色)
 //  3 = PBST_PAUSED (黄色)
 #deffunc pbsetst int p1, int p2
-    sendmsg p1, PBM_SETSTATE, p2, 0
-    return
+	sendmsg p1, PBM_SETSTATE, p2, 0
+	return
 
 
 
@@ -185,9 +182,9 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // プログレスバーの範囲（最大値と最小値の差）を返す内部関数
 // p1 : オブジェクトハンドル
 #defcfunc local pbrange_ int p1
-    sendmsg p1, PBM_GETRANGE, 0, 0  :  _pmax = stat
-    sendmsg p1, PBM_GETRANGE, 1, 0  :  _pmin = stat
-    return (_pmax - _pmin)
+	sendmsg p1, PBM_GETRANGE, 0, 0 : _pmax = stat
+	sendmsg p1, PBM_GETRANGE, 1, 0 : _pmin = stat
+	return (_pmax - _pmin)
 
 // プログレスバーの進捗を百分率で返す内部関数
 // p1 : オブジェクトハンドル
@@ -204,13 +201,12 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //     2 : マーキー
 //     3 : 垂直マーキー
 #defcfunc local pbgetstyle_ int p1
-    GetWindowLong p1, -16
-    if      (stat == MYPB_STYLE0) {return 0}
-    else:if (stat == MYPB_STYLE1) {return 1}
-    else:if (stat == MYPB_STYLE2) {return 2}
-    else:if (stat == MYPB_STYLE3) {return 3}
-    else                          {return -1}
-    // return
+	GetWindowLong p1, -16
+	if      (stat == MYPB_STYLE0) {return 0}
+	else:if (stat == MYPB_STYLE1) {return 1}
+	else:if (stat == MYPB_STYLE2) {return 2}
+	else:if (stat == MYPB_STYLE3) {return 3}
+	else                          {return -1}
 
 
 
@@ -227,26 +223,26 @@ user32やgdi32、hsp3utilなどは必要ありません。
 //       6 : STYLE    (int)
 #defcfunc pbinfo int p1, int p2
 
-    if      (p2 == 0) {sendmsg p1, PBM_GETPOS, 0, 0}        // 現在位置
-    else:if (p2 == 1) {sendmsg p1, PBM_GETRANGE, p2, 0}     // 最小値
-    else:if (p2 == 2) {sendmsg p1, PBM_GETRANGE, 0, 0}      // 最大値
-    else:if (p2 == 3) {return pbrange_@MyProgBar (p1)}      // 範  囲
-    else:if (p2 == 4) {sendmsg p1, PBM_GETSTEP, 0, 0}       // 変化量
-    else:if (p2 == 5) {sendmsg p1, PBM_GETSTATE, 0, 0}      // 状  態
-    else:if (p2 == 6) {return pbgetstyle_@MyProgBar (p1)}   // スタイル
+	if      (p2 == 0) {sendmsg p1, PBM_GETPOS,   0, 0}      // 現在位置
+	else:if (p2 == 1) {sendmsg p1, PBM_GETRANGE, 1, 0}      // 最小値
+	else:if (p2 == 2) {sendmsg p1, PBM_GETRANGE, 0, 0}      // 最大値
+	else:if (p2 == 3) {return pbrange_@MyProgBar(p1) }      // 範  囲
+	else:if (p2 == 4) {sendmsg p1, PBM_GETSTEP,  0, 0}      // 変化量
+	else:if (p2 == 5) {sendmsg p1, PBM_GETSTATE, 0, 0}      // 状  態
+	else:if (p2 == 6) {return pbgetstyle_@MyProgBar(p1)}    // スタイル
 
-    return stat
+	return stat
 
 
-    /*****  省略型  *****/
+	/*****  省略型  *****/
 
-    #define global ctype pb_now(%1) pbinfo(%1, 0)           // 現在位置
-    #define global ctype pb_min(%1) pbinfo(%1, 1)           // 最小値
-    #define global ctype pb_max(%1) pbinfo(%1, 2)           // 最大値
-    #define global ctype pb_rag(%1) pbinfo(%1, 3)           // 範  囲
-    #define global ctype pb_var(%1) pbinfo(%1, 4)           // 変化量
-    #define global ctype pb_sts(%1) pbinfo(%1, 5)           // 状  態
-    #define global ctype pb_sty(%1) pbinfo(%1, 6)           // スタイル
+	#define global ctype pb_now(%1) pbinfo(%1, 0)           // 現在位置
+	#define global ctype pb_min(%1) pbinfo(%1, 1)           // 最小値
+	#define global ctype pb_max(%1) pbinfo(%1, 2)           // 最大値
+	#define global ctype pb_rag(%1) pbinfo(%1, 3)           // 範  囲
+	#define global ctype pb_var(%1) pbinfo(%1, 4)           // 変化量
+	#define global ctype pb_sts(%1) pbinfo(%1, 5)           // 状  態
+	#define global ctype pb_sty(%1) pbinfo(%1, 6)           // スタイル
 
 
 
@@ -268,10 +264,10 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 #deffunc local pbstcol_ int p1, int p2, int p3, int p4, int p5, int p6
 
-    if      (pb_now(p1) > p3) {pbsetst p1, p6}
-    else:if (pb_now(p1) < p2) {pbsetst p1, p4}
-    else                      {pbsetst p1, p5}
-    return
+	if      (pb_now(p1) > p3) {pbsetst p1, p6}
+	else:if (pb_now(p1) < p2) {pbsetst p1, p4}
+	else                      {pbsetst p1, p5}
+	return
 
 
 
@@ -288,12 +284,12 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 #deffunc local pbstcol2_ int p1, int p2, int p3, int p4, int p5, int p6
 
-    par = (absf(pb_min(p1) - pb_now(p1)) / pb_rag(p1)) * 100
+	par = (absf(pb_min(p1) - pb_now(p1)) / pb_rag(p1)) * 100
 
-    if      (int(par) > p3) {pbsetst p1, p6}
-    else:if (int(par) < p2) {pbsetst p1, p4}
-    else                    {pbsetst p1, p5}
-    return
+	if      (int(par) > p3) {pbsetst p1, p6}
+	else:if (int(par) < p2) {pbsetst p1, p4}
+	else                    {pbsetst p1, p5}
+	return
 
 
 
@@ -310,8 +306,8 @@ user32やgdi32、hsp3utilなどは必要ありません。
 
 
 #deffunc local pbswmarq_ int p1, int p2, int p3
-    sendmsg p1, PBM_SETMARQUEE, p2, p3
-    return
+	sendmsg p1, PBM_SETMARQUEE, p2, p3
+	return
 
 
 
@@ -325,16 +321,16 @@ user32やgdi32、hsp3utilなどは必要ありません。
 // p1 : オブジェクトハンドル
 #deffunc pbcstyle int p1
 
-    // 通常スタイル <---> マーキー
-    // 垂直スタイル <---> 垂直マーキー
+	// 通常スタイル <---> マーキー
+	// 垂直スタイル <---> 垂直マーキー
 
-    if      (pb_sty(p1) == 0) {SetWindowLong p1, -16, MYPB_STYLE2 : pbswmarq p1 : pbsetst p1, 1}
-    else:if (pb_sty(p1) == 1) {SetWindowLong p1, -16, MYPB_STYLE3 : pbswmarq p1 : pbsetst p1, 1}
-    else:if (pb_sty(p1) == 2) {SetWindowLong p1, -16, MYPB_STYLE0}
-    else:if (pb_sty(p1) == 3) {SetWindowLong p1, -16, MYPB_STYLE1}
+	if      (pb_sty(p1) == 0) {SetWindowLong p1, -16, MYPB_STYLE2 : pbswmarq p1 : pbsetst p1, 1}
+	else:if (pb_sty(p1) == 1) {SetWindowLong p1, -16, MYPB_STYLE3 : pbswmarq p1 : pbsetst p1, 1}
+	else:if (pb_sty(p1) == 2) {SetWindowLong p1, -16, MYPB_STYLE0}
+	else:if (pb_sty(p1) == 3) {SetWindowLong p1, -16, MYPB_STYLE1}
 
-    SetWindowPos p1, 0, 0, 0, 0, 0, 0x0007
-    return
+	SetWindowPos p1, 0, 0, 0, 0, 0, 0x0007
+	return
 
 
 #global
